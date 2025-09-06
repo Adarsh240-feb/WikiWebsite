@@ -1,0 +1,348 @@
+/* Basic reset and container */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+body, html {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* CHANGE: Hide horizontal overflow to prevent scrolling. */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+
+.container {
+  display: flex;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 0 24px 24px 24px;   
+  /* CHANGE: Use a relative position initially for better mobile layout. */
+  position: relative;
+  height: auto;
+  z-index: 20;
+}
+
+/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
+@media (min-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.logo-section {
+  display: static;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.logo-placeholder {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  align-items: center;
+}
+
+.logo-image {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.club-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.nav-item {
+  color: #4b5563;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  display: inline-block; 
+}
+
+.nav-item:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #111827;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover:after {
+  width: 100%;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 0;
+  background-color: white;
+  position: relative;
+  /* CHANGE: Remove fixed margin-left from here. Use a media query instead. */
+  margin-left: 0;
+}
+
+/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
+@media (min-width: 1024px) {
+  .main-content {
+    margin-left: 250px;
+  }
+}
+
+/* Hero section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hero-logo-large {
+  /* CHANGE: Use a fluid width to prevent overflow on small screens/zoom. */
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.hero-title {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-top: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #374151;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* About section */
+.about-section {
+  padding: 40px;
+}
+
+.section-title {
+  text-align: left;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #878181;
+  margin-bottom: 16px;
+}
+
+.section-content {
+  text-align: left;
+  color: #4b5563;
+  margin-bottom: 40px;
+}
+
+/* New style for the clickable image link */
+.clickable-image-link {
+  display: block;
+  /* CHANGE: Use a max-width to allow shrinking on smaller screens/zoom. */
+  max-width: 800px; 
+  margin: 0 auto;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.clickable-image-link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-image-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Footer styles for layout */
+.footer-wiki {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3d3f42;
+  color: #ffffff;
+  padding: 5px 20px;
+  /* CHANGE: Remove fixed margin-left from here. Use a media query instead. */
+  margin-left: 0; 
+}
+
+/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
+@media (min-width: 1024px) {
+  .footer-wiki {
+    margin-left: 250px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer-wiki {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.wiki-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-right {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .footer-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.footer-link1 {
+  color: #991b1e;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link1:hover {
+  color: #cccccc;
+}
+
+.footer-link2 {
+  color: #319967;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link2:hover {
+  color: #cccccc;
+}
+
+.footer-link3 {
+  color: #046599;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link3:hover {
+  color: #cccccc;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo {
+  /* CHANGE: Use flexible margins and width to prevent overflow. */
+  margin-left: 0;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+  .footer-logo {
+    margin-left: 50px;
+  }
+}
+
+.code-of-conduct-btn {
+  background: linear-gradient(90deg, #4c51bf, #805ad5);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}

@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+/* Basic setup and font */
+body,
+html {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* CHANGE: Hide horizontal overflow to prevent scrolling. */
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.container {
+    display: flex;
+    background-color: white;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background-color: white;
+    border-right: 1px solid #e5e7eb;
+    padding: 0 24px 24px 24px;
+    /* CHANGE: Use a relative position initially for a better mobile layout. */
+    position: relative;
+    height: auto;
+    z-index: 20;
+}
+
+/* CHANGE: Add a media query to apply the fixed sidebar layout only on larger screens. */
+@media (min-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        height: 100%;
+    }
+}
+
+@media (max-width: 1023px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+.logo-section {
+    display: static;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.logo-placeholder {
+    width: 52px;
+    height: 52px;
+    border-radius: 9999px;
+    align-items: center;
+}
+
+.logo-image {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+}
+
+.club-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.nav-item {
+    color: #4b5563;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-item:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #111827;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover:after {
+    width: 100%;
+}
+
+.Team-content {
+    flex: 1;
+    padding: 0;
+    position: relative;
+    /* CHANGE: Remove fixed margin-left. Use a media query instead. */
+    margin-left: 0;
+}
+
+/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
+@media (min-width: 1024px) {
+    .Team-content {
+        margin-left: 270px;
+    }
+}
+
+.Team-content h1,
+.Team-content p {
+    text-align: center;
+}
+
+.content-wrapper {
+    padding-top: 24px;
+}
+
+.Team-content h1 {
+    margin-left: 0;
+}
+
+.Team-content p {
+    margin-left: 0;
+}
+
+/* New CSS for the "Core Team" heading */
+.section-heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* New CSS for Team Cards */
+.team-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.team-card {
+    background-color: #021a27;
+    color: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tcard-image-container {
+    width: 230px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid #6c63ff;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+.member-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.member-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #bbbbbb;
+    margin-bottom: 12px;
+}
+
+.member-description {
+    font-size: 0.85rem;
+    color: #dddddd;
+    line-height: 1.4;
+    min-height: 60px;
+    flex-grow: 1;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #6c63ff;
+    transform: scale(1.1);
+}
+
+/* Volunteer Cards Section */
+.volunteer-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.volunteer-card {
+    background-color: #021a27;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.volunteer-image-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.volunteer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.volunteer-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.volunteer-affiliation {
+    font-size: 0.75rem;
+    color: #bbb;
+    margin: 0;
+}
+
+/* Modal Pop-up Styles */
+.Tmodal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.Tmodal-content {
+    background-color: #1a1a2e;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.Tmodal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.Tmodal-body {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.Tmodal-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.Tmodal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Tmodal-details {
+    flex-grow: 1;
+}
+
+.Tmodal-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.Tmodal-affiliation {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin: 0;
+}
+
+/* Styles for social links within the modal */
+.Tmodal-social-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.separator-line {
+    width: 80%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 40px auto;
+}
+
+/* Responsive styles for modal */
+@media (max-width: 600px) {
+    .Tmodal-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .Tmodal-image-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .Tmodal-social-links {
+        justify-content: center;
+    }
+}
+
+.founder-card-container,
+.mentor-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 2rem;
+    gap: 2rem;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* CHANGE: Add flex-wrap for a responsive layout. */
+    flex-wrap: wrap; 
+}
+
+.founder-description,
+.mentor-description {
+    flex: 1;
+    text-align: left;
+    color: #333;
+    /* CHANGE: Add a min-width to prevent content from becoming too small. */
+    min-width: 300px;
+}
+
+.founder-name,
+.mentor-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.founder-image-card,
+.mentor-image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #021a27;
+    color: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    /* CHANGE: Add a min-width to prevent the card from becoming too small. */
+    min-width: 250px;
+}
+
+.founder-image-container,
+.mentor-image-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid #6c63ff;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+.founder-image,
+.mentor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.mentor-card-container {
+    flex-direction: row;
+}
+
+@media (max-width: 768px) {
+    .founder-card-container,
+    .mentor-card-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .founder-description,
+    .mentor-description {
+        text-align: center;
+    }
+
+    .founder-image-card,
+    .mentor-image-card {
+        padding: 16px;
+    }
+
+    .founder-image-container,
+    .mentor-image-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+

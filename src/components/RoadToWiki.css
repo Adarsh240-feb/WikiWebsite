@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+/* Basic setup and font */
+body, html {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* CHANGE: Hide horizontal overflow to prevent scrolling. */
+  overflow-x: hidden;
+}
+
+/* Page and layout */
+.pageContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 0 24px 24px 24px;
+  /* CHANGE: Use a relative position initially for better mobile layout. */
+  position: relative;
+  height: auto;
+  z-index: 20;
+}
+
+/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
+@media (min-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.logo-section {
+  display: static;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.logo-placeholder {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  align-items: center;
+}
+
+.logo-image {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.club-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.nav-item {
+  color: #4b5563;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-item:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #111827;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover:after {
+  width: 100%;
+}
+
+/* Main content area */
+.mainContentContainer {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  overflow-y: auto;
+  /* CHANGE: Remove fixed margin-left from here. Use a media query instead. */
+  margin-left: 0;
+}
+
+/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
+@media (min-width: 1024px) {
+  .mainContentContainer {
+    margin-left: 250px;
+  }
+}
+
+.topContentWrapper {
+  display: flex;
+  /* CHANGE: Add flex-wrap to allow content to wrap on zoom/small screens. */
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.textWrapper {
+  flex: 1;
+  /* CHANGE: Add a min-width to prevent content from becoming too small before wrapping. */
+  min-width: 300px;
+  text-align: left;
+  max-width: none;
+  margin-top: 0;
+}
+
+.imageWrapper {
+  flex-shrink: 0;
+  width: 45%;
+  /* CHANGE: Add a min-width to prevent the image from being too small. */
+  min-width: 300px;
+}
+
+.programImage {
+  width: 100%;
+  height: 450px;
+  max-height: none;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.programHeading {
+  margin-top: 0%;
+  font-size: 2.0rem;
+  color: #878181;
+  margin-bottom: 15px;
+}
+
+.programPoints {
+  list-style-type: disc;
+  padding-left: 25px;
+  margin: 20px 0;
+  margin-bottom: 10px;
+}
+
+.programPoints li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #34495e;
+}
+
+.programPoints li b {
+  color: #2c3e50;
+}
+
+/* Cards section */
+.cardsContainer {
+  width: 100%;
+  margin-top: 0;
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+  flex-direction: column;
+  align-items: center;
+}
+
+.highlightsHeading {
+  font-size: 2.0rem;
+  color: #878181;
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.cards-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  background-color: #f9f9f9;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Unique card title colors */
+.card-title-one {
+  color: #991b1e;
+}
+
+.card-title-two {
+  color: #319967;
+}
+
+.card-title-three {
+  color: #046599;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  animation: modal-fade-in 0.3s forwards;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+  color: #333;
+}
+
+.modal-details {
+  padding-top: 20px;
+}
+
+.modal-details h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.modal-details p {
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #444;
+}
+
+.modal-image {
+  width: 80%;
+  height: 250px;
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+@keyframes modal-fade-in {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Apply section */
+.applySection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 40px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 40px;
+  width: 100%;
+  gap: 40px;
+  /* CHANGE: Add flex-wrap to allow content to wrap on zoom/small screens. */
+  flex-wrap: wrap;
+}
+
+.applyTextWrapper {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.applyHeading {
+  font-size: 2.0rem;
+  font-weight: 700;
+  color: #878181;
+  margin: 0 0 10px 0;
+}
+
+.applyDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.learnMoreLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.learnMoreLink:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 40px 0;
+}
+
+.whats-new-section {
+  width: 100%;
+  padding-top: 40px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.whats-new-section h2 {
+  color: #878181;
+  font-size: 2.0rem;
+  margin-bottom: 20px;
+}
+
+.whats-new-section ul {
+  list-style-type: disc;
+  padding-left: 25px;
+}
+
+.whats-new-section li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #34495e;
+}
+
+.whats-new-section li b {
+  color: #2c3e50;
+}
+
+.program-structure-section {
+  width: 100%;
+  padding-top: 40px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.program-structure-section h2 {
+  color: #878181;
+  font-size: 2.0rem;
+  margin-bottom: 20px;
+}
+
+.structure-point {
+  margin-bottom: 30px;
+}
+
+.structure-point h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.structure-point p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.structure-point ul {
+  list-style-type: square;
+  padding-left: 40px;
+  margin: 0;
+}
+
+.structure-point li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.structure-point li b {
+  color: #2c3e50;
+}
+
+.structure-point .sub-description {
+  font-size: 0.9rem;
+  color: #878181;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+.applyFormWrapper {
+  width: 40%;
+  max-width: 450px;
+  flex-shrink: 0;
+}
+
+.applyBox {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: White;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.applyImage {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.applyBoxContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.applyStatus {
+  font-size: 0.9rem;
+  color: #319967;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.applyNote {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  margin: 0;
+}
+
+.applyButton {
+  background-color: #fff;
+  color: #878181;
+  border: 1px solid #000;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .applySection {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .applyTextWrapper {
+    padding-right: 0;
+    text-align: center;
+  }
+  .applyFormWrapper {
+    width: 100%;
+    max-width: none;
+  }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 24px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .mainContentContainer {
+    margin-left: 0;
+  }
+}

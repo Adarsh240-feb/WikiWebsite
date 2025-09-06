@@ -1,0 +1,103 @@
+/* About.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+body, html {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* CHANGE: Use a flexible width to adapt to the container. */
+  width: 100%;
+  /* CHANGE: Hide horizontal overflow to prevent scrolling. */
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 0 24px 24px 24px;   
+  /* CHANGE: Use a relative position initially for better mobile layout. */
+  position: relative;
+  height: auto;
+  z-index: 20;
+}
+
+/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
+@media (min-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.logo-section {
+  display: static;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 40px;
+}
+
+.logo-placeholder {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  align-items: center;
+}
+
+.logo-image {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.club-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.nav-item {
+  color: #4b5563;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  display: inline-block; 
+}
+
+.nav-item:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #111827;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover:after {
+  width: 100%;
+}
