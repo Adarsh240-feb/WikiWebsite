@@ -7,7 +7,6 @@ body, html {
   padding: 0;
   background-color: #f0f2f5;
   color: #333;
-  /* CHANGE: Hide horizontal overflow to prevent scrolling. */
   overflow-x: hidden;
 }
 
@@ -17,7 +16,6 @@ body, html {
   min-height: 100vh;
 }
 
-/* Sidebar styles */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -25,13 +23,11 @@ body, html {
   background-color: white;
   border-right: 1px solid #e5e7eb;
   padding: 0 24px 24px 24px;   
-  /* CHANGE: Use a relative position initially for better mobile layout. */
   position: relative;
   height: auto;
   z-index: 20;
 }
 
-/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
 @media (min-width: 1024px) {
   .sidebar {
     position: fixed;
@@ -101,20 +97,16 @@ body, html {
   width: 100%;
 }
 
-/* Main Content Area */
 .main-content {
   flex-grow: 1;
   padding: 20px 40px 40px 40px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* CHANGE: Remove fixed margin-left to prevent overflow. */
   margin-left: 0;
-  /* CHANGE: Use a flexible width to adapt to the container. */
   max-width: 100%;
 }
 
-/* CHANGE: Add a media query to set the margin for larger screens where the sidebar is fixed. */
 @media (min-width: 1024px) {
   .main-content {
     margin-left: 268px;
@@ -147,7 +139,6 @@ body, html {
 
 .content-with-image,
 .special-content-with-image {
-  /* CHANGE: Use flex-wrap to allow content to wrap on zoom/small screens. */
   display: flex;
   flex-wrap: wrap; 
   align-items: flex-start;
@@ -160,7 +151,7 @@ body, html {
 
 .text-content {
   flex: 1;
-  min-width: 300px; /* CHANGE: Add a min-width to prevent content from becoming too small. */
+  min-width: 300px;
   font-size: 1.1em;
   line-height: 1.8;
 }
@@ -172,7 +163,7 @@ body, html {
 .image-content {
   flex-shrink: 0;
   width: 450px;
-  min-width: 300px; /* CHANGE: Add a min-width to prevent image from being too small. */
+  min-width: 300px;
   height: 550px;
   border-radius: 10px;
   overflow: hidden;
@@ -211,12 +202,14 @@ body, html {
   text-align: center;
 }
 
-/* New CSS to increase the gap between list items */
 .text-content ul li {
   margin-bottom: 1.5rem;
 }
 
-/* Responsive Design */
+ul.program-details-list li {
+  margin-bottom: 2.3rem;
+}
+
 @media (max-width: 1024px) {
   .content-with-image,
   .special-content-with-image {
@@ -226,7 +219,7 @@ body, html {
   
   .image-content {
     width: 100%;
-    height: auto; /* CHANGE: Make image height auto to maintain aspect ratio on small screens. */
+    height: auto;
   }
 }
 

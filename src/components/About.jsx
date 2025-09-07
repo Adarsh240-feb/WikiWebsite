@@ -45,21 +45,17 @@ function About() {
               <div className="text-content">
                 <ul className="program-details-list">
                   <li>
-                    <strong>Innovation Hub:</strong> We are more than just a club; we are a hub for innovation and collaboration. We provide a space where your ideas are valued and your skills are honed.
+                    <strong>Innovation Hub:</strong> We are a student-led tech community at UIT, a space dedicated to fostering open knowledge and collaboration.
                   </li>
                   <li>
-                    <strong>Practical Learning:</strong> Our unique approach focuses on practical application, collaborative projects, and a supportive community. We believe in learning by doing.
+                    <strong>Practical Learning:</strong> We believe in learning by doing. Our focus is on practical application, collaborative projects, and a supportive, hands-on environment.
                   </li>
                   <li>
-                    <strong>Mentorship & Networking:</strong> We're a place where you can find mentors, build your professional portfolio, and make lasting connections with fellow tech enthusiasts.
+                    <strong>Mentorship & Networking:</strong> We provide a platform for you to find mentors, build your professional portfolio, and forge lasting connections with fellow tech enthusiasts.
                   </li>
                   <li>
-                    <strong>Continuous Growth:</strong> Whether you're a beginner or an experienced developer, WikiClub Tech provides the resources, guidance, and community you need to succeed and grow continuously.
-                  </li>                  
-                  <li>
-                    <strong>Continuous Growth:</strong> Whether you're a beginner or an experienced developer, WikiClub Tech provides the resources, guidance, and community you need to succeed and grow continuously.
-                  </li>                  
-
+                    <strong>Continuous Growth:</strong> We are a resource for every stage of your journey, offering the guidance and community you need to continuously grow, whether you are a beginner or an experienced developer.
+                  </li>
                 </ul>
               </div>
               <div className="image-content">
@@ -71,7 +67,7 @@ function About() {
           <hr className="divider" />
 
           <section className="special-section">
-            <div className="section-header"> 
+            <div className="section-header">
               <h2 className="heading">Why We Are Special ? </h2>
             </div>
             <div className="content-with-image">
@@ -81,27 +77,23 @@ function About() {
               <div className="text-content">
                 <ul className="program-details-list">
                   <li>
-                    <strong>Innovation Hub:</strong> We are more than just a club; we are a hub for innovation and collaboration. We provide a space where your ideas are valued and your skills are honed.
+                    The only <b>WikiClubTech Hub</b> in Uttar Pradesh, leading and supporting all state WikiClubTech from UIT.
                   </li>
                   <li>
-                    <strong>Practical Learning:</strong> Our unique approach focuses on practical application, collaborative projects, and a supportive community. We believe in learning by doing.
+                    A community that goes beyond classrooms, combining technology, open knowledge, and real-world projects.
                   </li>
                   <li>
-                    <strong>Mentorship & Networking:</strong> We're a place where you can find mentors, build your professional portfolio, and make lasting connections with fellow tech enthusiasts.
+                    Helps you build future-ready skills like leadership, collaboration, and open-source contribution.
                   </li>
                   <li>
-                    <strong>Continuous Growth:</strong> Whether you're a beginner or an experienced developer, WikiClub Tech provides the resources, guidance, and community you need to succeed and grow continuously.
-                  </li>
+                    A place where students transform into contributors, innovators, and changemakers with lasting impact.                  </li>
                   <li>
-                    <strong>Continuous Growth:</strong> Whether you're a beginner or an experienced developer, WikiClub Tech provides the resources, guidance, and community you need to succeed and grow continuously.
-                  </li>
-                  <li>
-                    <strong>Continuous Growth:</strong> Whether you're a beginner or an experienced developer, WikiClub Tech provides the resources, guidance, and community you need to succeed and grow continuously.
+                    Offers global exposure through Wikimedia and open-source, adding strong value to your career journey.
                   </li>
                 </ul>
               </div>
             </div>
-          </section>       
+          </section>
           <hr className="divider" />
         </main>
       </div>
