@@ -15,11 +15,11 @@ import Hridyesh from "../Images/Hridyesh.jpg";
 import Sarthak from "../Images/Sarthak.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
-
+import AmitSir from "../Images/AmitSir.png";
 const facultyAdvisor = {
   name: "Dr. Amit Kumar Tiwari",
   description: "Dr. Amit Kumar Tiwari is an Associate Professor in the Department of Computer Science and Engineering at the University Institute of Technology, RGPV, Bhopal. With a Ph.D. in Computer Science and Engineering from MANIT Bhopal, he has over 15 years of teaching experience and more than 10 years of research experience. His research interests include Data Mining, Machine Learning, and Natural Language Processing. Dr. Kumar has published over 30 research papers in reputed international journals and conferences and has been recognized with several awards for his contributions to the field of computer science.",
-  image: "", 
+  image: AmitSir, 
   linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/", 
 };
 
@@ -140,13 +140,13 @@ function Team() {
 
           {/* New FacultyAdvisor Section */}
           <h2 className="section-heading">Faculty Advisor</h2>
-          <section className="founder-card-container">
-            <div className="founder-description">
-              <h3 className="founder-name">{facultyAdvisor.name}</h3>
+          <section className="faculty-card-container">
+            <div className="faculty-description">
+              <h3 className="faculty-name">{facultyAdvisor.name}</h3>
               <p>{facultyAdvisor.description}</p>
             </div>
-            <div className="founder-image-card">
-              <div className="founder-image-container">
+            <div className="faculty-image-card">
+              <div className="faculty-image-container">
                 <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
               </div>
               <div className="social-links">
