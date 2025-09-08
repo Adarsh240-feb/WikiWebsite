@@ -5,12 +5,14 @@ import WikiL from "../Images/WikiL.png";
 import GroupWiki from "../Images/GroupWiki.png";
 import WikiP from "../Images/WikiP.png";
 import Card3 from "../Images/Card3.png";
+import Card2 from "../Images/Card2.jpg";
+import Card1 from "../Images/Card1.png";
 
 const cardData = [
   {
     id: 1,
     title: "Lead & Drive Real-World Impact",
-    image: GroupWiki,
+    image: Card1,
     description:
       "Gain hands-on leadership experience in event management, community building, and team coordination. Directly empower peers and contribute to the growth of India’s Wikimedia technical community.",
     fullDetails:
@@ -20,7 +22,7 @@ const cardData = [
   {
     id: 2,
     title: "Amplify Your Technical Expertise",
-    image: GroupWiki,
+    image: Card2,
     description:
       "Deepen your understanding of core Wikimedia technologies and essential open-source development practices. Become a go-to person for Wikimedia tech on your campus and enhance your technical portfolio.",
     fullDetails:

@@ -16,9 +16,16 @@ import Sarthak from "../Images/Sarthak.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
 
+const facultyAdvisor = {
+  name: "Dr. Amit Kumar Tiwari",
+  description: "Dr. Amit Kumar Tiwari is an Associate Professor in the Department of Computer Science and Engineering at the University Institute of Technology, RGPV, Bhopal. With a Ph.D. in Computer Science and Engineering from MANIT Bhopal, he has over 15 years of teaching experience and more than 10 years of research experience. His research interests include Data Mining, Machine Learning, and Natural Language Processing. Dr. Kumar has published over 30 research papers in reputed international journals and conferences and has been recognized with several awards for his contributions to the field of computer science.",
+  image: "https://example.com/sanjeev-kumar.jpg", 
+  linkedin: "https://www.linkedin.com/in/dr-sanjeev-kumar-123456789/", 
+};
+
 const founder = {
   name: "Hridyesh Gupta",
-  description: "This is a lengthy description for the founder, describing their role, vision, and contributions to the club. They are the driving force behind the organization, setting its direction and inspiring the team. This space is perfect for highlighting their passion and commitment to the mission of making technology and knowledge accessible to everyone.",
+  description: "WikiClub Tech-UIT was founded by Hridyesh Gupta as part of his journey in the Wikimedia ecosystem, where he grew from contributor to community organizer. Establishing the club marked a step in creating a dedicated space for students to learn, collaborate, and contribute to open knowledge and open-source technologies. Under his leadership, the club today stands as the hub for the WikiClub Tech India community in the North India region.",
   image: Hridyesh,
   linkedin: "https://www.linkedin.com/in/hridyesh-gupta/",
   github: "http://github.com/hridyesh-gupta",
@@ -26,7 +33,7 @@ const founder = {
 
 const mentor = {
   name: "Sarthak Singh",
-  description: "This is the description for the mentor. Mentors play a crucial role in guiding team members, sharing their expertise, and providing valuable insights. They are dedicated to helping the team grow and succeed. This section can detail their specific area of expertise and their approach to mentorship within the club.",
+  description: "I’m an App Development Expert specializing in Flutter and Dart. With over 4 years of active involvement in tech communities, I’ve participated in and won 20+ global hackathons. During my internship at MNNIT , I contributed to publishing research papers and took on leadership roles in 10+ tech communities. I’ve also delivered multiple sessions on Flutter and app development, sharing knowledge and empowering fellow developers. That’s a bit about me!",
   image: Sarthak,
   linkedin: "http://www.linkedin.com/in/sarthak-singh-/",
   github: "https://github.com/SarthakSingh2003/",

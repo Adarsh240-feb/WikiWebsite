@@ -60,7 +60,7 @@ function HomePage() {
 
           <section className="about-section">
             <div className="section-title">
-              WikiClub Tech : Where Open Source Meets Open Knowledge !
+              WikiClub Tech : Where Open Source Meets Open Knowledge
             </div>
             <div className="section-content">
               WikiClub Tech  is a vibrant, student-led community and dedicated to open knowledge, open-source, and collaborative technologies.
