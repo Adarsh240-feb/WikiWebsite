@@ -59,7 +59,7 @@ const teamMembers = [
   {
     name: "Adarsh Kesharwani",
     title: "Core Team (Technical)",
-    description: "A pre-final year B.Tech student specializing in Web Development, with a strong passion for Open Source Contributions. I have a solid foundation in HTML, CSS, JavaScript, and NodeJS, with hands-on experience in frameworks and libraries like React.js and Tailwind CSS. My skills also include database management using MongoDB and Firebase. I'm proficient in Git, Gerrit, and Phabricator for version control and have a keen interest in building scalable, real-world solutions.",
+    description: "A pre-final year B.Tech student specializing in Web Development, with a strong passion for Open Source Contributions. I have a solid foundation in HTML, CSS, JavaScript ,  React Js  and NodeJS..., with hands-on experience in frameworks and libraries like React.js and Tailwind CSS. My skills also include database management using MongoDB and Firebase. I'm proficient in Git, Gerrit, and Phabricator for version control and have a keen interest in building scalable, real-world solutions.",
     image: Adarsh,
     linkedin: "https://www.linkedin.com/in/adarsh-kesharwani-bba666315/",
     github: "https://github.com/Adarsh240-feb",
