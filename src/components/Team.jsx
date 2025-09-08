@@ -19,8 +19,8 @@ import Priyanshika from "../Images/Priyanshika.jpg";
 const facultyAdvisor = {
   name: "Dr. Amit Kumar Tiwari",
   description: "Dr. Amit Kumar Tiwari is an Associate Professor in the Department of Computer Science and Engineering at the University Institute of Technology, RGPV, Bhopal. With a Ph.D. in Computer Science and Engineering from MANIT Bhopal, he has over 15 years of teaching experience and more than 10 years of research experience. His research interests include Data Mining, Machine Learning, and Natural Language Processing. Dr. Kumar has published over 30 research papers in reputed international journals and conferences and has been recognized with several awards for his contributions to the field of computer science.",
-  image: "https://example.com/sanjeev-kumar.jpg", 
-  linkedin: "https://www.linkedin.com/in/dr-sanjeev-kumar-123456789/", 
+  image: "", 
+  linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/", 
 };
 
 const founder = {
@@ -137,6 +137,25 @@ function Team() {
             We are a group of passionate volunteers dedicated to building and empowering the wiki and open knowledge community in Prayagraj.
           </p>
           <div className="separator-line"></div>
+
+          {/* New FacultyAdvisor Section */}
+          <h2 className="section-heading">Faculty Advisor</h2>
+          <section className="founder-card-container">
+            <div className="founder-description">
+              <h3 className="founder-name">{facultyAdvisor.name}</h3>
+              <p>{facultyAdvisor.description}</p>
+            </div>
+            <div className="founder-image-card">
+              <div className="founder-image-container">
+                <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
+              </div>
+              <div className="social-links">
+                <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </section>
 
           {/* New Founder Section */}
           <h2 className="section-heading">Founder</h2>
