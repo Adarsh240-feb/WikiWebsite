@@ -4,9 +4,11 @@ import RoadToWiki from "./components/RoadToWiki";
 import Team from "./components/Team";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
     <HashRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/RoadToWiki" element={<RoadToWiki />} />
