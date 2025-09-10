@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
   { name: "Contact", path: "/Contact" },
   { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "#" },
+  { name: "FAQ", path: "/Question" },
 ];
 
 function About() {

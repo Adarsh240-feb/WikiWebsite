@@ -1,0 +1,174 @@
+/* Basic reset and container */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+body,
+html {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* CHANGE: Hide horizontal overflow to prevent scrolling. */
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.container {
+    display: flex;
+    background-color: white;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background-color: white;
+    border-right: 1px solid #e5e7eb;
+    padding: 0 24px 24px 24px;
+    /* CHANGE: Use a relative position initially for better mobile layout. */
+    position: relative;
+    height: auto;
+    z-index: 20;
+}
+
+/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
+@media (min-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        height: 100%;
+    }
+}
+
+@media (max-width: 1023px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+.logo-section {
+    display: static;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.logo-placeholder {
+    width: 52px;
+    height: 52px;
+    border-radius: 9999px;
+    align-items: center;
+}
+
+.logo-image {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+}
+
+.club-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.nav-item {
+    color: #4b5563;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-item:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #111827;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover:after {
+    width: 100%;
+}
+
+/* Add below your sidebar styles in faq.css */
+
+/* FAQ Section Styles */
+.faq-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    padding: 32px 24px;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+}
+
+.faq-arrow {
+    font-size: 1.2rem;
+}
+
+.faq-answer {
+    margin-top: 8px;
+    color: #444;
+    font-size: 1rem;
+    padding-left: 8px;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

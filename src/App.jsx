@@ -5,6 +5,7 @@ import Team from "./components/Team";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import Question from "./components/Question";
 function App() {
   return (
     <HashRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Team" element={<Team />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Question" element={<Question />} />
       </Routes>
     </HashRouter>
   );
