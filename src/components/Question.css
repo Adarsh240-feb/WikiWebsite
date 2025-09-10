@@ -49,10 +49,11 @@ body {
 }
 
 .logo-section {
-    display: static;
+    display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 40px;
+    margin-top: 24px;
 }
 
 .logo-placeholder {
@@ -105,6 +106,18 @@ body {
 }
 
 /* Add below your sidebar styles in faq.css */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 220px;
+}
+
+@media (max-width: 1023px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
 
 /* FAQ Section Styles */
 .faq-container {
@@ -150,7 +163,7 @@ body {
 }
 
 .faq-arrow {
-    font-size: 1.2rem;
+    font-size: 2.0rem;
 }
 
 .faq-answer {
@@ -159,6 +172,22 @@ body {
     font-size: 1rem;
     padding-left: 8px;
     animation: fadeIn 0.3s;
+}
+
+.faq-reference {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.faq-reference a {
+    color: #555;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.faq-reference a:hover {
+    text-decoration: underline;
 }
 
 @keyframes fadeIn {
@@ -172,3 +201,5 @@ body {
         transform: translateY(0);
     }
 }
+
+
