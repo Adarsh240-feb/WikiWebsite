@@ -78,6 +78,8 @@ const Modal = ({ image, fullDetails, onClose }) => (
 function RoadToWiki() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // State for the sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -89,9 +91,19 @@ function RoadToWiki() {
     setSelectedCard(null);
   };
 
+  // Function to toggle the sidebar
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <div className="pageContainer">
-      <aside className="sidebar">
+      {/* Add the sidebar toggle button here */}
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
+      {/* Add conditional class to the sidebar based on state */}
+      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="logo-section">
           <div className="logo-placeholder">
             <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
@@ -211,7 +223,6 @@ function RoadToWiki() {
           </ul>
         </div>
         
-
         <div className="program-structure-section">
           <h2>Program Structure</h2>
           <div className="structure-point">

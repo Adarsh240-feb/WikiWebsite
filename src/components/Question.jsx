@@ -10,7 +10,7 @@ const navLinks = [
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
   { name: "Contact", path: "/Contact" },
   { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "/Question" },
+  { name: "FAQ", path: "#" },
 ];
 
 const faqs = [
@@ -46,8 +46,12 @@ const faqs = [
   },
 ];
 
-function faq() {
+function FAQ() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
+  const closeSidebar = () => setSidebarOpen(false);
 
   const toggleFAQ = (idx) => {
     setOpenIndex(openIndex === idx ? null : idx);
@@ -55,20 +59,25 @@ function faq() {
 
   return (
     <>
+      {/* Hamburger menu for mobile/tablet */}
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
       <div className="container">
-        <aside className="sidebar">
+        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <div className="logo-section">
             <div className="logo-placeholder">
-              <img
-                src={WikiL}
-                alt="WikiClub Tech Logo"
-                className="logo-image"
-              />
+              <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
             </div>
           </div>
           <nav className="nav-links">
             {navLinks.map((link, idx) => (
-              <Link to={link.path} className="nav-item" key={idx}>
+              <Link
+                to={link.path}
+                className="nav-item"
+                key={idx}
+                onClick={closeSidebar}
+              >
                 {link.name}
               </Link>
             ))}
@@ -82,14 +91,15 @@ function faq() {
                 <div className="faq-item" key={idx}>
                   <button className="faq-question" onClick={() => toggleFAQ(idx)}>
                     {faq.question}
-                    <span className="faq-arrow">{openIndex === idx ? "-" : "+"}</span>
+                    <span className="faq-arrow">{openIndex === idx ? "▲" : "▼"}</span>
                   </button>
                   {openIndex === idx && (
                     <div className="faq-answer">
                       {faq.answer}
+                      {/* Add the reference link here */}
                       {faq.reference && (
                         <p className="faq-reference">
-                          For more Information : {" "}
+                          Reference:{" "}
                           <a href={faq.reference} target="_blank" rel="noopener noreferrer">
                             {faq.reference}
                           </a>
@@ -107,4 +117,4 @@ function faq() {
   );
 }
 
-export default faq;
+export default FAQ;

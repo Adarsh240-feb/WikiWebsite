@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react"; // Make sure useState is imported
 import "./About.css";
 import WikiL from "../Images/WikiL.png";
 import WikiD from "../Images/WikiD.jpg";
@@ -15,10 +16,20 @@ const navLinks = [
 ];
 
 function About() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
       <div className="container">
-        <aside className="sidebar">
+        {/* Add the conditional "open" class here */}
+        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <div className="logo-section">
             <div className="logo-placeholder">
               <img
@@ -63,9 +74,7 @@ function About() {
               </div>
             </div>
           </section>
-
           <hr className="divider" />
-
           <section className="special-section">
             <div className="section-header">
               <h2 className="heading">Why We Are Special ? </h2>
@@ -86,7 +95,8 @@ function About() {
                     Helps you build future-ready skills like leadership, collaboration, and open-source contribution.
                   </li>
                   <li>
-                    A place where students transform into contributors, innovators, and changemakers with lasting impact.                  </li>
+                    A place where students transform into contributors, innovators, and changemakers with lasting impact.
+                  </li>
                   <li>
                     Offers global exposure through Wikimedia and open-source, adding strong value to your career journey.
                   </li>

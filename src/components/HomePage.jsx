@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./HomePage.css"; 
+import "./HomePage.css";
 import WikiMainLogo from "../Images/WikiMainLogo.png";
-import WikiS from "../Images/WikiS.png";
 import WikiL from "../Images/WikiL.png";
 import WikiI from "../Images/WikiI.png";
 
@@ -16,10 +15,20 @@ const navLinks = [
 ];
 
 function HomePage() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
       <div className="container">
-        <aside className="sidebar">
+        {/* The conditional class needs to be on the sidebar itself */}
+        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}> 
           <div className="logo-section">
             <div className="logo-placeholder">
               <img
@@ -63,7 +72,7 @@ function HomePage() {
               WikiClub Tech : Where Open Source Meets Open Knowledge
             </div>
             <div className="section-content">
-              WikiClub Tech  is a vibrant, student-led community and dedicated to open knowledge, open-source, and collaborative technologies.
+              WikiClub Tech is a vibrant, student-led community and dedicated to open knowledge, open-source, and collaborative technologies.
               Through engaging workshops, Wikimedia sessions, and hands-on learning, we empower students to innovate, build skills, and contribute to the global open knowledge movement.
             </div>
             <a
@@ -82,7 +91,6 @@ function HomePage() {
         </main>
       </div>
 
-      {/* Footer is now outside the container div */}
       <footer className="footer-wiki">
         <div className="footer-left">
           <img
@@ -97,7 +105,6 @@ function HomePage() {
           <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
           <Link to="#" className="footer-link2">About Us </Link>
           <Link to="#" className="footer-link3">FAQ</Link>
-
         </div>
       </footer>
     </>

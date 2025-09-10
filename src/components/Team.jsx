@@ -20,13 +20,13 @@ import AmitSir from "../Images/AmitSir.png";
 const facultyAdvisor = {
   name: "Dr. Amit Kumar Tiwari",
   description: "Dr. Amit Kumar Tiwari is the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of academic experience and a Ph.D. in the field, he has been instrumental in shaping the department’s academic and research culture.",
-  image: AmitSir, 
-  linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/", 
+  image: AmitSir,
+  linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/",
 };
 
 const founder = {
   name: "Hridyesh Gupta",
-  description: "WikiClub Tech-UIT was founded by Hridyesh Gupta as part of his journey in the Wikimedia ecosystem, where he grew from contributor to community organizer. Establishing the club marked a step in creating a dedicated space for students to learn, collaborate, and contribute to open knowledge and open-source technologies. Under his leadership, the club today stands as the hub for the WikiClub Tech India community in the North India region.",
+  description: "WikiClub Tech-UIT was founded by Hridyesh Gupta as part of his journey in the Wikimedia ecosystem, where he grew from contributor to community organizer. Establishing the club marked a step in creating a dedicated space for students to learn, collaborate, and contribute to open knowledge and open-source technologies. Under his leadership, the club today stands as the hub for the WikiClub Tech India community in the North India region.",
   image: Hridyesh,
   linkedin: "https://www.linkedin.com/in/hridyesh-gupta/",
   github: "http://github.com/hridyesh-gupta",
@@ -34,7 +34,7 @@ const founder = {
 
 const mentor = {
   name: "Sarthak Singh",
-  description: "I’m an App Development Expert specializing in Flutter and Dart. With over 4 years of active involvement in tech communities, I’ve participated in and won 20+ global hackathons. During my internship at MNNIT, I contributed to publishing research papers and took on leadership roles in 10+ tech communities. I’ve also delivered multiple sessions on Flutter and app development, sharing knowledge and empowering fellow developers. That’s a bit about me!",
+  description: "I’m an App Development Expert specializing in Flutter and Dart. With over 4 years of active involvement in tech communities, I’ve participated in and won 20+ global hackathons. During my internship at MNNIT, I contributed to publishing research papers and took on leadership roles in 10+ tech communities. I’ve also delivered multiple sessions on Flutter and app development, sharing knowledge and empowering fellow developers. That’s a bit about me!",
   image: Sarthak,
   linkedin: "http://www.linkedin.com/in/sarthak-singh-/",
   github: "https://github.com/SarthakSingh2003/",
@@ -103,6 +103,8 @@ const navLinks = [
 
 function Team() {
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
+  // Add state for sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const openModal = (volunteer) => {
     setSelectedVolunteer(volunteer);
@@ -112,10 +114,20 @@ function Team() {
     setSelectedVolunteer(null);
   };
 
+  // Add function to toggle sidebar
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <>
+      {/* Add the sidebar toggle button */}
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
       <div className="container">
-        <aside className="sidebar">
+        {/* Apply conditional class to the aside element */}
+        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <div className="logo-section">
             <div className="logo-placeholder">
               <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />

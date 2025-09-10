@@ -346,3 +346,75 @@ body {
   font-weight: 600;
   text-align: center;
 }
+
+/* Hamburger menu button */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+/* Show hamburger on tablet/phone */
+@media (max-width: 1023px) {
+  .sidebar-toggle {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+    z-index: 99;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
+/* Main content full width on mobile/tablet */
+@media (max-width: 1023px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+/* For laptop/desktop */
+@media (min-width: 1024px) {
+  .sidebar-toggle {
+    display: none;
+  }
+  .sidebar {
+    display: flex;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 20;
+  }
+  .main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    padding: 32px;
+  }
+}

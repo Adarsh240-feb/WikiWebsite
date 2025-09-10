@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./HomePage.css"; 
 import WikiMainLogo from "../Images/WikiMainLogo.png";
 import WikiS from "../Images/WikiS.png";
@@ -16,10 +17,20 @@ const navLinks = [
 ];
 
 function Contact() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
       <div className="container">
-        <aside className="sidebar">
+        {/* Corrected: Use a conditional class on the sidebar element */}
+        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <div className="logo-section">
             <div className="logo-placeholder">
               <img
@@ -38,10 +49,10 @@ function Contact() {
           </nav>
         </aside>
         <main className="main-content">
-            </main>
+        </main>
       </div>
     </>
   );
-}   
+}
 
 export default Contact;
