@@ -19,89 +19,6 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar styles */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-  background-color: white;
-  border-right: 1px solid #e5e7eb;
-  padding: 0 24px 24px 24px;   
-  /* CHANGE: Use a relative position initially for better mobile layout. */
-  position: relative;
-  height: auto;
-  z-index: 20;
-}
-
-/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
-@media (min-width: 1024px) {
-  .sidebar {
-    position: fixed;
-    height: 100%;
-  }
-}
-
-@media (max-width: 1023px) {
-  .sidebar {
-    display: none;
-  }
-}
-
-.logo-section {
-  display: static;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 40px;
-}
-
-.logo-placeholder {
-  width: 52px;
-  height: 52px;
-  border-radius: 9999px;
-  align-items: center;
-}
-
-.logo-image {
-  width: 140px;
-  height: auto;
-  object-fit: contain;
-}
-
-.club-name {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.nav-item {
-  color: #4b5563;
-  font-weight: 500;
-  text-decoration: none;
-  position: relative;
-  display: inline-block; 
-}
-
-.nav-item:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #111827;
-  transition: width 0.3s ease-in-out;
-}
-
-.nav-item:hover:after {
-  width: 100%;
-}
 
 /* Main content area */
 .main-content {
@@ -177,6 +94,30 @@ body {
   margin: 0;
 }
 
+/* Make WikiMainLogo horizontally larger on mobile and tablet */
+@media (max-width: 1023px) {
+  .hero-logo-large {
+    width: 120%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    transform: scaleX(1.2);
+    margin: 0 -10%;
+  }
+}
+
+/* Increase vertical height of WikiMainLogo on mobile */
+@media (max-width: 600px) {
+  .hero-logo-large {
+    height: 280px; /* Increase vertical height for mobile */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+
 .hero-title {
   font-size: 3.75rem;
   font-weight: 800;
@@ -229,6 +170,18 @@ body {
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+/* Make the homepage promo image appear horizontal on phones */
+@media (max-width: 768px) {
+  .clickable-image-link {
+    max-width: 100%;
+  }
+  .clickable-image-link img {
+    width: 100%;
+    height: 260px; /* landscape slot */
+    object-fit: cover; /* crop to keep horizontal look */
+  }
 }
 
 /* Footer styles for layout */
@@ -367,24 +320,7 @@ body {
   .sidebar-toggle {
     display: block;
   }
-  .sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
-    z-index: 99;
-    transition: transform 0.3s;
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-  }
+  /* Sidebar responsive behavior is handled in Sidebar.css */
   .container {
     flex-direction: column;
   }
@@ -395,7 +331,7 @@ body {
   .main-content {
     margin-left: 0;
     width: 100%;
-    padding: 16px;
+    padding: 64px 16px 24px 16px; /* add top space so toggle doesn't overlap */
   }
 }
 
@@ -404,14 +340,7 @@ body {
   .sidebar-toggle {
     display: none;
   }
-  .sidebar {
-    display: flex;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 20;
-  }
+  /* Desktop sidebar is defined in Sidebar.css */
   .main-content {
     margin-left: 220px;
     width: calc(100% - 220px);

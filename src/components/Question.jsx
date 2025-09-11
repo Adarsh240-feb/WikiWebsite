@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./HomePage.css";
 import "./Question.css";
-import WikiL from "../Images/WikiL.png";
+import Sidebar from "./Sidebar";
 
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
-  { name: "Contact", path: "/Contact" },
-  { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "#" },
-];
+const navLinks = [];
 
 const faqs = [
   {
@@ -63,27 +55,9 @@ function FAQ() {
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
       </button>
-      <div className="container">
-        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-          <div className="logo-section">
-            <div className="logo-placeholder">
-              <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
-            </div>
-          </div>
-          <nav className="nav-links">
-            {navLinks.map((link, idx) => (
-              <Link
-                to={link.path}
-                className="nav-item"
-                key={idx}
-                onClick={closeSidebar}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-        </aside>
-        <main className="main-content">
+      <div className="pageContainer">
+        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
+        <main className="mainContentContainer">
           <div className="faq-container">
             <h2 className="faq-title">Frequently Asked Questions</h2>
             <div className="faq-list">
@@ -96,7 +70,6 @@ function FAQ() {
                   {openIndex === idx && (
                     <div className="faq-answer">
                       {faq.answer}
-                      {/* Add the reference link here */}
                       {faq.reference && (
                         <p className="faq-reference">
                           Reference:{" "}

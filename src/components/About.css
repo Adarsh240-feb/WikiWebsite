@@ -16,86 +16,7 @@ body, html {
   min-height: 100vh;
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-  background-color: white;
-  border-right: 1px solid #e5e7eb;
-  padding: 0 24px 24px 24px;   
-  position: relative;
-  height: auto;
-  z-index: 20;
-}
-
-@media (min-width: 1024px) {
-  .sidebar {
-    position: fixed;
-    height: 100%;
-  }
-}
-
-@media (max-width: 1023px) {
-  .sidebar {
-    display: none;
-  }
-}
-
-.logo-section {
-  display: static;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 40px;
-}
-
-.logo-placeholder {
-  width: 52px;
-  height: 52px;
-  border-radius: 9999px;
-  align-items: center;
-}
-
-.logo-image {
-  width: 140px;
-  height: auto;
-  object-fit: contain;
-}
-
-.club-name {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.nav-item {
-  color: #4b5563;
-  font-weight: 500;
-  text-decoration: none;
-  position: relative;
-  display: inline-block; 
-}
-
-.nav-item:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #111827;
-  transition: width 0.3s ease-in-out;
-}
-
-.nav-item:hover:after {
-  width: 100%;
-}
+/* Sidebar styles are centralized in Sidebar.css */
 
 .main-content {
   flex-grow: 1;
@@ -118,7 +39,9 @@ body, html {
   .main-content {
     margin-left: 0;
     max-width: 100%;
-    padding: 20px;
+    padding: 64px 20px 20px 20px; /* top padding so toggle doesn't overlap */
+    box-sizing: border-box; /* prevent padding from causing horizontal overflow */
+    overflow-x: hidden;      /* safety on tablet widths */
   }
 }
 
@@ -215,11 +138,21 @@ ul.program-details-list li {
   .special-content-with-image {
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    margin: 0 auto;
   }
   
   .image-content {
     width: 100%;
     height: auto;
+    max-width: 100%; /* ensure no overflow on tablets */
+    margin: 0 auto;   /* center the image container */
+  }
+  .about-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* show full image on narrow screens */
+    display: block;
   }
 }
 
@@ -249,24 +182,6 @@ ul.program-details-list li {
   .sidebar-toggle {
     display: block;
   }
-  .sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
-    z-index: 99;
-    transition: transform 0.3s;
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-  }
   .container {
     flex-direction: column;
   }
@@ -285,14 +200,6 @@ ul.program-details-list li {
 @media (min-width: 1024px) {
   .sidebar-toggle {
     display: none;
-  }
-  .sidebar {
-    display: flex;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 20;
   }
   .main-content {
     margin-left: 220px;

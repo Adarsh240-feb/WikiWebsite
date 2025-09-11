@@ -1,19 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState } from "react"; // Make sure useState is imported
 import "./About.css";
-import WikiL from "../Images/WikiL.png";
 import WikiD from "../Images/WikiD.jpg";
 import WikiH from "../Images/WikiH.jpg";
-
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
-  { name: "Contact", path: "/Contact" },
-  { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "/Question" },
-];
+import Sidebar from "./Sidebar";
 
 function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,25 +18,7 @@ function About() {
         ☰
       </button>
       <div className="container">
-        {/* Add the conditional "open" class here */}
-        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-          <div className="logo-section">
-            <div className="logo-placeholder">
-              <img
-                src={WikiL}
-                alt="WikiClub Tech Logo"
-                className="logo-image"
-              />
-            </div>
-          </div>
-          <nav className="nav-links">
-            {navLinks.map((link, idx) => (
-              <Link to={link.path} className="nav-item" key={idx}>
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-        </aside>
+        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
         <main className="main-content">
           <section className="about-section">
             <div className="section-header">

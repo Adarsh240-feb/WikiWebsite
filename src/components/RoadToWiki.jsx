@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./RoadToWiki.css";
-import WikiL from "../Images/WikiL.png";
 import GroupWiki from "../Images/GroupWiki.png";
 import WikiP from "../Images/WikiP.png";
 import Card3 from "../Images/Card3.png";
 import Card2 from "../Images/Card2.jpg";
 import Card1 from "../Images/Card1.png";
+import Sidebar from "./Sidebar";
 
 const cardData = [
   {
@@ -41,14 +40,7 @@ const cardData = [
   },
 ];
 
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
-  { name: "Contact", path: "/Contact" },
-  { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "/Question" },
-];
+const navLinks = [];
 
 const Card = ({ title, image, description, onClick, titleColorClass }) => (
   <div className="card" onClick={onClick}>
@@ -102,21 +94,7 @@ function RoadToWiki() {
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
       </button>
-      {/* Add conditional class to the sidebar based on state */}
-      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-        <div className="logo-section">
-          <div className="logo-placeholder">
-            <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
-          </div>
-        </div>
-        <nav className="nav-links">
-          {navLinks.map((link, idx) => (
-            <Link to={link.path} className="nav-item" key={idx}>
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-      </aside>
+      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
 
       <div className="mainContentContainer">
         <div className="topContentWrapper">

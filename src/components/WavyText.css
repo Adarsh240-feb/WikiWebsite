@@ -1,0 +1,33 @@
+/* Individual character styles */
+.section-heading span {
+  display: inline-block;
+  animation-name: shineWave;
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  position: relative;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+@keyframes shineWave {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    color: #fff;
+  }
+  25% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5);
+    color:#991b1e ;
+  }
+  50% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    color: #319967;
+  }
+  75% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5);
+    color: #046599;
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    color: #fff;
+  }
+}

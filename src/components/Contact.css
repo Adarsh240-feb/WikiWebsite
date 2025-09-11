@@ -1,7 +1,8 @@
 /* About.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
 
-body, html {
+body,
+html {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -17,33 +18,7 @@ body, html {
   min-height: 100vh;
 }
 
-/* Sidebar styles */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-  background-color: white;
-  border-right: 1px solid #e5e7eb;
-  padding: 0 24px 24px 24px;   
-  /* CHANGE: Use a relative position initially for better mobile layout. */
-  position: relative;
-  height: auto;
-  z-index: 20;
-}
-
-/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
-@media (min-width: 1024px) {
-  .sidebar {
-    position: fixed;
-    height: 100%;
-  }
-}
-
-@media (max-width: 1023px) {
-  .sidebar {
-    display: none;
-  }
-}
+/* Sidebar styles are centralized in Sidebar.css */
 
 .logo-section {
   display: static;
@@ -72,38 +47,6 @@ body, html {
   color: #1f2937;
 }
 
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.nav-item {
-  color: #4b5563;
-  font-weight: 500;
-  text-decoration: none;
-  position: relative;
-  display: inline-block; 
-}
-
-.nav-item:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #111827;
-  transition: width 0.3s ease-in-out;
-}
-
-.nav-item:hover:after {
-  width: 100%;
-
-
-}
-
 
 /* Hamburger menu button */
 .sidebar-toggle {
@@ -125,24 +68,8 @@ body, html {
   .sidebar-toggle {
     display: block;
   }
-  .sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
-    z-index: 99;
-    transition: transform 0.3s;
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-  }
+
+  /* Sidebar responsive behavior is handled in Sidebar.css */
   .container {
     flex-direction: column;
   }
@@ -153,7 +80,7 @@ body, html {
   .main-content {
     margin-left: 0;
     width: 100%;
-    padding: 16px;
+    padding: 64px 16px 16px 16px; /* top padding for toggle clearance */
   }
 }
 
@@ -162,14 +89,8 @@ body, html {
   .sidebar-toggle {
     display: none;
   }
-  .sidebar {
-    display: flex;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 20;
-  }
+
+  /* Desktop sidebar is defined in Sidebar.css */
   .main-content {
     margin-left: 220px;
     width: calc(100% - 220px);

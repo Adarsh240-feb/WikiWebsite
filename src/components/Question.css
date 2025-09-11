@@ -1,12 +1,11 @@
-/* Basic reset and container */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
 
+/* Basic reset and container */
 body,
 html {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    /* CHANGE: Hide horizontal overflow to prevent scrolling. */
     overflow-x: hidden;
 }
 
@@ -20,96 +19,13 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar styles */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    width: 220px;
-    background-color: white;
-    border-right: 1px solid #e5e7eb;
-    padding: 0 24px 24px 24px;
-    /* CHANGE: Use a relative position initially for better mobile layout. */
-    position: relative;
-    height: auto;
-    z-index: 20;
-}
-
-/* CHANGE: Add a media query to apply the fixed position for the sidebar on larger screens. */
-@media (min-width: 1024px) {
-    .sidebar {
-        position: fixed;
-        height: 100%;
-    }
-}
-
-@media (max-width: 1023px) {
-    .sidebar {
-        display: none;
-    }
-}
-
-.logo-section {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 40px;
-    margin-top: 24px;
-}
-
-.logo-placeholder {
-    width: 52px;
-    height: 52px;
-    border-radius: 9999px;
-    align-items: center;
-}
-
-.logo-image {
-    width: 140px;
-    height: auto;
-    object-fit: contain;
-}
-
-.club-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #1f2937;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
-}
-
-.nav-item {
-    color: #4b5563;
-    font-weight: 500;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-}
-
-.nav-item:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: #111827;
-    transition: width 0.3s ease-in-out;
-}
-
-.nav-item:hover:after {
-    width: 100%;
-}
-
-/* Add below your sidebar styles in faq.css */
+/* Main content styles */
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 220px;
+    /* FIX: Correctly offset the main content from the sidebar */
+    margin-left: 270px; /* 220px (sidebar width) + 25px (padding) = 245px. Use a slightly larger value for safety. */
+    z-index: 10; /* Ensure content is above the sidebar on large screens */
 }
 
 @media (max-width: 1023px) {
@@ -202,75 +118,46 @@ body {
     }
 }
 
-
-/* Hamburger menu button */
 .sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  z-index: 100;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 2rem;
-  padding: 6px 16px;
-  cursor: pointer;
-}
-
-/* Show hamburger on tablet/phone */
-@media (max-width: 1023px) {
-  .sidebar-toggle {
-    display: block;
-  }
-  .sidebar {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
     background: #fff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
-    z-index: 99;
-    transition: transform 0.3s;
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-  }
-  .container {
-    flex-direction: column;
-  }
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: 6px 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+    .sidebar-toggle {
+        display: block;
+    }
+    .container {
+        flex-direction: column;
+    }
 }
 
 /* Main content full width on mobile/tablet */
 @media (max-width: 1023px) {
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 16px;
-  }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 64px 16px 16px 16px; /* top padding for toggle clearance */
+    }
 }
 
-/* For laptop/desktop */
 @media (min-width: 1024px) {
-  .sidebar-toggle {
-    display: none;
-  }
-  .sidebar {
-    display: flex;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 20;
-  }
-  .main-content {
-    margin-left: 220px;
-    width: calc(100% - 220px);
-    padding: 32px;
-  }
+    .sidebar-toggle {
+        display: none;
+    }
+    .main-content {
+        /* This is the same fix as above, but for desktop view */
+        margin-left: 270px;
+        width: calc(100% - 270px);
+        padding: 32px;
+    }
 }

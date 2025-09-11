@@ -6,7 +6,6 @@ html {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    /* CHANGE: Hide horizontal overflow to prevent scrolling. */
     overflow-x: hidden;
 }
 
@@ -20,97 +19,12 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar styles */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    width: 220px;
-    background-color: white;
-    border-right: 1px solid #e5e7eb;
-    padding: 0 24px 24px 24px;
-    /* CHANGE: Use a relative position initially for a better mobile layout. */
-    position: relative;
-    height: auto;
-    z-index: 20;
-}
-
-/* CHANGE: Add a media query to apply the fixed sidebar layout only on larger screens. */
-@media (min-width: 1024px) {
-    .sidebar {
-        position: fixed;
-        height: 100%;
-    }
-}
-
-@media (max-width: 1023px) {
-    .sidebar {
-        display: none;
-    }
-}
-
-.logo-section {
-    display: static;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 40px;
-}
-
-.logo-placeholder {
-    width: 52px;
-    height: 52px;
-    border-radius: 9999px;
-    align-items: center;
-}
-
-.logo-image {
-    width: 140px;
-    height: auto;
-    object-fit: contain;
-}
-
-.club-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #1f2937;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
-}
-
-.nav-item {
-    color: #4b5563;
-    font-weight: 500;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-}
-
-.nav-item:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: #111827;
-    transition: width 0.3s ease-in-out;
-}
-
-.nav-item:hover:after {
-    width: 100%;
-}
-
-.Team-content {
+/* .Team-content {
     flex: 1;
     padding: 0;
     position: relative;
-    /* CHANGE: Remove fixed margin-left. Use a media query instead. */
     margin-left: 0;
-}
+} */
 
 /* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
 @media (min-width: 1024px) {
@@ -405,7 +319,6 @@ body {
     background-color: #f5f7fa;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    /* CHANGE: Add flex-wrap for a responsive layout. */
     flex-wrap: wrap; 
 }
 
@@ -415,16 +328,15 @@ body {
     flex: 1;
     text-align: left;
     color: #333;
-    /* CHANGE: Add a min-width to prevent content from becoming too small. */
     min-width: 300px;
 }
 
 .founder-name,
-.mentor-name ,
+.mentor-name,
 .faculty-name {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1a1a2e;
+    color: #878181;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -442,7 +354,6 @@ body {
     padding: 24px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
-    /* CHANGE: Add a min-width to prevent the card from becoming too small. */
     min-width: 250px;
 }
 
@@ -459,7 +370,7 @@ body {
 }
 
 .founder-image,
-.mentor-image ,
+.mentor-image,
 .faculty-image {
     width: 100%;
     height: 100%;
@@ -484,19 +395,19 @@ body {
     }
 
     .founder-description,
-    .mentor-description
+    .mentor-description,
     .faculty-description {
         text-align: center;
     }
 
     .founder-image-card,
-    .mentor-image-card 
-        .faculty-image-card {
+    .mentor-image-card,
+    .faculty-image-card {
         padding: 16px;
     }
 
     .founder-image-container,
-    .mentor-image-container ,
+    .mentor-image-container,
     .faculty-image-container {
         width: 150px;
         height: 150px;
@@ -504,77 +415,59 @@ body {
 }
 
 
-/* Hamburger menu button */
 .sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  z-index: 100;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 2rem;
-  padding: 6px 16px;
-  cursor: pointer;
-}
-
-/* Show hamburger on tablet/phone */
-@media (max-width: 1023px) {
-  .sidebar-toggle {
-    display: block;
-  }
-  .sidebar {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
     background: #fff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
-    z-index: 99;
-    transition: transform 0.3s;
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-  }
-  .container {
-    flex-direction: column;
-  }
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: 6px 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+    .sidebar-toggle {
+        display: block;
+    }
+    .container {
+        flex-direction: column;
+    }
 }
 
 /* Main content full width on mobile/tablet */
 @media (max-width: 1023px) {
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 16px;
-  }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 64px 16px 16px 16px; /* add top padding for toggle clearance */
+    }
 }
 
-/* For laptop/desktop */
 @media (min-width: 1024px) {
-  .sidebar-toggle {
-    display: none;
-  }
-  .sidebar {
-    display: flex;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 20;
-  }
-  .main-content {
-    margin-left: 220px;
-    width: calc(100% - 220px);
-    padding: 32px;
-  }
+    .sidebar-toggle {
+        display: none;
+    }
+    .main-content {
+        /* FIX: Correctly offset the main content from the sidebar */
+        margin-left: 270px;
+        width: calc(100% - 270px);
+        padding: 32px;
+    }
 }
 
+/* Individual character styles */
+.color-1 {
+    color: #991b1e;
+}
 
+.color-2 {
+    color: #319967;
+}
 
+.color-3 {
+    color: #046599;
+}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./Team.css";
-import WikiL from "../Images/WikiL.png";
+import Sidebar from "./Sidebar";
 import Reeti from "../Images/Reeti.jpg";
 import Neelima from "../Images/Neelima.png";
 import Atharva from "../Images/Atharva.jpg";
@@ -16,6 +15,9 @@ import Sarthak from "../Images/Sarthak.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
 import AmitSir from "../Images/AmitSir.png";
+
+// Import the new WavyText component
+import WavyText from './WavyText';
 
 const facultyAdvisor = {
   name: "Dr. Amit Kumar Tiwari",
@@ -92,18 +94,10 @@ const volunteers = [
   { name: "Priyanshika Upadhyay", affiliation: "Event Coordinator", image: Priyanshika, linkedin: "https://www.linkedin.com/in/priyanshika-upadhyay-a87a26332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Priyanshika1111" },
 ];
 
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
-  { name: "Contact", path: "/Contact" },
-  { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "/Question" },
-];
+const navLinks = [];
 
 function Team() {
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
-  // Add state for sidebar
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const openModal = (volunteer) => {
@@ -114,43 +108,31 @@ function Team() {
     setSelectedVolunteer(null);
   };
 
-  // Add function to toggle sidebar
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
     <>
-      {/* Add the sidebar toggle button */}
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
       </button>
       <div className="container">
-        {/* Apply conditional class to the aside element */}
-        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-          <div className="logo-section">
-            <div className="logo-placeholder">
-              <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
-            </div>
-          </div>
-          <nav className="nav-links">
-            {navLinks.map((link, idx) => (
-              <Link to={link.path} className="nav-item" key={idx}>
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-        </aside>
+        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
 
         <main className="Team-content">
-          <h1>Meet Our Team</h1>
+          <h1>
+            <span className="color-1">Meet</span>{" "}
+            <span className="color-2">Our</span>{" "}
+            <span className="color-3">Team</span>
+          </h1>
           <p>
             We are a group of passionate volunteers dedicated to building and empowering the wiki and open knowledge community in Prayagraj.
           </p>
           <div className="separator-line"></div>
 
-          {/* FacultyAdvisor Section */}
-          <h2 className="section-heading">Faculty Advisor</h2>
+          {/* Replaced static <h2> with WavyText component */}
+          <WavyText text="Faculty Advisor" />
           <section className="faculty-card-container">
             <div className="faculty-description">
               <h3 className="faculty-name">{facultyAdvisor.name}</h3>
@@ -168,8 +150,8 @@ function Team() {
             </div>
           </section>
 
-          {/* Founder Section */}
-          <h2 className="section-heading">Founder</h2>
+          {/* Replaced static <h2> with WavyText component */}
+          <WavyText text="Founder" />
           <section className="founder-card-container">
             <div className="founder-description">
               <h3 className="founder-name">{founder.name}</h3>
@@ -192,8 +174,8 @@ function Team() {
 
           <div className="separator-line"></div>
 
-          {/* Mentor Section */}
-          <h2 className="section-heading">Mentor</h2>
+          {/* Replaced static <h2> with WavyText component */}
+          <WavyText text="Mentor" />
           <section className="mentor-card-container">
             <div className="mentor-image-card">
               <div className="mentor-image-container">
@@ -216,7 +198,8 @@ function Team() {
 
           <div className="separator-line"></div>
 
-          <h2 className="section-heading">Core Team</h2>
+          {/* Replaced static <h2> with WavyText component */}
+          <WavyText text="Core Team" />
           <section className="team-cards-container">
             {teamMembers.map((member, index) => (
               <div className="team-card" key={index}>
@@ -240,8 +223,8 @@ function Team() {
 
           <div className="separator-line"></div>
 
-          <h2 className="section-heading">Volunteers</h2>
-
+          {/* Replaced static <h2> with WavyText component */}
+          <WavyText text="Volunteers" />
           <section className="volunteer-cards-container">
             {volunteers.map((volunteer, index) => (
               <div className="volunteer-card" key={index} onClick={() => openModal(volunteer)}>
