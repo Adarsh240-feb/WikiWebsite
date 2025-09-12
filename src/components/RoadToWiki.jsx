@@ -42,8 +42,8 @@ const cardData = [
 
 const navLinks = [];
 
-const Card = ({ title, image, description, onClick, titleColorClass }) => (
-  <div className="card" onClick={onClick}>
+const Card = ({ title, image, description, titleColorClass }) => (
+  <div className="card">
     <img src={image} alt={title} className="card-image" />
     <div className="card-content">
       <h3 className={`card-title ${titleColorClass}`}>{title}</h3>
@@ -52,45 +52,15 @@ const Card = ({ title, image, description, onClick, titleColorClass }) => (
   </div>
 );
 
-const Modal = ({ image, fullDetails, onClose }) => (
-  <div className="modal-overlay" onClick={onClose}>
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <button className="modal-close-btn" onClick={onClose}>
-        &times;
-      </button>
-      <img src={image} alt="Modal" className="modal-image" />
-      <div className="modal-details">
-        <h3>Full Details:</h3>
-        <p>{fullDetails}</p>
-      </div>
-    </div>
-  </div>
-);
-
 function RoadToWiki() {
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  // State for the sidebar
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleCardClick = (card) => {
-    setSelectedCard(card);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedCard(null);
-  };
-
-  // Function to toggle the sidebar
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
     <div className="pageContainer">
-      {/* Add the sidebar toggle button here */}
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
       </button>
@@ -149,7 +119,6 @@ function RoadToWiki() {
                 title={card.title}
                 image={card.image}
                 description={card.description}
-                onClick={() => handleCardClick(card)}
                 titleColorClass={card.titleColorClass}
               />
             ))}
@@ -247,15 +216,8 @@ function RoadToWiki() {
           </div>
         </div>
       </div>
-
-      {isModalOpen && selectedCard && (
-        <Modal
-          image={selectedCard.image}
-          fullDetails={selectedCard.fullDetails}
-          onClose={closeModal}
-        />
-      )}
     </div>
   );
 }
+
 export default RoadToWiki;

@@ -23,9 +23,8 @@ body {
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    /* FIX: Correctly offset the main content from the sidebar */
-    margin-left: 270px; /* 220px (sidebar width) + 25px (padding) = 245px. Use a slightly larger value for safety. */
-    z-index: 10; /* Ensure content is above the sidebar on large screens */
+    margin-left: 270px;
+    z-index: 10;
 }
 
 @media (max-width: 1023px) {
@@ -34,33 +33,53 @@ body {
     }
 }
 
-
-/* FAQ Section Styles */
+/* New, more stylish FAQ Section Styles */
 .faq-container {
-    max-width: 600px;
+    max-width: 900px; /* A bit wider for desktop */
     margin: 40px auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-    padding: 32px 24px;
+    background: #ffffff;
+    border-radius: 16px; /* Softer rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Softer, more pronounced shadow */
+    padding: 32px 40px; /* Increased padding */
 }
 
 .faq-title {
     text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.2rem; /* Larger title font */
+    font-weight: 700;
+    color: #2c3e50;
     margin-bottom: 32px;
+}
+
+/* New color styles for each word in the title */
+.faq-word-1 {
+    color: #991b1e; /* Blue */
+}
+
+.faq-word-2 {
+    color: #319967; /* Red */
+}
+
+.faq-word-3 {
+    color: #046599; /* Green */
 }
 
 .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px; /* Increased spacing between items */
 }
 
 .faq-item {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0; /* Lighter border color */
+    padding-bottom: 16px; /* Increased padding */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.faq-item:hover {
+    background-color: #f9f9f9; /* Subtle background change on hover */
+    border-radius: 8px; /* Added for a nice effect on hover */
+    padding-left: 10px;
 }
 
 .faq-question {
@@ -68,50 +87,59 @@ body {
     background: none;
     border: none;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 600; /* Bolder question text */
     text-align: left;
     cursor: pointer;
     padding: 12px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    outline: none;
+    color: #34495e; /* Deeper color for questions */
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #4a69bd; /* Highlight color on hover */
 }
 
 .faq-arrow {
-    font-size: 2.0rem;
+    font-size: 1.8rem;
+    color: #7f8c8d; /* Muted arrow color */
+    transition: transform 0.3s ease; /* Smooth rotation */
 }
 
 .faq-answer {
     margin-top: 8px;
-    color: #444;
+    color: #555; /* Slightly darker body text */
     font-size: 1rem;
+    line-height: 1.6; /* Better readability */
     padding-left: 8px;
-    animation: fadeIn 0.3s;
+    animation: fadeIn 0.4s ease-out; /* Slower, smoother animation */
 }
 
 .faq-reference {
     margin-top: 10px;
-    font-size: 0.9rem;
-    color: #888;
+    font-size: 0.85rem;
+    color: #95a5a6; /* Muted reference color */
 }
 
 .faq-reference a {
-    color: #555;
+    color: #4a69bd; /* Cohesive link color */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .faq-reference a:hover {
+    color: #3d51a2;
     text-decoration: underline;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -146,7 +174,7 @@ body {
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 64px 16px 16px 16px; /* top padding for toggle clearance */
+        padding: 64px 16px 16px 16px;
     }
 }
 
@@ -155,7 +183,6 @@ body {
         display: none;
     }
     .main-content {
-        /* This is the same fix as above, but for desktop view */
         margin-left: 270px;
         width: calc(100% - 270px);
         padding: 32px;
