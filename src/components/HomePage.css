@@ -191,8 +191,7 @@ body {
   align-items: center;
   background-color: #3d3f42;
   color: #ffffff;
-  padding: 5px 20px;
-  /* CHANGE: Remove fixed margin-left from here. Use a media query instead. */
+  padding: 5px 20px; /* Reduced vertical padding for smaller height */
   margin-left: 0; 
 }
 
@@ -200,6 +199,7 @@ body {
 @media (min-width: 1024px) {
   .footer-wiki {
     margin-left: 250px;
+    padding: 10px 20px; /* Slightly increased padding for larger screens if needed */
   }
 }
 
@@ -208,13 +208,14 @@ body {
     flex-direction: column;
     text-align: center;
     gap: 20px;
-    padding: 20px;
+    padding: 15px 20px; /* Adjusted padding for smaller screens */
   }
 }
 
 .footer-left {
   display: flex;
   align-items: center;
+  gap: 8px; /* Added gap for spacing between logo and text if any */
 }
 
 .wiki-logo {
@@ -271,23 +272,16 @@ body {
   color: #cccccc;
 }
 
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .footer-logo {
-  /* CHANGE: Use flexible margins and width to prevent overflow. */
-  margin-left: 0;
-  max-width: 150px;
-  height: auto;
+  max-width: 200px; /* Increased max-width for a larger logo */
+  height: auto;     /* Maintain aspect ratio */
   object-fit: contain;
 }
 
 @media (min-width: 1024px) {
   .footer-logo {
     margin-left: 50px;
+    max-width: 250px; /* Further increased size for larger screens if desired */
   }
 }
 
@@ -340,7 +334,7 @@ body {
   .sidebar-toggle {
     display: none;
   }
-  /* Desktop sidebar is defined in Sidebar.css */
+
   .main-content {
     margin-left: 220px;
     width: calc(100% - 220px);

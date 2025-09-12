@@ -471,3 +471,109 @@ body {
 .color-3 {
     color: #046599;
 }
+
+.footer-wiki {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3d3f42;
+  color: #ffffff;
+  padding: 5px 20px;
+  /* CHANGE: Remove fixed margin-left from here. Use a media query instead. */
+  margin-left: 0; 
+}
+
+/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
+@media (min-width: 1024px) {
+  .footer-wiki {
+    margin-left: 250px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer-wiki {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.wiki-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-right {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .footer-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.footer-link1 {
+  color: #991b1e;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link1:hover {
+  color: #cccccc;
+}
+
+.footer-link2 {
+  color: #319967;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link2:hover {
+  color: #cccccc;
+}
+
+.footer-link3 {
+  color: #046599;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link3:hover {
+  color: #cccccc;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo {
+  /* CHANGE: Use flexible margins and width to prevent overflow. */
+  margin-left: 0;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+  .footer-logo {
+    margin-left: 50px;
+  }
+}

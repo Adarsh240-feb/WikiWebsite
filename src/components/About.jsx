@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react"; // Make sure useState is imported
 import "./About.css";
+import "./HomePage.css";
 import WikiD from "../Images/WikiD.jpg";
 import WikiH from "../Images/WikiH.jpg";
 import Sidebar from "./Sidebar";
+import WikiL from "../Images/WikiL.png";
+import { Link } from "react-router-dom";
 
 function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -79,6 +82,24 @@ function About() {
           <hr className="divider" />
         </main>
       </div>
+            <footer className="footer-wiki">
+        <div className="footer-left">
+          <img
+            src={WikiL}
+            alt="WikiClub Tech Logo"
+            className="footer-logo"
+          />
+          <div className="wiki-logo">
+          </div>
+        </div>
+        <div className="footer-right">
+          <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
+          <Link to="/Contact" className="footer-link2">Contact</Link>
+          <Link to="/Team" className="footer-link3">Team</Link>
+          <Link to="/About" className="footer-link1">About Us </Link>
+          <Link to="/Question" className="footer-link2">FAQ</Link>
+        </div>
+      </footer>
     </>
   );
 }

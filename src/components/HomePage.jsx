@@ -4,7 +4,7 @@ import "./HomePage.css";
 import WikiMainLogo from "../Images/WikiMainLogo.png";
 import WikiI from "../Images/WikiI.png";
 import WikiL from "../Images/WikiL.png";
-import Sidebar from "./Sidebar"; // Import the separate Sidebar component
+import Sidebar from "./Sidebar"; 
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -36,7 +36,6 @@ function HomePage() {
           navLinks={navLinks}
           wikiLogo={WikiL}
         />
-
         <main className="main-content">
           <section className="hero-section">
             <div className="hero-content">
@@ -93,8 +92,10 @@ function HomePage() {
         </div>
         <div className="footer-right">
           <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
-          <Link to="/About" className="footer-link2">About Us </Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/Contact" className="footer-link2">Contact</Link>
+          <Link to="/Team" className="footer-link3">Team</Link>
+          <Link to="/About" className="footer-link1">About Us </Link>
+          <Link to="/Question" className="footer-link2">FAQ</Link>
         </div>
       </footer>
     </>

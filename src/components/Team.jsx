@@ -15,6 +15,8 @@ import Sarthak from "../Images/Sarthak.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
 import AmitSir from "../Images/AmitSir.png";
+import WikiL from "../Images/WikiL.png";
+import { Link } from "react-router-dom";
 
 // Import the new WavyText component
 import WavyText from './WavyText';
@@ -131,7 +133,6 @@ function Team() {
           </p>
           <div className="separator-line"></div>
 
-          {/* Replaced static <h2> with WavyText component */}
           <WavyText text="Faculty Advisor" />
           <section className="faculty-card-container">
             <div className="faculty-description">
@@ -150,7 +151,6 @@ function Team() {
             </div>
           </section>
 
-          {/* Replaced static <h2> with WavyText component */}
           <WavyText text="Founder" />
           <section className="founder-card-container">
             <div className="founder-description">
@@ -174,7 +174,6 @@ function Team() {
 
           <div className="separator-line"></div>
 
-          {/* Replaced static <h2> with WavyText component */}
           <WavyText text="Mentor" />
           <section className="mentor-card-container">
             <div className="mentor-image-card">
@@ -198,7 +197,6 @@ function Team() {
 
           <div className="separator-line"></div>
 
-          {/* Replaced static <h2> with WavyText component */}
           <WavyText text="Core Team" />
           <section className="team-cards-container">
             {teamMembers.map((member, index) => (
@@ -223,7 +221,6 @@ function Team() {
 
           <div className="separator-line"></div>
 
-          {/* Replaced static <h2> with WavyText component */}
           <WavyText text="Volunteers" />
           <section className="volunteer-cards-container">
             {volunteers.map((volunteer, index) => (
@@ -267,6 +264,26 @@ function Team() {
           </div>
         </div>
       )}
+
+      {/* The footer is moved outside the conditional block to be always visible */}
+      <footer className="footer-wiki">
+        <div className="footer-left">
+          <img
+            src={WikiL}
+            alt="WikiClub Tech Logo"
+            className="footer-logo"
+          />
+          <div className="wiki-logo">
+          </div>
+        </div>
+        <div className="footer-right">
+          <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
+          <Link to="/Contact" className="footer-link2">Contact</Link>
+          <Link to="/Team" className="footer-link3">Team</Link>
+          <Link to="/About" className="footer-link1">About Us </Link>
+          <Link to="/Question" className="footer-link2">FAQ</Link>
+        </div>
+      </footer>
     </>
   );
 }
