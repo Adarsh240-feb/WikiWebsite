@@ -19,8 +19,7 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
     const body = "Hi WikiClub Tech Team,\n\n";
 
     // Detect if on a mobile/tablet device
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 1024;
-
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent) || window.innerWidth < 1024;
     if (isMobile) {
       // For mobile, use mailto to open native app
       window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
