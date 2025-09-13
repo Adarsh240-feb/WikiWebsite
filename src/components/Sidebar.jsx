@@ -7,9 +7,10 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
+    { name: "Contribution Meter", path: "/ContributionMeter" },
   { name: "Contact", path: "/Contact" },
   { name: "Team", path: "/Team" },
-  { name: "FAQ", path: "/Question" },
+  { name: "FAQ", path: "/Question" }
 ];
 
 function Sidebar({ sidebarOpen, closeSidebar }) {

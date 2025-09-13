@@ -5,7 +5,6 @@ body, html {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  /* CHANGE: Hide horizontal overflow to prevent scrolling. */
   overflow-x: hidden;
 }
 
@@ -19,18 +18,15 @@ body {
   min-height: 100vh;
 }
 
-
 /* Main content area */
 .main-content {
   flex: 1;
   padding: 0;
   background-color: white;
   position: relative;
-  /* CHANGE: Remove fixed margin-left from here. Use a media query instead. */
   margin-left: 0;
 }
 
-/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
 @media (min-width: 1024px) {
   .main-content {
     margin-left: 250px;
@@ -88,13 +84,11 @@ body {
 }
 
 .hero-logo-large {
-  /* CHANGE: Use a fluid width to prevent overflow on small screens/zoom. */
   max-width: 100%;
   height: auto;
   margin: 0;
 }
 
-/* Make WikiMainLogo horizontally larger on mobile and tablet */
 @media (max-width: 1023px) {
   .hero-logo-large {
     width: 120%;
@@ -106,10 +100,9 @@ body {
   }
 }
 
-/* Increase vertical height of WikiMainLogo on mobile */
 @media (max-width: 600px) {
   .hero-logo-large {
-    height: 280px; /* Increase vertical height for mobile */
+    height: 280px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -151,10 +144,8 @@ body {
   margin-bottom: 40px;
 }
 
-/* New style for the clickable image link */
 .clickable-image-link {
   display: block;
-  /* CHANGE: Use a max-width to allow shrinking on smaller screens/zoom. */
   max-width: 800px; 
   margin: 0 auto;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -172,34 +163,31 @@ body {
   border-radius: 8px;
 }
 
-/* Make the homepage promo image appear horizontal on phones */
 @media (max-width: 768px) {
   .clickable-image-link {
     max-width: 100%;
   }
   .clickable-image-link img {
     width: 100%;
-    height: 260px; /* landscape slot */
-    object-fit: cover; /* crop to keep horizontal look */
+    height: 260px;
+    object-fit: cover;
   }
 }
 
-/* Footer styles for layout */
 .footer-wiki {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3d3f42;
+  background-color: #b9b9b9;
   color: #ffffff;
-  padding: 5px 20px; /* Reduced vertical padding for smaller height */
+  padding: 2px 20px;
   margin-left: 0; 
 }
 
-/* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
 @media (min-width: 1024px) {
   .footer-wiki {
     margin-left: 250px;
-    padding: 10px 20px; /* Slightly increased padding for larger screens if needed */
+    padding: 2px 20px;
   }
 }
 
@@ -208,14 +196,14 @@ body {
     flex-direction: column;
     text-align: center;
     gap: 20px;
-    padding: 15px 20px; /* Adjusted padding for smaller screens */
+    padding: 2px 20px;
   }
 }
 
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 8px; /* Added gap for spacing between logo and text if any */
+  gap: 8px;
 }
 
 .wiki-logo {
@@ -236,62 +224,59 @@ body {
   }
 }
 
-.footer-link1 {
-  color: #991b1e;
+/* Footer links */
+.footer-link1, .footer-link2, .footer-link3 {
+  color: black;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 500; /* Regular weight by default */
+  transition: text-shadow 0.3s ease, color 0.3s ease, font-weight 0.1s ease;
 }
 
+/* Hover effect for footer-link1 (red glow) */
 .footer-link1:hover {
-  color: #cccccc;
+  font-weight: 500; /* Bolds the text on hover */
+  text-shadow: 
+    -1px -1px 3px #991b1e, 
+    1px -1px 3px #991b1e,
+    -1px 1px 3px #991b1e,
+    1px 1px 3px #991b1e;
+  color: white;
 }
 
-.footer-link2 {
-  color: #319967;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
+/* Hover effect for footer-link2 (green glow) */
 .footer-link2:hover {
-  color: #cccccc;
-}
-
-.footer-link3 {
-  color: #046599;
-  text-decoration: none;
-  font-size: 18px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  text-shadow: 
+    -1px -1px 3px #319967, 
+    1px -1px 3px #319967,
+    -1px 1px 3px #319967,
+    1px 1px 3px #319967;
+  color: white;
 }
 
+/* Hover effect for footer-link3 (blue glow) */
 .footer-link3:hover {
-  color: #cccccc;
+  font-weight: 500;
+  text-shadow: 
+    -1px -1px 3px #046599, 
+    1px -1px 3px #046599,
+    -1px 1px 3px #046599,
+    1px 1px 3px #046599;
+  color: white;
 }
 
 .footer-logo {
-  max-width: 200px; /* Increased max-width for a larger logo */
-  height: auto;     /* Maintain aspect ratio */
+  max-width: 200px;
+  height: 13vh;
   object-fit: contain;
 }
 
 @media (min-width: 1024px) {
   .footer-logo {
     margin-left: 50px;
-    max-width: 250px; /* Further increased size for larger screens if desired */
+    max-width: 250px;
   }
-}
-
-.code-of-conduct-btn {
-  background: linear-gradient(90deg, #4c51bf, #805ad5);
-  padding: 8px 16px;
-  border-radius: 20px;
-  color: #fff;
-  font-weight: 600;
-  text-align: center;
 }
 
 /* Hamburger menu button */
@@ -309,27 +294,23 @@ body {
   cursor: pointer;
 }
 
-/* Show hamburger on tablet/phone */
 @media (max-width: 1023px) {
   .sidebar-toggle {
     display: block;
   }
-  /* Sidebar responsive behavior is handled in Sidebar.css */
   .container {
     flex-direction: column;
   }
 }
 
-/* Main content full width on mobile/tablet */
 @media (max-width: 1023px) {
   .main-content {
     margin-left: 0;
     width: 100%;
-    padding: 64px 16px 24px 16px; /* add top space so toggle doesn't overlap */
+    padding: 64px 16px 24px 16px;
   }
 }
 
-/* For laptop/desktop */
 @media (min-width: 1024px) {
   .sidebar-toggle {
     display: none;
