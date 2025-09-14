@@ -1,0 +1,301 @@
+/* Basic reset and container */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+body, html {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+
+.container {
+  display: flex;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 0;
+  background-color: white;
+  position: relative;
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    margin-left: 250px;
+  }
+}
+
+/* Hero section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hero-logo-large {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+@media (max-width: 1023px) {
+  .hero-logo-large {
+    width: 120%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    transform: scaleX(1.2);
+    margin: 0 -10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-logo-large {
+    height: 280px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+
+.hero-title {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-top: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #374151;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* About section */
+.about-section {
+  padding: 40px;
+}
+
+.section-title {
+  text-align: left;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #878181;
+  margin-bottom: 16px;
+}
+
+.section-content {
+  text-align: left;
+  color: #4b5563;
+  margin-bottom: 40px;
+}
+
+.clickable-image-link {
+  display: block;
+  max-width: 800px; 
+  margin: 0 auto;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.clickable-image-link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-image-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .clickable-image-link {
+    max-width: 100%;
+  }
+  .clickable-image-link img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+}
+
+.footer-wiki {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b9b9b9;
+  color: #ffffff;
+  padding: 2px 20px;
+  margin-left: 0; 
+}
+
+@media (min-width: 1024px) {
+  .footer-wiki {
+    margin-left: 250px;
+    padding: 2px 20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer-wiki {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 2px 20px;
+  }
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wiki-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-right {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .footer-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* --- UPDATED FOOTER LINK STYLES --- */
+.footer-link1, .footer-link2, .footer-link3 {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.footer-link1:hover, .footer-link2:hover, .footer-link3:hover {
+  text-shadow: 
+    0 0 5px white,
+    0 0 10px white,
+    0 0 15px white,
+    0 0 20px white;
+  color: white; 
+}
+/* --- END OF UPDATED STYLES --- */
+
+.footer-logo {
+  max-width: 200px;
+  height: 13vh;
+  object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+  .footer-logo {
+    margin-left: 50px;
+    max-width: 250px;
+  }
+}
+
+/* Hamburger menu button */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .sidebar-toggle {
+    display: block;
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 64px 16px 24px 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    padding: 32px;
+  }
+}

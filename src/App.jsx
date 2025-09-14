@@ -6,6 +6,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import Question from "./components/Question";
+import ContributionMeter from "./components/ContributionMeter";
 function App() {
   return (
     <HashRouter>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Question" element={<Question />} />
+        <Route path="/ContributionMeter" element={<ContributionMeter />} />
       </Routes>
     </HashRouter>
   );
