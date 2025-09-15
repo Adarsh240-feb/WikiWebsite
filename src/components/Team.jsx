@@ -278,10 +278,11 @@ function Team() {
         </div>
         <div className="footer-right">
           <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
-          <Link to="/Contact" className="footer-link2">Contact</Link>
-          <Link to="/Team" className="footer-link3">Team</Link>
-          <Link to="/About" className="footer-link1">About Us </Link>
-          <Link to="/Question" className="footer-link2">FAQ</Link>
+          <Link to="/ContributionMeter" className="footer-link2">Contribution Meter</Link>
+          <Link to="/Contact" className="footer-link3">Contact</Link>
+          <Link to="/Team" className="footer-link1">Team</Link>
+          <Link to="/About" className="footer-link2">About Us </Link>
+          <Link to="/Question" className="footer-link3">FAQ</Link>
         </div>
       </footer>
     </>

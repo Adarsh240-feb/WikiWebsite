@@ -471,3 +471,35 @@ body {
 .color-3 {
     color: #046599;
 }
+
+/* Social Media Icons Section - Push to bottom */
+.social-media-icons {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-around;
+    /* CHANGE: margin-top: auto pushes the element to the bottom of its flex container */
+    margin-top: auto; 
+    padding-bottom: 24px; /* Add some space from the bottom edge */
+}
+
+.social-media-icons a {
+    color: #555;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-media-icons a:hover {
+    color: #007bff;
+}
+
+.social-media-icons .fa-instagram:hover {
+    color: #C13584;
+}
+
+.social-media-icons .fa-linkedin:hover {
+    color: #0077B5;
+}
+
+.social-media-icons .fa-envelope:hover {
+    color: #EA4335;
+}
