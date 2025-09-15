@@ -18,109 +18,71 @@ const navLinks = [
 ];
 
 const ContributionMeter = () => {
-  // State for the leaderboard data (sorted contributors)
   const [leaderboardData, setLeaderboardData] = useState([]);
-  // State for the raw list of all contributions
   const [contributionsList, setContributionsList] = useState([]);
-  // State to manage sidebar visibility
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Function to toggle the sidebar
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-  // Function to close the sidebar
   const closeSidebar = () => setSidebarOpen(false);
 
-  // useEffect hook to fetch and listen for real-time data from Firestore
   useEffect(() => {
     const contributionsRef = collection(db, 'contributions');
-    // Fetch all contributions, sorted by timestamp to handle ties correctly
     const q = query(contributionsRef, orderBy("timestamp", "asc"));
     
-    // onSnapshot sets up a real-time listener
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      // contributionsMap will count merged and total contributions for each person
       const contributionsMap = {};
-      // newContributionsList will store all the documents
       const newContributionsList = [];
 
       snapshot.forEach((doc) => {
         const data = doc.data();
-        const contributor = data.contributorName;
+        const contributorEmail = data.contributorEmail;
+        const contributorName = data.contributorName;
         const status = data.contributionStatus;
         
-        // Initialize the contributor's data if they don't exist in the map
-        if (!contributionsMap[contributor]) {
-          contributionsMap[contributor] = {
+        // Use email as the single unique key
+        // If this is the first time we see this email, store the name and timestamp
+        if (!contributionsMap[contributorEmail]) {
+          contributionsMap[contributorEmail] = {
+            name: contributorName, // Store the name from the very first entry
             total: 0,
             merged: 0,
             notMerged: 0,
+            firstContributionTimestamp: data.timestamp
           };
         }
         
-        // Increment the total count and the specific status count
-        contributionsMap[contributor].total++;
+        // Only update the counts, the name remains the same as the first entry
+        contributionsMap[contributorEmail].total++;
         if (status === 'Merged') {
-          contributionsMap[contributor].merged++;
+          contributionsMap[contributorEmail].merged++;
         } else {
-          contributionsMap[contributor].notMerged++;
+          contributionsMap[contributorEmail].notMerged++;
         }
 
         newContributionsList.push(data);
       });
 
-      // Convert the map to an array and sort it for the leaderboard
       const sortedContributors = Object.entries(contributionsMap)
-        .map(([name, counts]) => ({ name, counts }))
+        .map(([email, counts]) => ({ email, ...counts }))
         .sort((a, b) => {
-          // Primary sort by merged contributions (descending)
-          if (b.counts.merged !== a.counts.merged) {
-            return b.counts.merged - a.counts.merged;
+          if (b.merged !== a.merged) {
+            return b.merged - a.merged;
           }
-          
-          // Secondary sort by total contributions (descending) for ties in merged count
-          if (b.counts.total !== a.counts.total) {
-            return b.counts.total - a.counts.total;
+          if (b.total !== a.total) {
+            return b.total - a.total;
           }
-
-          // Tertiary sort by timestamp (ascending) for ties in both merged and total count
-          const firstContribA = newContributionsList.find(c => c.contributorName === a.name);
-          const firstContribB = newContributionsList.find(c => c.contributorName === b.name);
-          return new Date(firstContribA.timestamp) - new Date(firstContribB.timestamp);
+          return new Date(a.firstContributionTimestamp) - new Date(b.firstContributionTimestamp);
         });
-// Logic of the sorting function:
-
-//That - sign in JavaScript is a mathematical operator used for subtraction. In the sorting function, it's used to compare two numbers to determine their order.
-
-// Here's how it works in your code:
-
-// When you sort an array, the .sort() method takes a function that compares two elements, let's call them a and b.
-
-// If the function returns a negative number, a is placed before b.
-
-// If the function returns a positive number, b is placed before a.
-
-// If the function returns zero, the order of a and b doesn't change relative to each other.
-
-// In your code, the sorting function is b.counts.merged - a.counts.merged.
-
-// If Contributor B has more merged contributions than Contributor A, b.counts.merged - a.counts.merged will be a positive number. This tells the sort function to place Contributor B before Contributor A.
-
-// If Contributor A has more merged contributions, the result will be a negative number. This places Contributor A before Contributor B.
-
-// By subtracting a from b, the sorting function effectively creates a descending order (highest number first). This is a common and efficient trick in JavaScript to sort numbers from largest to smallest.
-
-      // Update the state with the sorted data
+      
       setLeaderboardData(sortedContributors);
-      setContributionsList(newContributionsList);
+      setContributionsList(newContributionsList.reverse());
     });
 
-    // Unsubscribe from the listener when the component unmounts
     return () => unsubscribe();
   }, []);
 
-  // Function to get the correct trophy emoji based on rank
   const getTrophy = (rank) => {
     switch (rank) {
       case 1:
@@ -134,7 +96,6 @@ const ContributionMeter = () => {
     }
   };
 
-  // Main component JSX
   return (
     <>
       <button className="sidebar-toggle" onClick={toggleSidebar}>
@@ -161,13 +122,13 @@ const ContributionMeter = () => {
                 </thead>
                 <tbody>
                   {leaderboardData.map((contributor, index) => (
-                    <tr key={index} className="leaderboard-row">
+                    <tr key={contributor.email} className="leaderboard-row">
                       <td data-label="Rank">{getTrophy(index + 1)} {index + 1}</td>
                       <td data-label="Contributor">{contributor.name}</td>
                       <td data-label="Contributions">
-                          <strong>Total:</strong> {contributor.counts.total} | 
-                          <strong> Merged:</strong> {contributor.counts.merged} | 
-                          <strong> Not Merged:</strong> {contributor.counts.notMerged}
+                        <strong>Total:</strong> {contributor.total} | 
+                        <strong> Merged:</strong> {contributor.merged} | 
+                        <strong> Not Merged:</strong> {contributor.notMerged}
                       </td>
                     </tr>
                   ))}

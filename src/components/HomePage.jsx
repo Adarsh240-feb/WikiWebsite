@@ -5,7 +5,7 @@ import WikiMainLogo from "../Images/WikiMainLogo.png";
 import WikiI from "../Images/WikiI.png";
 import WikiL from "../Images/WikiL.png";
 import Sidebar from "./Sidebar"; 
-
+import WikiMainLogoM from "../Images/WikiMainLogoM.png"; 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },
@@ -29,7 +29,6 @@ function HomePage() {
         ☰
       </button>
       <div className="container">
-        {/* Pass navLinks and other props to the Sidebar component */}
         <Sidebar 
           sidebarOpen={sidebarOpen} 
           closeSidebar={closeSidebar}
@@ -39,10 +38,16 @@ function HomePage() {
         <main className="main-content">
           <section className="hero-section">
             <div className="hero-content">
+              {/* Add two image tags for the two logos */}
               <img
                 src={WikiMainLogo}
                 alt="WikiClub Tech Logo"
-                className="hero-logo-large"
+                className="hero-logo-large desktop-logo" // Add a new class for the desktop logo
+              />
+              <img
+                src={WikiMainLogoM}
+                alt="WikiClub Tech Phone Logo"
+                className="hero-logo-large phone-logo" // Add a new class for the phone logo
               />
               <div></div>
             </div>
@@ -79,25 +84,24 @@ function HomePage() {
           </section>
         </main>
       </div>
-
-<footer className="footer-wiki">
-  <div className="footer-left">
-    <img
-      src={WikiL}
-      alt="WikiClub Tech Logo"
-      className="footer-logo"
-    />
-    <div className="wiki-logo">
-    </div>
-  </div>
-  <div className="footer-right">
-    <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
-    <Link to="/Contact" className="footer-link2">Contact</Link>
-    <Link to="/Team" className="footer-link3">Team</Link>
-    <Link to="/About" className="footer-link1">About Us </Link>
-    <Link to="/Question" className="footer-link2">FAQ</Link>
-  </div>
-</footer>
+      <footer className="footer-wiki">
+        <div className="footer-left">
+          <img
+            src={WikiL}
+            alt="WikiClub Tech Logo"
+            className="footer-logo"
+          />
+          <div className="wiki-logo">
+          </div>
+        </div>
+        <div className="footer-right">
+          <Link to="/RoadToWiki" className="footer-link1">Road To Wiki Program</Link>
+          <Link to="/Contact" className="footer-link2">Contact</Link>
+          <Link to="/Team" className="footer-link3">Team</Link>
+          <Link to="/About" className="footer-link1">About Us </Link>
+          <Link to="/Question" className="footer-link2">FAQ</Link>
+        </div>
+      </footer>
     </>
   );
 }

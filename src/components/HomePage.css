@@ -1,7 +1,8 @@
 /* Basic reset and container */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
 
-body, html {
+body,
+html {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -83,13 +84,36 @@ body {
   padding: 40px;
 }
 
+/* We will manage the visibility of these logos using classes below */
 .hero-logo-large {
   max-width: 100%;
   height: auto;
   margin: 0;
 }
 
+/* This is the new CSS to control logo visibility based on device */
+.desktop-logo {
+  display: block;
+  /* Show desktop logo by default */
+}
+
+.phone-logo {
+  display: none;
+  /* Hide phone logo by default */
+}
+
 @media (max-width: 1023px) {
+  .desktop-logo {
+    display: none;
+    /* Hide desktop logo on screens smaller than 1024px */
+  }
+
+  .phone-logo {
+    display: block;
+    /* Show phone logo on screens smaller than 1024px */
+  }
+
+  /* Your existing styles for the phone logo */
   .hero-logo-large {
     width: 120%;
     max-width: none;
@@ -146,7 +170,7 @@ body {
 
 .clickable-image-link {
   display: block;
-  max-width: 800px; 
+  max-width: 800px;
   margin: 0 auto;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -167,6 +191,7 @@ body {
   .clickable-image-link {
     max-width: 100%;
   }
+
   .clickable-image-link img {
     width: 100%;
     height: 260px;
@@ -181,7 +206,7 @@ body {
   background-color: #b9b9b9;
   color: #ffffff;
   padding: 2px 20px;
-  margin-left: 0; 
+  margin-left: 0;
 }
 
 @media (min-width: 1024px) {
@@ -225,19 +250,21 @@ body {
 }
 
 /* Footer links */
-.footer-link1, .footer-link2, .footer-link3 {
+.footer-link1,
+.footer-link2,
+.footer-link3 {
   color: black;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 500; /* Regular weight by default */
+  font-weight: 500;
   transition: text-shadow 0.3s ease, color 0.3s ease, font-weight 0.1s ease;
 }
 
 /* Hover effect for footer-link1 (red glow) */
 .footer-link1:hover {
-  font-weight: 500; /* Bolds the text on hover */
-  text-shadow: 
-    -1px -1px 3px #991b1e, 
+  font-weight: 500;
+  text-shadow:
+    -1px -1px 3px #991b1e,
     1px -1px 3px #991b1e,
     -1px 1px 3px #991b1e,
     1px 1px 3px #991b1e;
@@ -247,8 +274,8 @@ body {
 /* Hover effect for footer-link2 (green glow) */
 .footer-link2:hover {
   font-weight: 500;
-  text-shadow: 
-    -1px -1px 3px #319967, 
+  text-shadow:
+    -1px -1px 3px #319967,
     1px -1px 3px #319967,
     -1px 1px 3px #319967,
     1px 1px 3px #319967;
@@ -258,8 +285,8 @@ body {
 /* Hover effect for footer-link3 (blue glow) */
 .footer-link3:hover {
   font-weight: 500;
-  text-shadow: 
-    -1px -1px 3px #046599, 
+  text-shadow:
+    -1px -1px 3px #046599,
     1px -1px 3px #046599,
     -1px 1px 3px #046599,
     1px 1px 3px #046599;
@@ -298,6 +325,7 @@ body {
   .sidebar-toggle {
     display: block;
   }
+
   .container {
     flex-direction: column;
   }
@@ -320,5 +348,29 @@ body {
     margin-left: 220px;
     width: calc(100% - 220px);
     padding: 32px;
+  }
+}
+
+/* New CSS to enlarge the logo on phones below 1023px */
+@media (max-width: 1023px) {
+  .hero-logo-large.phone-logo {
+    width: 120%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    transform: scaleX(1.2);
+    margin: 0 -10%;
+  }
+}
+
+/* Existing rule for screens below 600px */
+@media (max-width: 600px) {
+  .hero-logo-large {
+    height: 280px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    transform: none;
   }
 }
