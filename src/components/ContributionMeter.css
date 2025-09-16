@@ -242,17 +242,20 @@ body {
     box-sizing: border-box;
   }
 
-  /* Key-Value Pair Alignment */
+  /*
+   * FIX: This is the updated code for the mobile view.
+   * We've changed the flex direction to 'column' to stack the label and data vertically.
+   * This prevents the text from overlapping and makes it readable on smaller screens.
+   */
   .leaderboard-table td {
     text-align: left;
     padding: 0;
     position: relative;
     border-bottom: none;
     font-size: 1rem;
-    
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Stacks label and content vertically */
+    gap: 5px; /* Adds space between stacked elements */
   }
   
   .leaderboard-table td::before {
@@ -261,12 +264,13 @@ body {
     color: var(--wiki-dark-gray);
     position: static;
     width: auto;
-    padding-right: 10px;
     white-space: nowrap;
+    font-size: 0.9rem;
   }
 
   /* Specific adjustments for the 'rank' column */
   .leaderboard-table td:first-child {
+    flex-direction: row; /* Keeps rank and emoji side-by-side */
     justify-content: flex-start;
     gap: 8px;
     font-size: 1.2rem;
