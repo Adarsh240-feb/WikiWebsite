@@ -8,7 +8,6 @@ const navLinks = [
   { name: "About Us", path: "/About" },
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
   { name: "Contribution Board", path: "/ContributionMeter" },
-  { name: "Contact", path: "/Contact" },
   { name: "Team", path: "/Team" },
   { name: "FAQ", path: "/Question" }
 ];

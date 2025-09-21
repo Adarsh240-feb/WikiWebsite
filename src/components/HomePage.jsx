@@ -97,8 +97,7 @@ function HomePage() {
         <div className="footer-right">
           <Link to="/About" className="footer-link1">About Us</Link>
           <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Meter</Link>
-          <Link to="/Contact" className="footer-link1">Contact</Link>
+          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
           <Link to="/Team" className="footer-link2">Team</Link>
           <Link to="/Question" className="footer-link3">FAQ</Link>
         </div>
