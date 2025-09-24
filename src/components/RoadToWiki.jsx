@@ -13,32 +13,25 @@ import { Link } from "react-router-dom";
 const cardData = [
   {
     id: 1,
-    title: "Lead & Drive Real-World Impact",
+    title: "Create Real-World Change",
     image: Card1,
     description:
-      "Gain hands-on leadership experience in event management, community building, and team coordination. Directly empower peers and contribute to the growth of India’s Wikimedia technical community.",
-    fullDetails:
-      "The program offers a unique opportunity to lead and manage real-world projects, including organizing events and coordinating teams. You'll gain practical experience in community building and learn to empower others, directly contributing to the growth and sustainability of the Wikimedia technical community in India. This is a chance to make a tangible impact and build a strong portfolio.",
+      "Lead events, build community, and coordinate teams. You'll gain hands-on experience by empowering your peers and making a real impact on the local tech community's growth.",
     titleColorClass: "card-title-one",
   },
   {
     id: 2,
-    title: "Amplify Your Technical Expertise",
+    title: "Boost Your Tech Skills",
     image: Card2,
-    description:
-      "Deepen your understanding of core Wikimedia technologies and essential open-source development practices. Become a go-to person for Wikimedia tech on your campus and enhance your technical portfolio.",
-    fullDetails:
-      "You will receive in-depth training on core Wikimedia technologies such as MediaWiki and Phabricator, and gain practical experience with open-source development practices like version control, code reviews, and bug fixing. By the end of the program, you'll be a recognized expert on your campus, equipped with a strong technical portfolio that demonstrates your skills to potential employers.",
+    description:"Master core technologies and key open-source development practices. Become a technical expert on your campus and build a strong portfolio that showcases your abilities.",
     titleColorClass: "card-title-two",
   },
   {
     id: 3,
-    title: "Connect, Grow & Get Recognized",
+    title: "Connect & Grow Professionally",
     image: Card3,
     description:
-      "Expand your professional network by connecting with student leaders, mentors, and industry experts. Receive formal recognition for your valuable leadership and contributions within the WikiClub Tech network.",
-    fullDetails:
-      "The program is designed to help you build a valuable professional network. You'll connect with experienced mentors, senior student leaders, and industry experts from the open-source community. Your contributions will be formally recognized through certificates and badges, enhancing your credibility and professional profile within the WikiClub Tech network and beyond.",
+      "Expand your professional circle by networking with student leaders, mentors, and industry experts. Get formal recognition for your leadership and contributions within the tech community.",
     titleColorClass: "card-title-three",
   },
 ];
@@ -219,6 +212,29 @@ function RoadToWiki() {
               </ul>
             </div>
           </div>
+          <div className="program-structure-section">
+            <h2>Rewards & more...</h2>
+            <div className="structure-point">
+              <p>
+                We believe in recognizing and rewarding our participants' efforts. Here's what students can earn through their contributions:
+              </p>
+              <ul>
+                <li>
+                  <b>Certificates:</b>  Earn a formal certificate that validates your contributions and achievements.
+                </li>
+                <li>
+                  <b>Stipends:</b>We offer stipends to our most dedicated and impactful contributors.
+                </li>
+                <li>
+                  <b>Learning & Growth:</b>  Get practical, real-world experience by contributing to live open-source projects.
+                </li>
+                <li>
+                  <b>Travel Support:</b>Our top contributors will receive full travel support to attend our next conference, hackathon, and other exclusive events.
+                </li>
+              </ul>
+            </div>
+            
+          </div>
         </div>
       </div>
       <footer className="footer-wiki">
@@ -242,5 +258,4 @@ function RoadToWiki() {
     </div>
   );
 }
-
 export default RoadToWiki;

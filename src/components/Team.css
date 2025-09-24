@@ -19,13 +19,6 @@ body {
     min-height: 100vh;
 }
 
-/* .Team-content {
-    flex: 1;
-    padding: 0;
-    position: relative;
-    margin-left: 0;
-} */
-
 /* CHANGE: Add a media query to apply the margin on larger screens when the sidebar is fixed. */
 @media (min-width: 1024px) {
     .Team-content {
@@ -60,10 +53,10 @@ body {
     margin-bottom: 20px;
 }
 
-/* New CSS for Team Cards */
+/* 🚀 FIX: Updated CSS for Team Cards to center them and allow wrapping */
 .team-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
     padding: 2rem;
     justify-content: center;
@@ -82,6 +75,7 @@ body {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
 }
 
 .team-card:hover {
@@ -138,10 +132,10 @@ body {
     transform: scale(1.1);
 }
 
-/* Volunteer Cards Section */
+/* 🚀 FIX: Updated CSS for Volunteer Cards to center them and allow wrapping */
 .volunteer-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 2rem;
     justify-content: center;
@@ -161,6 +155,7 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 130px;
 }
 
 .volunteer-card:hover {
@@ -306,6 +301,7 @@ body {
     }
 }
 
+/* Updated CSS for Faculty, Founder, and Mentor Sections */
 .founder-card-container,
 .mentor-card-container,
 .faculty-card-container {
@@ -319,7 +315,6 @@ body {
     background-color: #f5f7fa;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; 
 }
 
 .founder-description,
@@ -378,32 +373,44 @@ body {
     object-position: top;
 }
 
-.mentor-card-container {
-    flex-direction: row;
-}
-.faculty-card-container {
-    flex-direction: row-reverse;
+/* Default layout for larger screens */
+@media (min-width: 769px) {
+    .mentor-card-container {
+        flex-direction: row;
+    }
+    .faculty-card-container {
+        flex-direction: row-reverse;
+    }
 }
 
+/* FIX: This new media query handles the stacking for minimized laptop screens and tablets */
 @media (max-width: 768px) {
     .founder-card-container,
     .mentor-card-container,
     .faculty-card-container {
-        flex-direction: column;
+        flex-direction: column; /* This forces the elements to stack vertically */
         text-align: center;
         padding: 1rem;
+        flex-wrap: nowrap; /* Prevents wrapping within the container once it's stacked */
+    }
+
+    /* Reverse the order of content within the Faculty section on smaller screens */
+    .faculty-card-container {
+        flex-direction: column-reverse;
     }
 
     .founder-description,
     .mentor-description,
     .faculty-description {
         text-align: center;
+        min-width: auto; /* Allows the description to shrink fully */
     }
 
     .founder-image-card,
     .mentor-image-card,
     .faculty-image-card {
         padding: 16px;
+        min-width: auto; /* Allows the card to shrink */
     }
 
     .founder-image-container,
@@ -414,7 +421,7 @@ body {
     }
 }
 
-
+/* Sidebar and Main Content Responsive Styles */
 .sidebar-toggle {
     display: none;
     position: fixed;
@@ -478,7 +485,7 @@ body {
     display: flex;
     justify-content: space-around;
     /* CHANGE: margin-top: auto pushes the element to the bottom of its flex container */
-    margin-top: auto; 
+    margin-top: auto;
     padding-bottom: 24px; /* Add some space from the bottom edge */
 }
 
