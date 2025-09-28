@@ -40,14 +40,10 @@ const faqs = [
 
 function FAQ() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openIndex, setOpenIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
   const closeSidebar = () => setSidebarOpen(false);
-
-  const toggleFAQ = (idx) => {
-    setOpenIndex(openIndex === idx ? null : idx);
-  };
 
   const getReferenceLabel = (ref) => {
     if (ref && typeof ref === "string" && ref.endsWith(".pdf")) {
@@ -72,32 +68,35 @@ function FAQ() {
             </h2>
             <div className="faq-list">
               {faqs.map((faq, idx) => (
-                <div className="faq-item" key={idx}>
-                  <button className="faq-question" onClick={() => toggleFAQ(idx)}>
+                <div
+                  className="faq-item"
+                  key={idx}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <button className="faq-question" type="button">
                     {faq.question}
-                    <span className="faq-arrow">{openIndex === idx ? "−" : "+"}</span>
+                    <span className="faq-arrow">{hoveredIndex === idx ? "−" : "+"}</span>
                   </button>
-                  {openIndex === idx && (
-                    <div className="faq-answer">
-                      {faq.answer}
-                      {faq.reference && (
-                        <p className="faq-reference">
-                          Reference:{" "}
-                          <a href={faq.reference} target="_blank" rel="noopener noreferrer">
-                            <b>{getReferenceLabel(faq.reference)}</b>
-                          </a>
-                        </p>
-                      )}
-                      {faq.repo && (
-                        <p className="faq-reference">
-                          <RepoIcon />
-                          <a href={faq.repo} target="_blank" rel="noopener noreferrer">
-                            Repository
-                          </a>
-                        </p>
-                      )}
-                    </div>
-                  )}
+                  <div className={`faq-answer ${hoveredIndex === idx ? "open" : ""}`}>
+                    {faq.answer}
+                    {faq.reference && (
+                      <p className="faq-reference">
+                        Reference:{" "}
+                        <a href={faq.reference} target="_blank" rel="noopener noreferrer">
+                          <b>{getReferenceLabel(faq.reference)}</b>
+                        </a>
+                      </p>
+                    )}
+                    {faq.repo && (
+                      <p className="faq-reference">
+                        <RepoIcon />
+                        <a href={faq.repo} target="_blank" rel="noopener noreferrer">
+                          Repository
+                        </a>
+                      </p>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

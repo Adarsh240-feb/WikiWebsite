@@ -299,3 +299,17 @@ body {
     padding: 32px;
   }
 }
+
+/* --- App-level description justification overrides (CSS-only) --- */
+.member-description { text-align: justify; }
+.founder-description,
+.mentor-description,
+.faculty-description { text-align: justify; }
+.modal-details p { text-align: justify; }
+.card-description { text-align: justify; }
+.applyDescription { text-align: justify; }
+.structure-point p { text-align: justify; }
+
+/* Larger social icons in volunteer modal */
+.Tmodal-social-links a { font-size: 2.2rem; }
+.Tmodal-social-links a:hover { transform: scale(1.05); }

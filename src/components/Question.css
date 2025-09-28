@@ -110,11 +110,22 @@ body {
 
 .faq-answer {
     margin-top: 8px;
-    color: #555; /* Slightly darker body text */
+    color: #555;
     font-size: 1rem;
-    line-height: 1.6; /* Better readability */
+    line-height: 1.6;
     padding-left: 8px;
-    animation: fadeIn 0.4s ease-out; /* Slower, smoother animation */
+    text-align: justify;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.faq-answer.open {
+    max-height: 500px; /* large enough to fit typical answers */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .faq-reference {

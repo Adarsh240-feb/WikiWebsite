@@ -144,17 +144,17 @@ body {
 
 /* Style for top ranks with trophy highlights */
 .leaderboard-table tbody tr:nth-child(1) {
-  background-color: #ffda79;
+  background-color: #fff4cc; /* softer gold */
   font-weight: 700;
   color: var(--wiki-dark-gray);
 }
 
 .leaderboard-table tbody tr:nth-child(2) {
-  background-color: #c7d1e0;
+  background-color: #eef2f7; /* softer silver */
 }
 
 .leaderboard-table tbody tr:nth-child(3) {
-  background-color: #f2ceb8;
+  background-color: #f7e7de; /* softer bronze */
 }
 
 /* Make emojis and rank centered */
