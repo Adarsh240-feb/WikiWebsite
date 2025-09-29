@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -9,12 +10,13 @@
   position: relative;
   height: auto;
   z-index: 20;
-  justify-content: flex-start; /* keep items in natural flow */
+  justify-content: flex-start;
+  /* keep items in natural flow */
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  
+
 }
 
 @media (min-width: 1024px) {
@@ -57,7 +59,8 @@ body {
   flex-direction: column;
   gap: 16px;
   margin-top: 20px;
-  margin-bottom: 0; /* keep separator tight below links */
+  margin-bottom: 0;
+  /* keep separator tight below links */
 }
 
 .nav-item {
@@ -84,31 +87,33 @@ body {
 }
 
 .external-link {
-  color: #046599 !important;
-  font-weight: 600;
+  color: #4b5563 !important;
+  font-weight: 500;
   position: relative;
 }
 
-.external-link:hover {
+/* .external-link:hover {
   color: #991b1e !important;
 }
 
 .external-link:after {
   background: linear-gradient(90deg, #991b1e, #319967, #046599) !important;
-}
+} */
 
 .sidebar-separator {
   width: 100%;
   height: 1px;
   background-color: #e5e7eb;
-  margin: 12px 0 0 0; /* immediately under FAQ */
+  margin: 12px 0 0 0;
+  /* immediately under FAQ */
 }
 
 .sidebar-social-media-icons {
   padding: 0 15px;
   display: flex;
   justify-content: space-around;
-  margin-top: 10px; /* flush under separator */
+  margin-top: 10px;
+  /* flush under separator */
   padding-bottom: 16px;
 }
 
@@ -152,6 +157,7 @@ body {
   .sidebar-toggle {
     display: block;
   }
+
   .sidebar {
     display: none;
     position: fixed;
@@ -160,11 +166,12 @@ body {
     width: 220px;
     height: 100vh;
     background: #fff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
     z-index: 99;
     transition: transform 0.3s;
     transform: translateX(-100%);
   }
+
   .sidebar.open {
     display: flex;
     flex-direction: column;
