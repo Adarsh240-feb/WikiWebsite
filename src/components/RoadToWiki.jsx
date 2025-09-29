@@ -13,25 +13,25 @@ import { Link } from "react-router-dom";
 const cardData = [
   {
     id: 1,
-    title: "Create Real-World Change",
+    title: "Drive Real-World Impact",
     image: Card1,
     description:
-      "Lead events, build community, and coordinate teams. You'll gain hands-on experience by empowering your peers and making a real impact on the local tech community's growth.",
+      "Develop leadership skills through event management, community building, and team coordination. Gain practical experience by empowering fellow students and creating measurable impact within the technology community ecosystem.",
     titleColorClass: "card-title-one",
   },
   {
     id: 2,
-    title: "Boost Your Tech Skills",
+    title: "Master Technical Excellence",
     image: Card2,
-    description:"Master core technologies and key open-source development practices. Become a technical expert on your campus and build a strong portfolio that showcases your abilities.",
+    description:"Acquire proficiency in cutting-edge technologies and industry-standard open-source development methodologies. Establish yourself as a technical authority within your academic community while building a comprehensive portfolio that demonstrates your professional capabilities.",
     titleColorClass: "card-title-two",
   },
   {
     id: 3,
-    title: "Connect & Grow Professionally",
+    title: "Build Professional Networks",
     image: Card3,
     description:
-      "Expand your professional circle by networking with student leaders, mentors, and industry experts. Get formal recognition for your leadership and contributions within the tech community.",
+      "Expand your professional network through strategic connections with student leaders, industry mentors, and technology experts. Earn formal recognition for your leadership contributions and establish valuable relationships within the global tech community.",
     titleColorClass: "card-title-three",
   },
 ];
@@ -66,36 +66,24 @@ function RoadToWiki() {
         <div className="mainContentContainer">
           <div className="topContentWrapper">
             <div className="textWrapper">
-              <h1 className="programHeading">Road to Wiki Program -Cohort 1</h1>
+              <h1 className="programHeading">Road to Wiki Program - Cohort 1</h1>
               <ul className="programPoints">
                 <li>
-                  <b>Program Overview:</b> A 2-3 month, cohort-based program
-                  created by WikiClub Tech [IN] and the Wikimedia Foundation to
-                  teach students open-source contribution skills.
+                  <b>Program Overview:</b> A comprehensive 2-3 month cohort-based educational program developed through collaboration between WikiClub Tech [IN] and the Wikimedia Foundation, designed to provide students with professional open-source contribution skills and industry-relevant experience.
                 </li>
                 <li>
-                  <b>Selection Process:</b> A rigorous two-stage selection process
-                  resulted in 48 students being chosen from over 260 applicants
-                  across more than seven colleges.
+                  <b>Selection Process:</b> Our rigorous two-stage selection process evaluated over 260 applicants from seven+ institutions, resulting in the selection of 48 highly qualified students who demonstrated exceptional potential and commitment to open-source development.
                 </li>
                 <li>
-                  <b>Timeline:</b> The program started on September 27, 2024, with
-                  a virtual onboarding and a "Developer Playbook" guide.
+                  <b>Program Timeline:</b> The program commenced on September 27, 2024, featuring a comprehensive virtual onboarding experience and access to our detailed "Developer Playbook" resource guide for continuous learning support.
                 </li>
                 <li>
-                  <b>Curriculum:</b> The program included hands-on projects, such
-                  as a MediaWiki installation, and expert-led masterclasses.
+                  <b>Curriculum Design:</b> The program integrates practical, hands-on projects including MediaWiki installation and configuration, complemented by expert-led masterclasses delivered by industry professionals and Wikimedia Foundation contributors.
                 </li>
                 <li>
-                  <b>Culmination Event:</b> A two-day graduation event took place
-                  from February 27-28 in Gurgaon, sponsored by the Wikimedia
-                  Foundation and WikiClub Tech-UIT.
+                  <b>Graduation Ceremony:</b> A prestigious two-day graduation event was held from February 27-28 in Gurgaon, sponsored by the Wikimedia Foundation and WikiClub Tech-UIT, celebrating the achievements and contributions of our cohort participants.
                 </li>
-                <li>
-                  <b>Major Highlight:</b> Participants visited the Meta office in
-                  Gurugram, where they presented their projects and witnessed a
-                  patch being officially merged into Phabricator.
-                </li>
+
               </ul>
             </div>
             <div className="imageWrapper">
@@ -124,9 +112,9 @@ function RoadToWiki() {
           
           <div className="applySection">
             <div className="applyTextWrapper">
-              <h2 className="applyHeading">Road to Wiki Program - Cohort 2 </h2>
+              <h2 className="applyHeading">Road to Wiki Program - Cohort 2</h2>
               <p className="applyDescription">
-                Road to Wiki Tech is a unique cohort-based learning opportunity that combines learning, hands-on experience, and mentorship to provide students with a comprehensive approach to technology and open-source contributions. This program is designed to empower students with the skills to contribute effectively to the Wikimedia Foundation.
+                Road to Wiki Tech represents an innovative cohort-based educational initiative that integrates structured learning, practical experience, and professional mentorship to deliver a comprehensive approach to technology and open-source development. This program is specifically designed to equip students with the essential skills and knowledge required to make meaningful contributions to the Wikimedia Foundation and broader open-source ecosystem.
               </p>
             </div>
             <div className="applyFormWrapper">
@@ -150,19 +138,19 @@ function RoadToWiki() {
             <h2>What's New in Cohort 2?</h2>
             <ul>
               <li>
-                <b>More Students, More Impact:</b> This time, the program will onboard a larger number of passionate learners.
+                <b>Expanded Cohort Size:</b> Cohort 2 will accommodate a significantly larger number of dedicated learners, enabling broader impact and enhanced peer learning opportunities.
               </li>
               <li>
-                <b>Higher Quality Work:</b> With advanced projects and structured guidance, the contributions will be more impactful and meaningful.
+                <b>Enhanced Project Quality:</b> With advanced project frameworks and structured mentorship, participants will deliver more sophisticated and impactful contributions to the open-source ecosystem.
               </li>
               <li>
-                <b>Bigger Rewards:</b> As the projects scale up, the rewards and recognition for participants will also be greater.
+                <b>Increased Recognition:</b> As project complexity and scope expand, participants will receive enhanced rewards and professional recognition for their contributions and achievements.
               </li>
               <li>
-                <b>Advance Cohort Opportunity:</b> Top performers from Cohort 2 will unlock the Advance Cohort, where they can earn a **₹20,000 stipend**.
+                <b>Advanced Cohort Pathway:</b> Exceptional performers from Cohort 2 will gain access to our exclusive Advanced Cohort program, featuring a **₹20,000 stipend** and intensive mentorship opportunities.
               </li>
               <li>
-                <b>Refined Selection Process:</b> The application process is now more streamlined to identify genuinely committed students, ensuring personalized guidance for all selected participants.
+                <b>Optimized Selection Process:</b> Our refined application and evaluation process ensures the identification of highly committed students, guaranteeing personalized guidance and support for all selected participants.
               </li>
             </ul>
           </div>
@@ -170,66 +158,66 @@ function RoadToWiki() {
           <div className="program-structure-section">
             <h2>Program Structure</h2>
             <div className="structure-point">
-              <h3>1. Learning Sessions</h3>
+              <h3>1. Comprehensive Learning Sessions</h3>
               <p>
-                Students will kickstart their journey with a series of learning sessions covering essential topics:
+                Participants will begin their journey with structured learning sessions covering fundamental and advanced topics essential for open-source development:
               </p>
               <ul>
                 <li>
-                  <b>Software Development:</b> Gain a solid foundation in coding and software engineering principles.
+                  <b>Software Development:</b> Master core programming principles, software engineering methodologies, and industry-standard development practices.
                 </li>
                 <li>
-                  <b>Data Science:</b> Learn how to analyze and interpret complex data sets.
+                  <b>Data Science & Analytics:</b> Develop expertise in data analysis, interpretation, and visualization techniques for large-scale datasets.
                 </li>
                 <li>
-                  <b>Project Management:</b> Understand the best practices for managing and delivering successful projects.
+                  <b>Project Management:</b> Acquire essential project management skills, including agile methodologies, version control, and collaborative development workflows.
                 </li>
               </ul>
             </div>
             
             <div className="structure-point">
-              <h3>2. Hands-on Projects</h3>
+              <h3>2. Practical Project Implementation</h3>
               <p>
-                Following the learning sessions, students will participate in hands-on projects where they can apply their newly acquired skills to real-world challenges. These projects will be focused on contributing to Wikimedia projects, allowing students to make a tangible impact.
+                Following the foundational learning phase, participants will engage in comprehensive hands-on projects that apply their acquired skills to real-world challenges. These projects are specifically designed to contribute to Wikimedia Foundation initiatives, enabling students to make measurable impact while building their professional portfolios.
               </p>
             </div>
             
             <div className="structure-point">
-              <h3>3. Mentorship</h3>
+              <h3>3. Professional Mentorship Program</h3>
               <p>
-                Throughout the program, students will be guided by industry professionals who are experts in their fields. Our mentors will:
+                Throughout the program duration, participants will receive guidance from industry professionals and Wikimedia Foundation experts. Our mentorship program provides:
               </p>
               <ul>
                 <li>
-                  Provide personalized guidance and feedback.
+                  Personalized guidance and constructive feedback on technical contributions.
                 </li>
                 <li>
-                  Support their growth and skill development.
+                  Professional development support and career advancement strategies.
                 </li>
                 <li>
-                  Help them navigate challenges and make meaningful contributions.
+                  Expert assistance in navigating complex challenges and maximizing contribution impact.
                 </li>
               </ul>
             </div>
           </div>
           <div className="program-structure-section">
-            <h2>Rewards & more...</h2>
+            <h2>Recognition & Rewards</h2>
             <div className="structure-point">
               <p>
-                We believe in recognizing and rewarding our participants' efforts. Here's what students can earn through their contributions:
+                We are committed to recognizing and rewarding exceptional contributions from our participants. Here's what students can achieve through their dedication and impact:
               </p>
               <ul>
                 <li>
-                  <b>Certificates:</b>  Earn a formal certificate that validates your contributions and achievements.
+                  <b>Professional Certificates:</b> Earn industry-recognized certificates that validate your technical contributions and professional achievements in open-source development.
                 </li>
                 <li>
-                  <b>Stipends:</b>We offer stipends to our most dedicated and impactful contributors.
+                  <b>Performance-Based Stipends:</b> Our most dedicated and impactful contributors receive financial recognition through competitive stipend programs.
                 </li>
                 <li>
-                  <b>Learning & Growth:</b>  Get practical, real-world experience by contributing to live open-source projects.
+                  <b>Professional Development:</b> Gain invaluable real-world experience by contributing to live, production-level open-source projects that enhance your professional portfolio.
                 </li>
                 <li>
-                  <b>Travel Support:</b>Our top contributors will receive full travel support to attend our next conference, hackathon, and other exclusive events.
+                  <b>Conference & Event Support:</b> Top contributors receive comprehensive travel and accommodation support to attend prestigious conferences, hackathons, and exclusive industry events.
                 </li>
               </ul>
             </div>

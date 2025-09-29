@@ -51,6 +51,7 @@ body {
   object-fit: contain;
 }
 
+
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -80,6 +81,20 @@ body {
 
 .nav-item:hover:after {
   width: 100%;
+}
+
+.external-link {
+  color: #046599 !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.external-link:hover {
+  color: #991b1e !important;
+}
+
+.external-link:after {
+  background: linear-gradient(90deg, #991b1e, #319967, #046599) !important;
 }
 
 .sidebar-separator {

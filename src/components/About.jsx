@@ -25,22 +25,22 @@ function About() {
         <main className="main-content">
           <section className="about-section">
             <div className="section-header">
-              <h2 className="heading">What We Are ? </h2>
+              <h2 className="heading">Who We Are</h2>
             </div>
             <div className="content-with-image">
               <div className="text-content">
                 <ul className="program-details-list">
                   <li>
-                    <strong>Innovation Hub:</strong> We are a student-led tech community at UIT, a space dedicated to fostering open knowledge and collaboration.
+                    <strong>Innovation Hub:</strong> We are a premier student-led technology community at United Institute of Technology, creating a dedicated space for fostering open knowledge, collaborative development, and technological innovation.
                   </li>
                   <li>
-                    <strong>Practical Learning:</strong> We believe in learning by doing. Our focus is on practical application, collaborative projects, and a supportive, hands-on environment.
+                    <strong>Practical Learning:</strong> Our educational philosophy centers on experiential learning through hands-on projects, real-world applications, and collaborative development environments that prepare students for industry challenges.
                   </li>
                   <li>
-                    <strong>Mentorship & Networking:</strong> We provide a platform for you to find mentors, build your professional portfolio, and forge lasting connections with fellow tech enthusiasts.
+                    <strong>Mentorship & Professional Development:</strong> We provide comprehensive mentorship opportunities, professional portfolio development, and networking platforms that connect students with industry experts and fellow technology professionals.
                   </li>
                   <li>
-                    <strong>Continuous Growth:</strong> We are a resource for every stage of your journey, offering the guidance and community you need to continuously grow, whether you are a beginner or an experienced developer.
+                    <strong>Continuous Growth:</strong> Our community supports every stage of your professional journey, offering structured guidance, resources, and collaborative opportunities for both emerging developers and experienced professionals.
                   </li>
                 </ul>
               </div>
@@ -52,7 +52,7 @@ function About() {
           <hr className="divider" />
           <section className="special-section">
             <div className="section-header">
-              <h2 className="heading">Why We Are Special ? </h2>
+              <h2 className="heading">Why We Are Special</h2>
             </div>
             <div className="content-with-image">
               <div className="image-content">
@@ -61,19 +61,19 @@ function About() {
               <div className="text-content">
                 <ul className="program-details-list">
                   <li>
-                    The only <b>WikiClubTech Hub</b> in Uttar Pradesh, leading and supporting all state WikiClubTech from UIT.
+                    The exclusive <b>WikiClub Tech Hub</b> in Uttar Pradesh, serving as the regional leader and coordinator for all WikiClub Tech initiatives across the state from our base at UIT.
                   </li>
                   <li>
-                    A community that goes beyond classrooms, combining technology, open knowledge, and real-world projects.
+                    A comprehensive learning ecosystem that transcends traditional classroom boundaries, integrating cutting-edge technology, open knowledge principles, and industry-relevant project experiences.
                   </li>
                   <li>
-                    Helps you build future-ready skills like leadership, collaboration, and open-source contribution.
+                    We develop essential future-ready competencies including technical leadership, collaborative problem-solving, and professional open-source contribution methodologies.
                   </li>
                   <li>
-                    A place where students transform into contributors, innovators, and changemakers with lasting impact.
+                    Our community serves as a transformative platform where students evolve into skilled contributors, innovative thinkers, and impactful change-makers in the technology sector.
                   </li>
                   <li>
-                    Offers global exposure through Wikimedia and open-source, adding strong value to your career journey.
+                    We provide unparalleled global exposure through direct collaboration with Wikimedia Foundation and international open-source communities, significantly enhancing professional development and career advancement opportunities.
                   </li>
                 </ul>
               </div>

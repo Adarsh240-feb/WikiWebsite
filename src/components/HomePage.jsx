@@ -63,11 +63,13 @@ function HomePage() {
 
           <section className="about-section">
             <div className="section-title">
-              WikiClub Tech : Where Open Source Meets Open Knowledge
+              WikiClub Tech: Where Open Source Meets Open Knowledge
             </div>
             <div className="section-content">
-              WikiClub Tech is a vibrant, student-led community and dedicated to open knowledge, open-source, and collaborative technologies.
-              Through engaging workshops, Wikimedia sessions, and hands-on learning, we empower students to innovate, build skills, and contribute to the global open knowledge movement.
+              WikiClub Tech is a dynamic, student-led community dedicated to advancing open knowledge, open-source development, and collaborative technologies. 
+              Through comprehensive workshops, hands-on Wikimedia sessions, and practical learning experiences, we empower students to innovate, develop essential skills, 
+              and make meaningful contributions to the global open knowledge ecosystem. Our mission is to bridge the gap between academic learning and real-world 
+              open-source contributions, fostering the next generation of technology leaders and knowledge creators.
             </div>
             <a
               href="https://wikimediafoundation.org/"

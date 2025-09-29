@@ -7,6 +7,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
+  { name: "WikiClub Tech [IN]", path: "https://www.wikiclubtech.org/", external: true },
   { name: "Contribution Board", path: "/ContributionMeter" },
   { name: "Team", path: "/Team" },
   { name: "FAQ", path: "/Question" }
@@ -40,14 +41,27 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
       </div>
       <nav className="nav-links">
         {navLinks.map((link, idx) => (
-          <Link
-            to={link.path}
-            className="nav-item"
-            key={idx}
-            onClick={closeSidebar}
-          >
-            {link.name}
-          </Link>
+          link.external ? (
+            <a
+              href={link.path}
+              className="nav-item external-link"
+              key={idx}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeSidebar}
+            >
+              {link.name}
+            </a>
+          ) : (
+            <Link
+              to={link.path}
+              className="nav-item"
+              key={idx}
+              onClick={closeSidebar}
+            >
+              {link.name}
+            </Link>
+          )
         ))}
       </nav>
       <div className="sidebar-separator" />

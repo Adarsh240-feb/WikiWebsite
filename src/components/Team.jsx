@@ -23,14 +23,14 @@ import WavyText from './WavyText';
 
 const facultyAdvisor = {
   name: "Dr. Amit Kumar Tiwari",
-  description: "Dr. Amit Kumar Tiwari is the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of academic experience and a Ph.D. in the field, he has been instrumental in shaping the department’s academic and research culture.",
+  description: "Dr. Amit Kumar Tiwari serves as the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of distinguished academic experience and a Ph.D. in Computer Science, he has been instrumental in establishing the department's research excellence and academic culture. His leadership has fostered innovation and technological advancement within the institution.",
   image: AmitSir,
   linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/",
 };
 
 const founder = {
   name: "Hridyesh Gupta",
-  description: "WikiClub Tech-UIT was founded by Hridyesh Gupta as part of his journey in the Wikimedia ecosystem, where he grew from contributor to community organizer. Establishing the club marked a step in creating a dedicated space for students to learn, collaborate, and contribute to open knowledge and open-source technologies. Under his leadership, the club today stands as the hub for the WikiClub Tech India community in the North India region.",
+  description: "WikiClub Tech-UIT was established by Hridyesh Gupta as a culmination of his transformative journey within the Wikimedia ecosystem, evolving from an active contributor to a recognized community organizer. The club's founding represents a strategic initiative to create a comprehensive learning environment where students can develop expertise, collaborate effectively, and make meaningful contributions to open knowledge and open-source technologies. Under his visionary leadership, the organization has emerged as the premier hub for the WikiClub Tech India community across the North India region.",
   image: Hridyesh,
   linkedin: "https://www.linkedin.com/in/hridyesh-gupta/",
   github: "http://github.com/hridyesh-gupta",
@@ -38,7 +38,7 @@ const founder = {
 
 const mentor = {
   name: "Sarthak Singh",
-  description: "I’m an App Development Expert specializing in Flutter and Dart. With over 4 years of active involvement in tech communities, I’ve participated in and won 20+ global hackathons. During my internship at MNNIT, I contributed to publishing research papers and took on leadership roles in 10+ tech communities. I’ve also delivered multiple sessions on Flutter and app development, sharing knowledge and empowering fellow developers. That’s a bit about me!",
+  description: "Sarthak Singh is a distinguished App Development Expert specializing in Flutter and Dart technologies. With over 4 years of active engagement in technology communities, he has achieved remarkable success in 20+ global hackathons. During his research internship at MNNIT, he contributed to multiple research publications and assumed leadership positions across 10+ technology communities. He has delivered numerous technical sessions on Flutter and mobile app development, sharing expertise and empowering the developer community through knowledge transfer and mentorship.",
   image: Sarthak,
   linkedin: "http://www.linkedin.com/in/sarthak-singh-/",
   github: "https://github.com/SarthakSingh2003/",
@@ -48,7 +48,7 @@ const teamMembers = [
   {
     name: "Reeti Singh",
     title: "Envoy",
-    description: "Guides members into Wikimedia and open source. Focuses on building a strong, project-based community.",
+    description: "Leads community engagement initiatives and guides members through their Wikimedia and open-source journey. Focuses on building a robust, project-driven community ecosystem that fosters collaboration and knowledge sharing.",
     image: Reeti,
     linkedin: "http://www.linkedin.com/in/reeti-singh-09748b291",
     github: "http://github.com/Reeti14",
@@ -56,7 +56,7 @@ const teamMembers = [
   {
     name: "Shivaansh Singh",
     title: "Co-Envoy",
-    description: "Pre-final year B.Tech student, Android developer, open source contributor, and active in tech communities.",
+    description: "Pre-final year B.Tech student specializing in Android development and open-source contributions. Actively engaged in technology communities, bringing technical expertise and leadership to community initiatives.",
     image: Shivaansh,
     linkedin: "http://www.linkedin.com/in/shivaansh-singh",
     github: "https://github.com/ShivaanshSingh",
@@ -64,7 +64,7 @@ const teamMembers = [
   {
     name: "Adarsh Kesharwani",
     title: "Core Team (Technical)",
-    description: "Web developer & passionate about open source. Skilled in React, NodeJS, MongoDB, and version control tools.",
+    description: "Full-stack web developer with a passion for open-source development. Proficient in React, Node.js, MongoDB, and modern version control systems, contributing to technical excellence and innovation within the community.",
     image: Adarsh,
     linkedin: "https://www.linkedin.com/in/adarsh-kesharwani-bba666315/",
     github: "https://github.com/Adarsh240-feb",
@@ -72,7 +72,7 @@ const teamMembers = [
   {
     name: "Manvi Kesarwani",
     title: "Core Team (Social Media)",
-    description: "Social Media Lead, curates content and builds online communities. Drives campaigns and digital presence.",
+    description: "Social Media Lead responsible for content curation and community building across digital platforms. Drives strategic campaigns and enhances the organization's digital presence and engagement.",
     image: Manvi,
     linkedin: "https://www.linkedin.com/in/manvi-kesarwani-44a8b4306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     github: "https://github.com/Manvi-9791",
@@ -80,7 +80,7 @@ const teamMembers = [
   {
     name: "Arpita Jain",
     title: "Core Team (Management)",
-    description: "Pre-final year B.Tech student, Management Lead. Organizes activities and fosters partnerships for club growth.",
+    description: "Pre-final year B.Tech student serving as Management Lead. Coordinates organizational activities, fosters strategic partnerships, and drives initiatives that support sustainable club growth and development.",
     image: Arpita,
     linkedin: "https://www.linkedin.com/in/arpita-jain-5a3a28306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=andr",
     github: "https://github.com/Arpitajain2327",
@@ -88,12 +88,12 @@ const teamMembers = [
 ];
 
 const volunteers = [
-  { name: "Atharva Gupta", affiliation: "Content Creation", image: Atharva, linkedin: "https://www.linkedin.com/in/atharva-gupta-tech?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Atharva005pro" },
-  { name: "Somya Yadav", affiliation: "Social Media ", image: Somya, linkedin: "https://www.linkedin.com/in/somya-yadav-0b2948360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/somsomya" },
-  { name: "Shiksha", affiliation: "Designing", image: Shiksha, linkedin: "https://in.linkedin.com/in/shiksha-10504b358", github: "https://github.com/shiksha-28" },
-  { name: "Neelima Srivastava", affiliation: "Event Coordinator", image: Neelima, linkedin: "https://www.linkedin.com/in/neelima-srivastav-b71636370", github: "https://github.com/th-neelimaa" },
-  { name: "Suhani Shukla", affiliation: "Event Coordinator", image: Suhani, linkedin: "http://www.linkedin.com/in/suhani-shukla-945193285", github: "https://github.com/SUHANI005" },
-  { name: "Priyanshika Upadhyay", affiliation: "Event Coordinator", image: Priyanshika, linkedin: "https://www.linkedin.com/in/priyanshika-upadhyay-a87a26332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Priyanshika1111" },
+  { name: "Atharva Gupta", affiliation: "Content Strategy & Creation", image: Atharva, linkedin: "https://www.linkedin.com/in/atharva-gupta-tech?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Atharva005pro" },
+  { name: "Somya Yadav", affiliation: "Social Media Management", image: Somya, linkedin: "https://www.linkedin.com/in/somya-yadav-0b2948360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/somsomya" },
+  { name: "Shiksha", affiliation: "Visual Design & Branding", image: Shiksha, linkedin: "https://in.linkedin.com/in/shiksha-10504b358", github: "https://github.com/shiksha-28" },
+  { name: "Neelima Srivastava", affiliation: "Event Coordination & Management", image: Neelima, linkedin: "https://www.linkedin.com/in/neelima-srivastav-b71636370", github: "https://github.com/th-neelimaa" },
+  { name: "Suhani Shukla", affiliation: "Event Coordination & Management", image: Suhani, linkedin: "http://www.linkedin.com/in/suhani-shukla-945193285", github: "https://github.com/SUHANI005" },
+  { name: "Priyanshika Upadhyay", affiliation: "Event Coordination & Management", image: Priyanshika, linkedin: "https://www.linkedin.com/in/priyanshika-upadhyay-a87a26332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Priyanshika1111" },
 ];
 
 const navLinks = [];
@@ -129,7 +129,7 @@ function Team() {
             <span className="color-3">Team</span>
           </h1>
           <p>
-            We are a group of passionate volunteers dedicated to building and empowering the wiki and open knowledge community in Prayagraj.
+            We are a dedicated team of passionate professionals and volunteers committed to advancing the Wikimedia and open knowledge ecosystem in Prayagraj and beyond. Our diverse team brings together expertise in technology, education, and community development to create meaningful impact in the open-source world.
           </p>
           <div className="separator-line"></div>
 

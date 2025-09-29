@@ -110,7 +110,7 @@ const ContributionMeter = () => {
         />
         <main className="main-content">
           <div className="contribution-meter-container">
-            <h2>🎗️Leaderboard🎗️</h2>
+            <h2>🏆 Contribution Leaderboard</h2>
             {leaderboardData.length > 0 ? (
               <table className="leaderboard-table">
                 <thead>
@@ -135,7 +135,7 @@ const ContributionMeter = () => {
                 </tbody>
               </table>
             ) : (
-              <p>No contributions yet. Be the first to add one!</p>
+              <p>No contributions recorded yet. Be the first to make an impact!</p>
             )}
           </div>
           
@@ -158,7 +158,7 @@ const ContributionMeter = () => {
                 ))}
               </ul>
             ) : (
-              <p>No individual contributions to display.</p>
+              <p>No recent contributions to display at this time.</p>
             )}
           </div>
         </main>

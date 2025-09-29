@@ -8,33 +8,43 @@ import { Link } from "react-router-dom";
 
 const faqs = [
   {
-    question: "What are the basics of Wiki?",
+    question: "What are the fundamental concepts of Wikimedia development?",
     answer:
-      "Essential training resources for developers include the Wikimedia Developer Ecosystem, MediaWiki Databases, and APIs. These resources are considered very important for understanding the basics of Wiki. You can learn more about these topics through the provided training resources.",
+      "Wikimedia development encompasses several core areas: the Wikimedia Developer Ecosystem, MediaWiki database architecture, REST and Action APIs, and contribution workflows. These foundational concepts are essential for understanding how to effectively contribute to Wikimedia projects. Our comprehensive training resources cover all these areas in detail.",
     reference: "https://youtu.be/OaEObj1gYzE?si=DqqnMqAxNi3DmxcE",
   },
   {
     question: "How do I create a Wikimedia developer account?",
     answer:
-      "To create a Wikimedia developer account, you need to visit the dedicated account creation page. This process also involves setting up accounts on Phabricator for project management and Gerrit for code review.",
-    reference: WikiDeveloperBook,
-  },
-    {
-    question: "How do I make an account on Gerrit?",
-    answer:
-      "To create a Gerrit account, you must first have a Wikimedia developer account. After that, navigate to the Gerrit settings page to begin the registration process. You will also need to add your SSH key to authenticate and interact with repositories.",
+      "To establish your presence in the Wikimedia development community, visit the official Wikimedia developer account creation page. This process includes setting up accounts on Phabricator for project management and task tracking, as well as Gerrit for code review and version control. These accounts work together to provide a complete development workflow.",
     reference: WikiDeveloperBook,
   },
   {
-    question: "How do I push changes on Gerrit?",
+    question: "How do I set up a Gerrit account for code contributions?",
     answer:
-      "To push changes on Gerrit, first, ensure your local repository is up-to-date. Then, use the `git add` command to stage your changes and `git commit -m 'Your message'` to commit them. Finally, push your changes for review using `git push origin HEAD:refs/for/master`.",
+      "After creating your Wikimedia developer account, navigate to the Gerrit settings page to complete your Gerrit registration. You'll need to configure your SSH key for secure authentication and repository access. This setup is crucial for contributing code to Wikimedia projects and participating in the code review process.",
     reference: WikiDeveloperBook,
   },
   {
-    question: "How do I test my SSH key?",
+    question: "What is the proper workflow for submitting code changes to Gerrit?",
     answer:
-      "You can test your SSH key to ensure it is properly configured and can connect to Gerrit by running the command `ssh -p 29418 your_gerrit_username@gerrit.wikimedia.org` in your terminal or Git Bash. A successful connection message indicates a proper setup.",
+      "The standard workflow involves: 1) Ensuring your local repository is synchronized with the latest changes, 2) Staging your modifications using `git add`, 3) Committing changes with a descriptive message using `git commit -m 'Your message'`, and 4) Pushing changes for review using `git push origin HEAD:refs/for/master`. This process ensures proper code review and integration.",
+    reference: WikiDeveloperBook,
+  },
+  {
+    question: "How do I verify my SSH key configuration for Gerrit?",
+    answer:
+      "Test your SSH key configuration by executing `ssh -p 29418 your_gerrit_username@gerrit.wikimedia.org` in your terminal or Git Bash. A successful connection response confirms that your SSH key is properly configured and you can interact with Gerrit repositories. This verification step is essential before attempting to push code changes.",
+  },
+  {
+    question: "What programming languages and technologies are used in Wikimedia development?",
+    answer:
+      "Wikimedia projects primarily use PHP for MediaWiki core, JavaScript for frontend interactions, Python for various tools and utilities, and SQL for database operations. Familiarity with these technologies, along with Git version control and the Wikimedia development workflow, will help you contribute effectively to the ecosystem.",
+  },
+  {
+    question: "How can I get started with my first Wikimedia contribution?",
+    answer:
+      "Begin by exploring the 'Good First Issues' on Phabricator, which are specifically designed for newcomers. Start with documentation improvements, bug fixes, or small feature additions. Join our community discussions, attend our workshops, and don't hesitate to ask questions. We provide mentorship and guidance throughout your contribution journey.",
   },
 ];
 
