@@ -200,3 +200,118 @@ body {
     }
 }
 
+.query-container {
+    /* Container inherits some styling from faq-container structure but is a bit smaller */
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* Matches lighter border color */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* A distinct, clean shadow */
+}
+
+.query-container h2 {
+    font-size: 1.5rem; /* Slightly smaller than main title for hierarchy */
+    font-weight: 700;
+    color: #2c3e50; /* Matches faq-title color */
+    margin-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0; /* Subtle separator */
+    padding-bottom: 10px;
+}
+
+.query-container p {
+    color: #555; /* Matches faq-answer color */
+    margin-bottom: 20px;
+}
+
+/* --- Form Layout & Input Styles --- */
+
+.query-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Good vertical spacing */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.query-label {
+    font-size: 0.9rem;
+    font-weight: 600; /* Matches faq-question font-weight */
+    color: #34495e;
+    margin-bottom: 6px;
+}
+
+.query-input {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.query-input:focus {
+    border-color: #4a69bd; /* Matches faq-question hover color */
+    box-shadow: 0 0 0 3px rgba(74, 105, 189, 0.3); /* Custom focus ring */
+    outline: none;
+}
+
+.query-input[disabled] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.query-textarea {
+    resize: vertical;
+}
+
+/* --- Button Styles --- */
+
+.query-submit-btn {
+    padding: 12px 25px;
+    background-color: #319967; /* Green color from faq-word-2 */
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    margin-top: 10px;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.query-submit-btn:hover:not(:disabled) {
+    background-color: #2a8055; /* Darker green on hover */
+    box-shadow: 0 4px 8px rgba(49, 153, 103, 0.4);
+}
+
+.query-submit-btn:disabled {
+    background-color: #aeb4ae; /* Muted gray/green for disabled state */
+    cursor: not-allowed;
+}
+
+/* --- Message Styles --- */
+
+.query-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    line-height: 1.4;
+    border-left: 6px solid; /* Thick left border for visibility */
+}
+
+.query-message.success {
+    background-color: #e6f7ef; /* Very light green */
+    color: #319967; /* Text matches button color */
+    border-left-color: #319967;
+}
+
+.query-message.error {
+    background-color: #fcebeb; /* Very light red/pink */
+    color: #991b1e; /* Text matches faq-word-1 color */
+    border-left-color: #991b1e;
+}
