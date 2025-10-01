@@ -6,7 +6,7 @@ import './HomePage.css';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import WikiL from '../Images/WikiL.png';
-import WikiS from '../Images/WikiS.png';
+import WikiS from '../Images/WikiS.jpg';
 
 // Navigation links for the sidebar
 const navLinks = [
@@ -151,8 +151,8 @@ const ContributionMeter = () => {
                     </span>
                     <span className="list-item-details">
                       fixed task: 
-                      <a href={`https://phabricator.wikimedia.org/T${contrib.taskId}`} target="_blank" rel="noopener noreferrer">
-                        T{contrib.taskId}
+                      <a href={`https://phabricator.wikimedia.org/${contrib.taskId}`} target="_blank" rel="noopener noreferrer">
+                        {contrib.taskId}
                       </a>
                     </span>
                   </li>

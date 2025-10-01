@@ -3,7 +3,7 @@ import "./HomePage.css";
 import "./Question.css";
 import Sidebar from "./Sidebar";
 import WikiDeveloperBook from "./../data/WikiDeveloperBook.pdf";
-import WikiS from "../Images/WikiS.png";
+import WikiS from "../Images/WikiS.jpg";
 import { Link } from "react-router-dom";
 import QueryForm from "./QueryForm";
 

@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
     // 3. Success Response: Send a 201 Created status back to the frontend
     res.status(201).json({ 
         // This message will be displayed as the green success message on the frontend
-        message: '✅ Your query has been submitted successfully! We will get back to you soon.', 
+        message: '✅ Your query has been submitted successfully! We will get back to you through E-mail.', 
         data: newQuery 
     });
   } catch (err) {

@@ -7,7 +7,7 @@ import Card3 from "../Images/Card3.png";
 import Card2 from "../Images/Card2.jpg";
 import Card1 from "../Images/Card1.png";
 import Sidebar from "./Sidebar";
-import WikiL from "../Images/WikiL.png";
+import WikiS from "../Images/WikiS.jpg";
 import { Link } from "react-router-dom";
 
 const cardData = [
@@ -228,7 +228,7 @@ function RoadToWiki() {
       <footer className="footer-wiki">
         <div className="footer-left">
           <img
-            src={WikiL}
+            src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
           />

@@ -5,7 +5,7 @@ import "./HomePage.css";
 import WikiD from "../Images/WikiD.jpg";
 import WikiH from "../Images/WikiH.jpg";
 import Sidebar from "./Sidebar";
-import WikiS from "../Images/WikiS.png";
+import WikiS from "../Images/WikiS.jpg";
 import { Link } from "react-router-dom";
 
 function About() {
