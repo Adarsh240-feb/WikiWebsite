@@ -7,6 +7,7 @@ import WikiL from "../Images/WikiL.png";
 import WikiS from "../Images/WikiS.jpg";
 import Sidebar from "./Sidebar"; 
 import WikiMainLogoM from "../Images/WikiMainLogoM.png"; 
+
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },

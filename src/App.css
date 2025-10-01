@@ -187,7 +187,8 @@ body {
 @media (min-width: 1024px) {
   .footer-wiki {
     margin-left: 250px;
-    padding: 2px 20px;
+    width: calc(100% - 250px);
+    padding: 10px 30px;
   }
 }
 
@@ -195,8 +196,8 @@ body {
   .footer-wiki {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
-    padding: 2px 20px;
+    gap: 15px;
+    padding: 15px 20px;
   }
 }
 
@@ -215,6 +216,15 @@ body {
   display: flex;
   gap: 30px;
   align-items: center;
+}
+
+/* Center footer links on mobile/tablet */
+@media (max-width: 1023px) {
+  .footer-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
 }
 
 @media (max-width: 768px) {

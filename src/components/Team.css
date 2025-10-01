@@ -26,6 +26,16 @@ body {
     }
 }
 
+/* Ensure content clears the fixed hamburger on mobile/tablet */
+@media (max-width: 1023px) {
+    .Team-content {
+        padding: 64px 16px 16px 16px;
+        margin-left: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
 .Team-content h1,
 .Team-content p {
     text-align: center;

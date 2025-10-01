@@ -30,6 +30,9 @@ body {
 @media (max-width: 1023px) {
     .main-content {
         margin-left: 0;
+        width: 100%;
+        padding: 64px 16px 16px 16px;
+        box-sizing: border-box;
     }
 }
 

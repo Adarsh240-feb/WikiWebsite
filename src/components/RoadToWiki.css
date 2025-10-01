@@ -468,6 +468,7 @@ body, html {
     }
     .mainContentContainer {
         margin-left: 0;
+        padding: 64px 16px 16px 16px;
     }
 }
 

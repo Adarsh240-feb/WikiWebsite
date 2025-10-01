@@ -159,6 +159,23 @@ ul.program-details-list li {
     object-fit: contain; /* show full image on narrow screens */
     display: block;
   }
+  /* Center text content and list on mobile/tablet */
+  .text-content {
+    text-align: center;
+  }
+  .text-content ul,
+  .program-details-list {
+    padding-left: 0;
+    margin-left: 0;
+    list-style-position: inside;
+    text-align: left; /* keep bullets readable while overall centered */
+  }
+  .section-header,
+  .content-with-image,
+  .special-content-with-image {
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {

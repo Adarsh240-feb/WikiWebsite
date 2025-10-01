@@ -1,16 +1,56 @@
 body,
 html {
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #f0f2f5;
+
+    height: 100%;
 }
 
+body {
+    background-color: white   !important;
+}
 .container {
     display: flex;
     background-color: white;
     min-height: 100vh;
+    flex-direction: column;
+    /* Default to column for mobile */
+}
+
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+        /* Desktop is row (sidebar + main) */
+    }
+}
+
+/* --- Sidebar (Mocked for layout context) --- */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 50;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        transform: translateX(0);
+        position: fixed;
+        /* Keep it fixed on desktop so main content flows beside it */
+    }
 }
 
 /* Main content area */
@@ -20,15 +60,50 @@ html {
     background-color: white;
     position: relative;
     margin-left: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Allows content and footer to stack vertically */
 }
 
-@media (min-width: 1024px) {
+/* Content wrapper to exclude footer */
+.content-wrapper {
+    flex-grow: 1;
+    /* Pushes the footer to the bottom */
+    padding: 16px;
+}
+
+
+@media (max-width: 1023px) {
     .main-content {
-        margin-left: 250px;
+        margin-left: 0;
+        width: 100%;
+        padding-top: 64px;
+    }
+
+    .content-wrapper {
+        padding: 16px;
     }
 }
 
-/* Hero section */
+/* --- FIX APPLIED: Ensuring correct desktop margin and width for main-content --- */
+@media (min-width: 1024px) {
+    .main-content {
+        margin-left: 250px;
+        /* Offset main content by sidebar width */
+        /* Change width to 100% and rely on margin/padding, or keep calc.
+                   Keeping calc(100% - 250px) is correct for a container next to a fixed sidebar.
+                   We will ensure the footer also uses this margin. */
+        width: calc(100% - 250px);
+        padding: 0;
+    }
+
+    .content-wrapper {
+        padding: 32px;
+    }
+}
+
+/* Hero section (unchanged) */
 .hero-section {
     position: relative;
     width: 100%;
@@ -78,7 +153,7 @@ html {
     padding: 40px;
 }
 
-/* Logo visibility */
+/* Logo visibility (unchanged) */
 .desktop-logo {
     display: block;
 }
@@ -87,7 +162,6 @@ html {
     display: none;
 }
 
-/* Corrected CSS for mobile view */
 @media (max-width: 1023px) {
     .desktop-logo {
         display: none;
@@ -138,7 +212,7 @@ html {
     margin-top: 8px;
 }
 
-/* About section */
+/* About section (unchanged) */
 .about-section {
     padding: 40px;
 }
@@ -183,10 +257,12 @@ html {
 
     .clickable-image-link img {
         width: 100%;
-        height: auto; /* Changed from 260px */
-        object-fit: contain; /* Changed from cover */
+        height: auto;
+        object-fit: contain;
     }
 }
+
+/* --- Footer Styles: MOBILE FIXES ARE HERE --- */
 
 .footer-wiki {
     display: flex;
@@ -196,21 +272,36 @@ html {
     color: #ffffff;
     padding: 2px 20px;
     margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    /* ensure padding doesn't reduce available width */
+    overflow: visible;
+    /* ensure children are visible if they wrap */
 }
 
+/* --- FIX APPLIED: Ensure footer respects the sidebar on desktop --- */
 @media (min-width: 1024px) {
     .footer-wiki {
+        /* Offset the footer by the sidebar width */
         margin-left: 250px;
-        padding: 2px 20px;
+        /* Set footer width to fill the remaining space */
+        width: calc(100% - 250px);
+        padding: 10px 30px;
     }
 }
 
+/* Mobile/Tablet Footer - Stacks everything vertically */
 @media (max-width: 1023px) {
     .footer-wiki {
         flex-direction: column;
+        /* Stacks logo/copyright and links area */
         text-align: center;
-        gap: 20px;
-        padding: 2px 20px;
+        gap: 15px;
+        padding: 15px 20px;
+        /* Increased vertical padding for better spacing */
+
     }
 }
 
@@ -220,84 +311,110 @@ html {
     gap: 8px;
 }
 
+/* Ensures logo and text stack on very small screens (e.g., iPhone SE) */
+@media (max-width: 480px) {
+    .footer-left {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+
 .wiki-logo {
     display: flex;
     flex-direction: column;
-
 }
 
 .footer-right {
     display: flex;
     gap: 30px;
     align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    /* push this group to the right on desktop */
+    flex-wrap: wrap;
+    /* allow items to wrap instead of overflowing */
+    justify-content: flex-end;
 }
 
-@media (max-width: 768px) {
+/* Center footer links on mobile/tablet */
+@media (max-width: 1023px) {
     .footer-right {
-        flex-direction: column;
-        gap: 10px;
+        margin-left: 0;
+        justify-content: center;
+        row-gap: 10px;
     }
 }
 
-/* Footer links */
+/* Links: avoid mid-word breaks but allow the whole link to shrink if needed */
 .footer-link1,
 .footer-link2,
-.footer-link3 {
+.footer-link3,
+.footer-link4 {
+    /* Added link 4 for FAQ */
     color: black;
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
     transition: text-shadow 0.3s ease, color 0.3s ease, font-weight 0.1s ease;
+    white-space: nowrap;
+    /* keep each link on one line */
+    flex-shrink: 1;
+    /* allow links to shrink when space is tight */
+    min-width: 0;
+    /* allow shrinking in flex containers */
 }
 
-/* Hover effect for footer-link1 (red glow) */
+/* Hover effects */
 .footer-link1:hover {
     font-weight: 500;
-    text-shadow:
-        -1px -1px 3px #991b1e,
-        1px -1px 3px #991b1e,
-        -1px 1px 3px #991b1e,
-        1px 1px 3px #991b1e;
+    text-shadow: -1px -1px 3px #991b1e, 1px -1px 3px #991b1e, -1px 1px 3px #991b1e, 1px 1px 3px #991b1e;
     color: white;
 }
 
-/* Hover effect for footer-link2 (green glow) */
 .footer-link2:hover {
     font-weight: 500;
-    text-shadow:
-        -1px -1px 3px #319967,
-        1px -1px 3px #319967,
-        -1px 1px 3px #319967,
-        1px 1px 3px #319967;
+    text-shadow: -1px -1px 3px #319967, 1px -1px 3px #319967, -1px 1px 3px #319967, 1px 1px 3px #319967;
     color: white;
 }
 
-/* Hover effect for footer-link3 (blue glow) */
 .footer-link3:hover {
     font-weight: 500;
-    text-shadow:
-        -1px -1px 3px #046599,
-        1px -1px 3px #046599,
-        -1px 1px 3px #046599,
-        1px 1px 3px #046599;
+    text-shadow: -1px -1px 3px #046599, 1px -1px 3px #046599, -1px 1px 3px #046599, 1px 1px 3px #046599;
     color: white;
 }
 
+/* Added hover for the new FAQ link */
+.footer-link4:hover {
+    font-weight: 500;
+    text-shadow: -1px -1px 3px #f59e0b, 1px -1px 3px #f59e0b, -1px 1px 3px #f59e0b, 1px 1px 3px #f59e0b;
+    color: white;
+}
+
+/* Logo Sizing */
 .footer-logo {
-    max-width: 200vh;
-    height: 13vh;
+    max-width: 180px;
+    height: 8vh;
     object-fit: contain;
 }
 
 @media (min-width: 1024px) {
     .footer-logo {
-        margin-left: 50px;
-        /* UPDATED: Reduced from 350px to 250px */
-        max-width: 250px; 
+        margin-left: 0;
+        max-width: 200px;
+        height: 10vh;
     }
 }
 
-/* Hamburger menu button */
+@media (max-width: 768px) {
+    .footer-logo {
+        max-width: 150px;
+        height: 7vh;
+    }
+}
+
+/* Hamburger menu button (unchanged) */
 .sidebar-toggle {
     display: none;
     position: fixed;
@@ -315,29 +432,5 @@ html {
 @media (max-width: 1023px) {
     .sidebar-toggle {
         display: block;
-    }
-
-    .container {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 1023px) {
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 64px 16px 24px 16px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .sidebar-toggle {
-        display: none;
-    }
-
-    .main-content {
-        margin-left: 220px;
-        width: calc(100% - 220px);
-        padding: 32px;
     }
 }
