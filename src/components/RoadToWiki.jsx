@@ -147,7 +147,7 @@ function RoadToWiki() {
                 <b>Increased Recognition:</b> As project complexity and scope expand, participants will receive enhanced rewards and professional recognition for their contributions and achievements.
               </li>
               <li>
-                <b>Advanced Cohort Pathway:</b> Exceptional performers from Cohort 2 will gain access to our exclusive Advanced Cohort program, featuring a **₹20,000 stipend** and intensive mentorship opportunities.
+                <b>Advanced Cohort Pathway:</b> Exceptional performers from Cohort 2 will gain access to our exclusive Advanced Cohort program, featuring a <b>₹20,000 stipend</b> and intensive mentorship opportunities.
               </li>
               <li>
                 <b>Optimized Selection Process:</b> Our refined application and evaluation process ensures the identification of highly committed students, guaranteeing personalized guidance and support for all selected participants.

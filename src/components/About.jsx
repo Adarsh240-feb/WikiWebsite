@@ -5,7 +5,7 @@ import "./HomePage.css";
 import WikiD from "../Images/WikiD.jpg";
 import WikiH from "../Images/WikiH.jpg";
 import Sidebar from "./Sidebar";
-import WikiL from "../Images/WikiL.png";
+import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
 function About() {
@@ -25,7 +25,7 @@ function About() {
         <main className="main-content">
           <section className="about-section">
             <div className="section-header">
-              <h2 className="heading">Who We Are</h2>
+              <h2 className="heading">Who We Are ? </h2>
             </div>
             <div className="content-with-image">
               <div className="text-content">
@@ -52,7 +52,7 @@ function About() {
           <hr className="divider" />
           <section className="special-section">
             <div className="section-header">
-              <h2 className="heading">Why We Are Special</h2>
+              <h2 className="heading">Why We Are Special ? </h2>
             </div>
             <div className="content-with-image">
               <div className="image-content">
@@ -84,7 +84,7 @@ function About() {
       <footer className="footer-wiki">
         <div className="footer-left">
           <img
-            src={WikiL}
+            src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
           />

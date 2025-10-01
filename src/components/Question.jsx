@@ -3,7 +3,7 @@ import "./HomePage.css";
 import "./Question.css";
 import Sidebar from "./Sidebar";
 import WikiDeveloperBook from "./../data/WikiDeveloperBook.pdf";
-import WikiL from "../Images/WikiL.png";
+import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 import QueryForm from "./QueryForm";
 
@@ -121,7 +121,7 @@ function FAQ() {
             <footer className="footer-wiki">
         <div className="footer-left">
           <img
-            src={WikiL}
+            src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
           />

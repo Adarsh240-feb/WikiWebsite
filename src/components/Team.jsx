@@ -11,11 +11,11 @@ import Shivaansh from "../Images/Shivaansh.png";
 import Shiksha from "../Images/Shiksha.jpg";
 import Adarsh from "../Images/Adarsh.jpg";
 import Hridyesh from "../Images/Hridyesh.jpg";
-import Sarthak from "../Images/Sarthak.jpg";
+import Sarthak1 from "../Images/Sarthak1.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
 import AmitSir from "../Images/AmitSir.png";
-import WikiL from "../Images/WikiL.png";
+import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
 // Import the new WavyText component
@@ -39,7 +39,7 @@ const founder = {
 const mentor = {
   name: "Sarthak Singh",
   description: "Sarthak Singh is a distinguished App Development Expert specializing in Flutter and Dart technologies. With over 4 years of active engagement in technology communities, he has achieved remarkable success in 20+ global hackathons. During his research internship at MNNIT, he contributed to multiple research publications and assumed leadership positions across 10+ technology communities. He has delivered numerous technical sessions on Flutter and mobile app development, sharing expertise and empowering the developer community through knowledge transfer and mentorship.",
-  image: Sarthak,
+  image: Sarthak1,
   linkedin: "http://www.linkedin.com/in/sarthak-singh-/",
   github: "https://github.com/SarthakSingh2003/",
 };
@@ -269,7 +269,7 @@ function Team() {
       <footer className="footer-wiki">
         <div className="footer-left">
           <img
-            src={WikiL}
+            src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
           />

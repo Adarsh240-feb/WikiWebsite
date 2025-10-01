@@ -6,6 +6,7 @@ import './HomePage.css';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import WikiL from '../Images/WikiL.png';
+import WikiS from '../Images/WikiS.png';
 
 // Navigation links for the sidebar
 const navLinks = [
@@ -166,7 +167,7 @@ const ContributionMeter = () => {
       <footer className="footer-wiki">
         <div className="footer-left">
           <img
-            src={WikiL}
+            src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
           />

@@ -152,9 +152,9 @@ html {
 }
 
 .section-content {
-  text-align: justify;
-  color: #4b5563;
-  margin-bottom: 40px;
+    text-align: justify;
+    color: #4b5563;
+    margin-bottom: 40px;
 }
 
 .clickable-image-link {
@@ -223,6 +223,7 @@ html {
 .wiki-logo {
     display: flex;
     flex-direction: column;
+
 }
 
 .footer-right {
@@ -291,7 +292,8 @@ html {
 @media (min-width: 1024px) {
     .footer-logo {
         margin-left: 50px;
-        max-width: 350px;
+        /* UPDATED: Reduced from 350px to 250px */
+        max-width: 250px; 
     }
 }
 

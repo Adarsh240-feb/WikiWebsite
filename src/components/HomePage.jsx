@@ -4,6 +4,7 @@ import "./HomePage.css";
 import WikiMainLogo from "../Images/WikiMainLogo.png";
 import WikiI from "../Images/WikiI.png";
 import WikiL from "../Images/WikiL.png";
+import WikiS from "../Images/WikiS.png";
 import Sidebar from "./Sidebar"; 
 import WikiMainLogoM from "../Images/WikiMainLogoM.png"; 
 const navLinks = [
@@ -89,7 +90,7 @@ function HomePage() {
       <footer className="footer-wiki">
         <div className="footer-left">
           <img
-            src={WikiL}
+            src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
           />
