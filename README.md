@@ -1,12 +1,42 @@
-# React + Vite
+# WikiClubTechUIT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**WikiClubTechUIT** is a project built with the modern web development tools **React** and **Vite**. This setup is configured for a fast and efficient development experience, featuring **Hot Module Replacement (HMR)** and integrated tooling for code quality.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Quick Start
 
-## Expanding the ESLint configuration
+To get a local copy of the project up and running for development, follow these steps.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+You will need **Node.js** and a package manager (**npm**, **yarn**, or **pnpm**) installed on your system.
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [YOUR_REPO_URL_HERE]
+    cd WikiClubTechUIT
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # OR yarn install
+    # OR pnpm install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # OR yarn dev
+    # OR pnpm dev
+    ```
+    The application will typically start on `http://localhost:5173/`.
+
+### Building for Production
+
+To create a production-ready build:
+```bash
+npm run build
+# OR yarn build
+# OR pnpm build
