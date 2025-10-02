@@ -12,7 +12,7 @@ const app = express();
 
 // Configure CORS to allow the production frontend and local dev origin.
 // You can override the allowed frontend origin by setting FRONTEND_URL in backend/.env
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://wikiclubtechuit.vercel.app/';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://wikiclubtechuit.vercel.app';
 app.use(cors({
   origin: (origin, callback) => {
     // allow requests with no origin (like server-to-server or curl)
