@@ -9,7 +9,28 @@ import { MongoClient } from 'mongodb';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// Configure CORS to allow the production frontend and local dev origin.
+// You can override the allowed frontend origin by setting FRONTEND_URL in backend/.env
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://wiki-website-one.vercel.app';
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin (like server-to-server or curl)
+    if (!origin) return callback(null, true);
+    // allow the configured frontend, localhost dev server, and any vercel subdomain
+    if (
+      origin === FRONTEND_URL ||
+      origin.startsWith('http://localhost') ||
+      origin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+    // otherwise reject
+    console.warn('Blocked CORS request from origin:', origin);
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;

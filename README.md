@@ -30,3 +30,8 @@ WikiClubTechUIT is built with a powerful, modern stack, combining front-end spee
 
 > Note: The frontend reads the API base URL from `frontend/.env` (VITE_API_URL) and `frontend/.env.production`.
 > During development Vite's proxy is configured in `frontend/vite.config.js` to forward `/api/*` to the backend (see `target` there).
+
+## Live demo
+
+Frontend: https://wiki-website-one.vercel.app/
+Backend: https://wikiwebsite-backend.vercel.app/
