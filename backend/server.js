@@ -21,7 +21,7 @@ let mongoClient = null;
 let mongoDb = null;
 let dbConnected = false;
 
-async function connectWithRetry(retries = 5, delayMs = 1000) {
+async function connectWithRetry(retries = 7, delayMs = 1000) {
   if (!MONGODB_URI) {
     console.warn('MONGODB_URI not set — skipping DB connection.');
     return;
@@ -59,6 +59,7 @@ async function connectWithRetry(retries = 5, delayMs = 1000) {
     }
   }
 }
+
 
 // Start connection but do not block server startup
 connectWithRetry().catch((err) => {

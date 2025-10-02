@@ -1,12 +1,29 @@
-# React + Vite
+# 🌍 WikiClubTechUIT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**WikiClubTechUIT** is a community-driven platform built using the **MERN stack** and **Vite**, dedicated to collecting, organizing, and sharing technical knowledge. Our goal is to create a comprehensive and accessible wiki resource, powered by the collective efforts of our contributors.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+* **Fast & Modern UI:** Built with **React** and powered by **Vite** for a snappy, modern user experience.
+* **Intuitive Wiki Editor:** Simple interface for creating and updating technical articles.
+* **Article Versioning:** Full history tracking for all content changes.
+* **🚀 Contribution Leaderboard:** A dynamic leaderboard to publicly recognize and celebrate our top contributors, fostering friendly competition and active community involvement.
+* **Robust Backend:** Powered by Node.js and Express for reliable API services.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 💻 Technology Stack
+
+WikiClubTechUIT is built with a powerful, modern stack, combining front-end speed with a scalable back-end infrastructure.
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Front-end** | **React** | Core component-based UI library. |
+| **Tooling** | **Vite** | Blazing-fast bundler and development server. |
+| **Server** | **Node.js** | JavaScript runtime environment for the server. |
+| **API Framework** | **Express** | Minimalist, fast, unopinionated web framework for Node.js. |
+| **Database** | **MongoDB** | NoSQL document database for flexible data storage. |
+| **Authentication/Hosting** | **Firebase** | Used for user authentication, real-time data needs, and/or file storage. |
+| **Code Quality** | **ESLint** | Code quality and static analysis tool. |
