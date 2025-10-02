@@ -33,5 +33,5 @@ WikiClubTechUIT is built with a powerful, modern stack, combining front-end spee
 
 ## Live demo
 
-Frontend: https://wiki-website-one.vercel.app/
+Frontend: https://wikiclubtechuit.vercel.app/
 Backend: https://wikiwebsite-backend.vercel.app/
