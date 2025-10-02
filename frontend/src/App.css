@@ -1,0 +1,414 @@
+/* Global normalization to avoid extra space below footer */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove unintended bottom gap before the footer by trimming the last child's margin */
+.main-content > *:last-child,
+.mainContentContainer > *:last-child,
+.Team-content > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure no extra spacing is added above or below the footer */
+.footer-wiki {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Remove any extra spacing from the body after footer */
+body::after,
+html::after {
+  display: none !important;
+}
+
+/* Ensure container takes full height without extra space */
+.container {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Basic reset and container */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+body, html {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+
+.container {
+  display: flex;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 0;
+  background-color: white;
+  position: relative;
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    margin-left: 250px;
+  }
+}
+
+/* Hero section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hero-logo-large {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+@media (max-width: 1023px) {
+  .hero-logo-large {
+    width: 120%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    transform: scaleX(1.2);
+    margin: 0 -10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-logo-large {
+    height: 280px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+
+.hero-title {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-top: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #374151;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* About section */
+.about-section {
+  padding: 40px;
+}
+
+.section-title {
+  text-align: left;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #878181;
+  margin-bottom: 16px;
+}
+
+.section-content {
+  text-align: left;
+  color: #4b5563;
+  margin-bottom: 40px;
+}
+
+.clickable-image-link {
+  display: block;
+  max-width: 800px; 
+  margin: 0 auto;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.clickable-image-link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-image-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .clickable-image-link {
+    max-width: 100%;
+  }
+  .clickable-image-link img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+}
+
+.footer-wiki {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b9b9b9;
+  color: #ffffff;
+  padding: 2px 20px;
+  margin-left: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 2px !important;
+}
+
+@media (min-width: 1024px) {
+  .footer-wiki {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 10px 30px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer-wiki {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wiki-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-right {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Center footer links on mobile/tablet */
+@media (max-width: 1023px) {
+  .footer-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* --- UPDATED FOOTER LINK STYLES --- */
+.footer-link1, .footer-link2, .footer-link3 {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+  /* Fix for mobile touch events */
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
+  user-select: none;
+  /* Ensure proper clickable area */
+  display: inline-block;
+  padding: 8px 4px;
+  margin: -8px -4px;
+}
+
+.footer-link1:hover, .footer-link2:hover, .footer-link3:hover {
+  text-shadow: 
+    0 0 5px white,
+    0 0 10px white,
+    0 0 15px white,
+    0 0 20px white;
+  color: white; 
+}
+
+/* Mobile-specific fixes for Team and FAQ links */
+@media (max-width: 1023px) {
+  .footer-link2, .footer-link3 {
+    padding: 12px 8px !important;
+    margin: 4px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2) !important;
+    touch-action: manipulation !important;
+    position: relative !important;
+    z-index: 15 !important;
+  }
+}
+/* --- END OF UPDATED STYLES --- */
+
+.footer-logo {
+  max-width: 240px; /* Increased from 200px */
+  height: 15vh; /* Increased from 13vh */
+  object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+  .footer-logo {
+    margin-left: 50px;
+    max-width: 280px; /* Increased from 250px */
+    height: 16vh; /* Added explicit height for desktop */
+  }
+}
+
+/* Hamburger menu button */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .sidebar-toggle {
+    display: block;
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 64px 16px 24px 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    padding: 32px;
+  }
+}
+
+/* --- App-level description justification overrides (CSS-only) --- */
+.member-description { text-align: justify; }
+.founder-description,
+.mentor-description,
+.faculty-description { text-align: justify; }
+.modal-details p { text-align: justify; }
+.card-description { text-align: justify; }
+.applyDescription { text-align: justify; }
+.structure-point p { text-align: justify; }
+
+/* Larger social icons in volunteer modal */
+.Tmodal-social-links a { font-size: 2.2rem; }
+.Tmodal-social-links a:hover { transform: scale(1.05); }
+
+/* Final fix to ensure no extra space below footer */
+* {
+  box-sizing: border-box;
+}
+
+*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure the page ends exactly at the footer */
+body {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Remove any potential viewport issues */
+html {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}

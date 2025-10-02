@@ -1,0 +1,480 @@
+body,
+html {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+    height: 100%;
+}
+
+body {
+    background-color: white   !important;
+}
+.container {
+    display: flex;
+    background-color: white;
+    min-height: 100vh;
+    flex-direction: column;
+    /* Default to column for mobile */
+}
+
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+        /* Desktop is row (sidebar + main) */
+    }
+}
+
+/* --- Sidebar (Mocked for layout context) --- */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 50;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        transform: translateX(0);
+        position: fixed;
+        /* Keep it fixed on desktop so main content flows beside it */
+    }
+}
+
+/* Main content area */
+.main-content {
+    flex: 1;
+    padding: 0;
+    background-color: white;
+    position: relative;
+    margin-left: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Allows content and footer to stack vertically */
+}
+
+/* Content wrapper to exclude footer */
+.content-wrapper {
+    flex-grow: 1;
+    /* Pushes the footer to the bottom */
+    padding: 16px;
+}
+
+
+@media (max-width: 1023px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 64px;
+    }
+
+    .content-wrapper {
+        padding: 16px;
+    }
+}
+
+/* --- FIX APPLIED: Ensuring correct desktop margin and width for main-content --- */
+@media (min-width: 1024px) {
+    .main-content {
+        margin-left: 250px;
+        /* Offset main content by sidebar width */
+        /* Change width to 100% and rely on margin/padding, or keep calc.
+                   Keeping calc(100% - 250px) is correct for a container next to a fixed sidebar.
+                   We will ensure the footer also uses this margin. */
+        width: calc(100% - 250px);
+        padding: 0;
+    }
+
+    .content-wrapper {
+        padding: 32px;
+    }
+}
+
+/* Hero section (unchanged) */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* Logo visibility (unchanged) */
+.desktop-logo {
+    display: block;
+}
+
+.phone-logo {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .desktop-logo {
+        display: none;
+    }
+
+    .phone-logo {
+        display: block;
+    }
+
+    .hero-logo-large.phone-logo {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-logo-large {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+        transform: none;
+    }
+}
+
+.hero-logo-large {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.hero-title {
+    font-size: 3.75rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-top: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #374151;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+/* About section (unchanged) */
+.about-section {
+    padding: 40px;
+}
+
+.section-title {
+    text-align: left;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #878181;
+    margin-bottom: 16px;
+}
+
+.section-content {
+    text-align: justify;
+    color: #4b5563;
+    margin-bottom: 40px;
+}
+
+.clickable-image-link {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.clickable-image-link:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-image-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .clickable-image-link {
+        max-width: 100%;
+    }
+
+    .clickable-image-link img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+/* --- Footer Styles: MOBILE FIXES ARE HERE --- */
+
+.footer-wiki {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b9b9b9;
+    color: #ffffff;
+    padding: 2px 20px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0 !important;
+    padding-bottom: 2px !important;
+    width: 100%;
+    box-sizing: border-box;
+    /* ensure padding doesn't reduce available width */
+    overflow: visible;
+    /* ensure children are visible if they wrap */
+}
+
+/* --- FIX APPLIED: Ensure footer respects the sidebar on desktop --- */
+@media (min-width: 1024px) {
+    .footer-wiki {
+        /* Offset the footer by the sidebar width */
+        margin-left: 250px;
+        /* Set footer width to fill the remaining space */
+        width: calc(100% - 250px);
+        padding: 10px 30px;
+    }
+}
+
+/* Mobile/Tablet Footer - Stacks everything vertically */
+@media (max-width: 1023px) {
+    .footer-wiki {
+        flex-direction: column;
+        /* Stacks logo/copyright and links area */
+        text-align: center;
+        gap: 15px;
+        padding: 15px 20px;
+        /* Increased vertical padding for better spacing */
+        position: relative;
+        z-index: 10;
+        /* Ensure footer is above other elements */
+    }
+    
+    /* Ensure footer links have proper touch targets on mobile */
+    .footer-right {
+        padding: 10px 0;
+        /* Add more padding for easier touch */
+    }
+    
+    .footer-link1,
+    .footer-link2,
+    .footer-link3,
+    .footer-link4 {
+        padding: 12px 8px;
+        /* Larger touch targets */
+        margin: 4px;
+        min-height: 44px;
+        /* iOS recommended minimum touch target */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 20;
+        /* Ensure links are above other elements */
+    }
+    
+    /* Specific fixes for Team and FAQ links */
+    .footer-link2[href="/Team"],
+    .footer-link3[href="/Question"] {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3) !important;
+        pointer-events: auto !important;
+    }
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ensures logo and text stack on very small screens (e.g., iPhone SE) */
+@media (max-width: 480px) {
+    .footer-left {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+
+.wiki-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    /* push this group to the right on desktop */
+    flex-wrap: wrap;
+    /* allow items to wrap instead of overflowing */
+    justify-content: flex-end;
+}
+
+/* Center footer links on mobile/tablet */
+@media (max-width: 1023px) {
+    .footer-right {
+        margin-left: 0;
+        justify-content: center;
+        row-gap: 10px;
+    }
+}
+
+/* Links: avoid mid-word breaks but allow the whole link to shrink if needed */
+.footer-link1,
+.footer-link2,
+.footer-link3,
+.footer-link4 {
+    /* Added link 4 for FAQ */
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: text-shadow 0.3s ease, color 0.3s ease, font-weight 0.1s ease;
+    white-space: nowrap;
+    /* keep each link on one line */
+    flex-shrink: 1;
+    /* allow links to shrink when space is tight */
+    min-width: 0;
+    /* allow shrinking in flex containers */
+    /* Fix for mobile touch events */
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+    user-select: none;
+    /* Ensure proper clickable area */
+    display: inline-block;
+    padding: 8px 4px;
+    margin: -8px -4px;
+}
+
+/* Hover effects */
+.footer-link1:hover {
+    font-weight: 500;
+    text-shadow: -1px -1px 3px #991b1e, 1px -1px 3px #991b1e, -1px 1px 3px #991b1e, 1px 1px 3px #991b1e;
+    color: white;
+}
+
+.footer-link2:hover {
+    font-weight: 500;
+    text-shadow: -1px -1px 3px #319967, 1px -1px 3px #319967, -1px 1px 3px #319967, 1px 1px 3px #319967;
+    color: white;
+}
+
+.footer-link3:hover {
+    font-weight: 500;
+    text-shadow: -1px -1px 3px #046599, 1px -1px 3px #046599, -1px 1px 3px #046599, 1px 1px 3px #046599;
+    color: white;
+}
+
+/* Added hover for the new FAQ link */
+.footer-link4:hover {
+    font-weight: 500;
+    text-shadow: -1px -1px 3px #f59e0b, 1px -1px 3px #f59e0b, -1px 1px 3px #f59e0b, 1px 1px 3px #f59e0b;
+    color: white;
+}
+
+/* Logo Sizing */
+.footer-logo {
+    max-width: 220px; /* Increased from 180px */
+    height: 10vh; /* Increased from 8vh */
+    object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+    .footer-logo {
+        margin-left: 0;
+        max-width: 260px; /* Increased from 200px */
+        height: 12vh; /* Increased from 10vh */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-logo {
+        max-width: 180px; /* Increased from 150px */
+        height: 9vh; /* Increased from 7vh */
+    }
+}
+
+/* Hamburger menu button (unchanged) */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: 6px 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+    .sidebar-toggle {
+        display: block;
+    }
+}
