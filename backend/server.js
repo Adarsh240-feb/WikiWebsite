@@ -83,8 +83,39 @@ async function connectWithRetry(retries = 7, delayMs = 1000) {
 
 
 // Start connection but do not block server startup
+// In serverless environments the process may be started per-request; provide
+// a helper that returns a cached connection or creates one on demand. This
+// pattern works both for long-running servers and serverless platforms.
+async function getMongoDb() {
+  if (dbConnected && mongoDb) return mongoDb;
+  if (!MONGODB_URI) throw new Error('MONGODB_URI not set');
+
+  try {
+    // Reuse a promise stored on globalThis so multiple warm invocations
+    // share the same connection attempt.
+    if (!globalThis._mongoClientPromise) {
+      const client = new MongoClient(MONGODB_URI, {
+        connectTimeoutMS: 10000,
+        serverSelectionTimeoutMS: 10000,
+        // keep a small pool to work well on serverless platforms
+        maxPoolSize: 10,
+      });
+      globalThis._mongoClientPromise = client.connect();
+    }
+    mongoClient = await globalThis._mongoClientPromise;
+    mongoDb = mongoClient.db(MONGODB_DBNAME);
+    dbConnected = true;
+    console.log(`MongoDB connected (db: ${MONGODB_DBNAME})`);
+    return mongoDb;
+  } catch (err) {
+    dbConnected = false;
+    throw err;
+  }
+}
+
+// Try an initial connection for long-running envs but do not fail startup
 connectWithRetry().catch((err) => {
-  console.error('Unexpected MongoDB connect error:', err);
+  console.error('Initial MongoDB connect attempt failed (this can be OK on serverless):', err && err.message ? err.message : err);
 });
 // ===== end MongoDB logic =====
 
@@ -124,6 +155,9 @@ app.post('/api/contact', (req, res) => {
 app.post('/api/queries', async (req, res) => {
   const { name, email, question } = req.body || {};
 
+  // Debug: log incoming payload (trim in prod)
+  console.debug('/api/queries payload:', { name, email, question });
+
   // Basic validation
   if (!name || !email || !question) {
     return res.status(400).json({ ok: false, message: 'Missing required fields: name, email, question' });
@@ -139,20 +173,22 @@ app.post('/api/queries', async (req, res) => {
   };
 
   try {
-    if (dbConnected && mongoDb) {
-      const result = await mongoDb.collection('queries').insertOne(doc);
-      console.log(`Saved query id=${result.insertedId} from ${doc.email}`);
-      return res.json({ ok: true, id: result.insertedId.toString() });
-    } else {
-      // Fallback to file log so submissions are not lost when DB is down
-      const fallbackPath = path.join(__dirname, 'queries-fallback.log');
-      fs.appendFileSync(fallbackPath, JSON.stringify(doc) + '\n', 'utf8');
-      console.warn(`DB not connected — saved query to fallback file (${fallbackPath})`);
-      return res.status(202).json({ ok: true, fallback: true, message: 'Saved to fallback storage' });
+    // Use getMongoDb helper which will establish a connection on demand.
+    const db = await getMongoDb();
+    if (!db) {
+      // Running without DB configuration (e.g., MONGODB_URI) should return
+      // a clear error rather than attempting to write to disk on hosted
+      // environments that disallow writes.
+      console.error('No MongoDB connection available and fallback disabled on deployed server.');
+      return res.status(503).json({ ok: false, message: 'Database not available. Ensure MONGODB_URI is configured.' });
     }
+    const result = await db.collection('queries').insertOne(doc);
+    console.log(`Saved query id=${result.insertedId} from ${doc.email}`);
+    return res.json({ ok: true, id: result.insertedId.toString() });
   } catch (err) {
-    console.error('Failed to save query:', err);
-    return res.status(500).json({ ok: false, message: 'Internal server error' });
+    console.error('Failed to save query:', err && err.stack ? err.stack : err);
+    // Return error.message to help debug client-side (remove in production)
+    return res.status(500).json({ ok: false, message: 'Internal server error', error: String(err && err.message) });
   }
 });
 
@@ -174,12 +210,15 @@ if (fs.existsSync(frontendDist)) {
     });
   });
 } else {
-  // If frontend isn't built yet, return informative message for non-API routes
+  // If frontend isn't built locally, redirect non-API requests to the deployed frontend
   app.get(/.*/, (req, res) => {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API route not found' });
     }
-    res.status(404).send('Frontend build not found. Run the frontend build and place it in frontend/dist');
+    console.warn('Frontend build not found locally. Redirecting to:', FRONTEND_URL);
+    // Preserve the path when redirecting so deep links still work
+    const redirectTo = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
+    return res.redirect(302, redirectTo);
   });
 }
 
