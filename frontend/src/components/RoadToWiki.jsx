@@ -81,7 +81,7 @@ function RoadToWiki() {
                   <b>Curriculum Design:</b> The program integrates practical, hands-on projects including MediaWiki installation and configuration, complemented by expert-led masterclasses delivered by industry professionals and Wikimedia Foundation contributors.
                 </li>
                 <li>
-                  <b>Graduation Ceremony:</b> A prestigious two-day graduation event was held from February 27-28 in Gurgaon, sponsored by the Wikimedia Foundation and WikiClub Tech-UIT, celebrating the achievements and contributions of our cohort participants.
+                  <b>Graduation Ceremony:</b> A prestigious two-day graduation event was held from February 27-28 in Gurgaon, sponsored by the Wikimedia Foundation and WikiClub Tech-UIT.
                 </li>
 
               </ul>
