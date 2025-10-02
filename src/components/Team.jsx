@@ -15,7 +15,7 @@ import Sarthak1 from "../Images/Sarthak1.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
 import AmitSir from "../Images/AmitSir.png";
-import WikiS from "../Images/WikiS.jpg";
+import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
 // Import the new WavyText component

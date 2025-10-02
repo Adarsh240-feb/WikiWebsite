@@ -7,7 +7,7 @@ import Card3 from "../Images/Card3.png";
 import Card2 from "../Images/Card2.jpg";
 import Card1 from "../Images/Card1.png";
 import Sidebar from "./Sidebar";
-import WikiS from "../Images/WikiS.jpg";
+import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
 const cardData = [

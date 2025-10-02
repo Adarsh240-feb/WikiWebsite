@@ -273,7 +273,8 @@ body {
     padding: 2px 20px;
     margin-left: 0;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
+    padding-bottom: 2px !important;
     width: 100%;
     box-sizing: border-box;
     /* ensure padding doesn't reduce available width */
@@ -301,7 +302,41 @@ body {
         gap: 15px;
         padding: 15px 20px;
         /* Increased vertical padding for better spacing */
-
+        position: relative;
+        z-index: 10;
+        /* Ensure footer is above other elements */
+    }
+    
+    /* Ensure footer links have proper touch targets on mobile */
+    .footer-right {
+        padding: 10px 0;
+        /* Add more padding for easier touch */
+    }
+    
+    .footer-link1,
+    .footer-link2,
+    .footer-link3,
+    .footer-link4 {
+        padding: 12px 8px;
+        /* Larger touch targets */
+        margin: 4px;
+        min-height: 44px;
+        /* iOS recommended minimum touch target */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 20;
+        /* Ensure links are above other elements */
+    }
+    
+    /* Specific fixes for Team and FAQ links */
+    .footer-link2[href="/Team"],
+    .footer-link3[href="/Question"] {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3) !important;
+        pointer-events: auto !important;
     }
 }
 
@@ -364,6 +399,15 @@ body {
     /* allow links to shrink when space is tight */
     min-width: 0;
     /* allow shrinking in flex containers */
+    /* Fix for mobile touch events */
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+    user-select: none;
+    /* Ensure proper clickable area */
+    display: inline-block;
+    padding: 8px 4px;
+    margin: -8px -4px;
 }
 
 /* Hover effects */
@@ -394,23 +438,23 @@ body {
 
 /* Logo Sizing */
 .footer-logo {
-    max-width: 180px;
-    height: 8vh;
+    max-width: 220px; /* Increased from 180px */
+    height: 10vh; /* Increased from 8vh */
     object-fit: contain;
 }
 
 @media (min-width: 1024px) {
     .footer-logo {
         margin-left: 0;
-        max-width: 200px;
-        height: 10vh;
+        max-width: 260px; /* Increased from 200px */
+        height: 12vh; /* Increased from 10vh */
     }
 }
 
 @media (max-width: 768px) {
     .footer-logo {
-        max-width: 150px;
-        height: 7vh;
+        max-width: 180px; /* Increased from 150px */
+        height: 9vh; /* Increased from 7vh */
     }
 }
 

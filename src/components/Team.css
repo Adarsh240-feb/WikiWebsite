@@ -142,6 +142,22 @@ body {
     transform: scale(1.1);
 }
 
+/* Mobile-specific styles for core team cards - only increase card size, keep image same */
+@media (max-width: 768px) {
+    .team-card {
+        width: 320px; /* Increased from 280px */
+        padding: 28px; /* Increased padding for more space */
+    }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+    .team-card {
+        width: 300px; /* Slightly smaller for very small screens */
+        padding: 26px; /* Increased padding */
+    }
+}
+
 /* 🚀 FIX: Updated CSS for Volunteer Cards to center them and allow wrapping */
 .volunteer-cards-container {
     display: flex;
@@ -419,15 +435,51 @@ body {
     .founder-image-card,
     .mentor-image-card,
     .faculty-image-card {
-        padding: 16px;
+        padding: 20px;
         min-width: auto; /* Allows the card to shrink */
+        width: 100%;
+        max-width: 350px; /* Increased max width for larger appearance */
     }
 
     .founder-image-container,
     .mentor-image-container,
     .faculty-image-container {
-        width: 150px;
-        height: 150px;
+        width: 250px; /* Increased from 150px to 250px */
+        height: 250px; /* Increased from 150px to 250px */
+    }
+}
+
+/* Tablet specific styles for larger image boxes */
+@media (min-width: 481px) and (max-width: 768px) {
+    .founder-image-card,
+    .mentor-image-card,
+    .faculty-image-card {
+        padding: 24px;
+        max-width: 380px; /* Even larger for tablets */
+    }
+
+    .founder-image-container,
+    .mentor-image-container,
+    .faculty-image-container {
+        width: 280px; /* Larger for tablets */
+        height: 280px;
+    }
+}
+
+/* Additional styles for mobile devices (smaller than tablets) */
+@media (max-width: 480px) {
+    .founder-image-card,
+    .mentor-image-card,
+    .faculty-image-card {
+        padding: 18px;
+        max-width: 320px;
+    }
+
+    .founder-image-container,
+    .mentor-image-container,
+    .faculty-image-container {
+        width: 220px; /* Slightly smaller for very small screens but still larger than before */
+        height: 220px;
     }
 }
 

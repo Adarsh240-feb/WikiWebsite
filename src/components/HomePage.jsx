@@ -4,7 +4,7 @@ import "./HomePage.css";
 import WikiMainLogo from "../Images/WikiMainLogo.png";
 import WikiI from "../Images/WikiI.png";
 import WikiL from "../Images/WikiL.png";
-import WikiS from "../Images/WikiS.jpg";
+import WikiS from "../Images/WikiS.png";
 import Sidebar from "./Sidebar"; 
 import WikiMainLogoM from "../Images/WikiMainLogoM.png"; 
 

@@ -172,6 +172,55 @@ body, html {
     line-height: 1.5;
 }
 
+/* Mobile and tablet styles for graduation ceremony highlight cards */
+@media (max-width: 768px) {
+    .cards-grid {
+        gap: 25px; /* Slightly reduced gap for better fit */
+        padding: 0 15px; /* Add horizontal padding */
+    }
+    
+    .card {
+        width: 380px; /* Increased from 350px */
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    }
+    
+    .card-image {
+        height: 220px; /* Increased from 200px */
+    }
+    
+    .card-content {
+        padding: 24px; /* Increased from 20px */
+    }
+    
+    .card-title {
+        font-size: 1.3rem; /* Increased from 1.2rem */
+    }
+    
+    .card-description {
+        font-size: 0.95rem; /* Slightly increased from 0.9rem */
+    }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+    .cards-grid {
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .card {
+        width: 340px; /* Adjusted for smaller screens */
+    }
+    
+    .card-image {
+        height: 200px; /* Keep original height for small screens */
+    }
+    
+    .card-content {
+        padding: 22px;
+    }
+}
+
 /* Modal styles */
 .modal-overlay {
     position: fixed;

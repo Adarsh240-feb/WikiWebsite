@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import WikiL from "../Images/WikiL.png";
 
@@ -14,6 +14,30 @@ const navLinks = [
 ];
 
 function Sidebar({ sidebarOpen, closeSidebar }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const forceScrollTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const containers = document.querySelectorAll('main,.main-content,.mainContentContainer,.Team-content,.content-wrapper,.pageContainer,.container');
+    containers.forEach((node) => {
+      try { if (node && typeof node.scrollTop === 'number') node.scrollTop = 0; } catch (_) {}
+    });
+  };
+
+  const handleNavClick = (path, e) => {
+    // Always close the sidebar first
+    if (typeof closeSidebar === 'function') closeSidebar();
+    // If we're already on the same route, prevent re-navigation and just scroll to top
+    if (location && location.pathname === path) {
+      e.preventDefault();
+      // Defer to allow sidebar close reflow
+      setTimeout(forceScrollTop, 0);
+      return;
+    }
+    // For navigation to a different route, let the router handle it and also scroll after
+    setTimeout(forceScrollTop, 0);
+  };
   const handleEmailClick = (e) => {
     const emailAddress = "kesharwaniadarsh24@gmail.com";
     const subject = "Inquiry from WikiClub Tech site";
@@ -57,7 +81,7 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
               to={link.path}
               className="nav-item"
               key={idx}
-              onClick={closeSidebar}
+              onClick={(e) => handleNavClick(link.path, e)}
             >
               {link.name}
             </Link>
