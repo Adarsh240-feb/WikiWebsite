@@ -11,9 +11,11 @@ export default defineConfig({
     // This is the crucial part for connecting client and server
     proxy: {
       '/api': {
-        target: 'http://localhost:5000', // The port your Express server is running on
+        // During development we can proxy API calls to the deployed backend
+        // so CORS isn't a problem. Use your Vercel backend URL below.
+        target: 'https://wikiwebsite-backend.vercel.app',
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   },

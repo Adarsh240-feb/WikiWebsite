@@ -27,3 +27,6 @@ WikiClubTechUIT is built with a powerful, modern stack, combining front-end spee
 | **Database** | **MongoDB** | NoSQL document database for flexible data storage. |
 | **Authentication/Hosting** | **Firebase** | Used for user authentication, real-time data needs, and/or file storage. |
 | **Code Quality** | **ESLint** | Code quality and static analysis tool. |
+
+> Note: The frontend reads the API base URL from `frontend/.env` (VITE_API_URL) and `frontend/.env.production`.
+> During development Vite's proxy is configured in `frontend/vite.config.js` to forward `/api/*` to the backend (see `target` there).

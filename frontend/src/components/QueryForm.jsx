@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_BASE } from '../config'; // added import
 
 const QueryForm = () => {
   const [formData, setFormData] = useState({
@@ -22,8 +23,9 @@ const QueryForm = () => {
     setMessage('Submitting your query...');
 
     try {
-      // API call to the backend server (via Vite proxy)
-      const res = await axios.post('/api/queries', formData); 
+      // API call to the backend server (use API_BASE)
+      const url = (API_BASE || '').replace(/\/$/, '') + '/api/queries';
+      const res = await axios.post(url, formData); 
       
       console.log('Query submitted successfully:', res.data);
       setMessage('✅ Your query has been submitted successfully! We will get back to you through E-mail.');
