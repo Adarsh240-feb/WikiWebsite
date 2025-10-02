@@ -10,7 +10,6 @@
 * **Intuitive Wiki Editor:** Simple interface for creating and updating technical articles.
 * **Article Versioning:** Full history tracking for all content changes.
 * **🚀 Contribution Leaderboard:** A dynamic leaderboard to publicly recognize and celebrate our top contributors, fostering friendly competition and active community involvement.
-* **Hot Module Replacement (HMR):** Enables lightning-fast development with instant code updates.
 
 ---
 
