@@ -59,45 +59,15 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
-.contribution-form-container h3 {
-  margin: 0 0 0.75rem 0;
-}
-.contribution-form .form-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 0.75rem;
-}
-.contribution-form input[type="text"],
-.contribution-form input[type="email"],
-.contribution-form select {
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--wiki-light-gray);
-  background: #fff;
-}
-.contribution-form .form-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-.submit-contribution-btn {
+.contribution-form-container h3 { margin: 0 0 0.5rem 0; }
+.submit-contribution-link {
+  display: inline-block;
   background: var(--wiki-blue);
-  color: white;
-  padding: 10px 16px;
-  border: none;
+  color: #fff;
+  padding: 10px 14px;
   border-radius: 6px;
-  cursor: pointer;
+  text-decoration: none;
 }
-.submit-contribution-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.form-message {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-}
-.form-message.success { color: green; }
-.form-message.error { color: #c53030; }
 
 /* Styling for the unordered list */
 .contribution-list-container ul {
