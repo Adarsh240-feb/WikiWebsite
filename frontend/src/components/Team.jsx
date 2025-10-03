@@ -141,7 +141,7 @@ function Team() {
             </div>
             <div className="faculty-image-card">
               <div className="faculty-image-container">
-                <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
+                <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" loading="lazy" decoding="async" />
               </div>
               <div className="social-links">
                 <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -159,7 +159,7 @@ function Team() {
             </div>
             <div className="founder-image-card">
               <div className="founder-image-container">
-                <img src={founder.image} alt={founder.name} className="founder-image" />
+                <img src={founder.image} alt={founder.name} className="founder-image" loading="lazy" decoding="async" />
               </div>
               <div className="social-links">
                 <a href={founder.linkedin} aria-label={`${founder.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -178,7 +178,7 @@ function Team() {
           <section className="mentor-card-container">
             <div className="mentor-image-card">
               <div className="mentor-image-container">
-                <img src={mentor.image} alt={mentor.name} className="mentor-image" />
+                <img src={mentor.image} alt={mentor.name} className="mentor-image" loading="lazy" decoding="async" />
               </div>
               <div className="social-links">
                 <a href={mentor.linkedin} aria-label={`${mentor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -202,7 +202,7 @@ function Team() {
             {teamMembers.map((member, index) => (
               <div className="team-card" key={index}>
                 <div className="tcard-image-container">
-                  <img src={member.image} alt={member.name} className="card-image" />
+                  <img src={member.image} alt={member.name} className="card-image" loading="lazy" decoding="async" />
                 </div>
                 <h2 className="member-name">{member.name}</h2>
                 <h3 className="member-title">{member.title}</h3>
@@ -226,7 +226,7 @@ function Team() {
             {volunteers.map((volunteer, index) => (
               <div className="volunteer-card" key={index} onClick={() => openModal(volunteer)}>
                 <div className="volunteer-image-container">
-                  <img src={volunteer.image} alt={volunteer.name} className="volunteer-image" />
+                  <img src={volunteer.image} alt={volunteer.name} className="volunteer-image" loading="lazy" decoding="async" />
                 </div>
                 <h3 className="volunteer-name">{volunteer.name}</h3>
                 <p className="volunteer-affiliation">{volunteer.affiliation}</p>
@@ -241,8 +241,8 @@ function Team() {
           <div className="Tmodal-content" onClick={(e) => e.stopPropagation()}>
             <button className="Tmodal-close-button" onClick={closeModal}>&times;</button>
             <div className="Tmodal-body">
-              <div className="Tmodal-image-container">
-                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" />
+                <div className="Tmodal-image-container">
+                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" loading="lazy" decoding="async" />
               </div>
               <div className="Tmodal-details">
                 <h2 className="Tmodal-name">{selectedVolunteer.name}</h2>
@@ -272,6 +272,8 @@ function Team() {
             src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
+            loading="lazy"
+            decoding="async"
           />
           <div className="wiki-logo">
           </div>

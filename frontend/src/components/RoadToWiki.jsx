@@ -40,7 +40,7 @@ const navLinks = [];
 
 const Card = ({ title, image, description, titleColorClass }) => (
   <div className="card">
-    <img src={image} alt={title} className="card-image" />
+    <img src={image} alt={title} className="card-image" loading="lazy" decoding="async" />
     <div className="card-content">
       <h3 className={`card-title ${titleColorClass}`}>{title}</h3>
       <p className="card-description">{description}</p>
@@ -119,7 +119,7 @@ function RoadToWiki() {
             </div>
             <div className="applyFormWrapper">
               <div className="applyBox">
-                <img src={WikiP} alt="WikiClub Tech Logo" className="applyImage" />
+                <img src={WikiP} alt="WikiClub Tech Logo" className="applyImage" loading="lazy" decoding="async" />
                 <div className="applyBoxContent">
                 </div>
                 <a 
@@ -231,6 +231,8 @@ function RoadToWiki() {
             src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
+            loading="lazy"
+            decoding="async"
           />
           <div className="wiki-logo">
           </div>

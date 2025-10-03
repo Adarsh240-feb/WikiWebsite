@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
 import './ContributionMeter.css';
 import './HomePage.css';
 import Sidebar from './Sidebar';
@@ -84,6 +84,55 @@ const ContributionMeter = () => {
     return () => unsubscribe();
   }, []);
 
+  // Contribution form state
+  const [formInput, setFormInput] = useState({
+    contributorName: '',
+    contributorEmail: '',
+    contributionType: 'Code',
+    taskId: '',
+    contributionStatus: 'Not Merged',
+  });
+  const [formMessage, setFormMessage] = useState(null);
+  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prev) => ({ ...prev, [name]: value }));
+    setFormMessage(null);
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormMessage(null);
+
+    const { contributorName, contributorEmail, contributionType, taskId, contributionStatus } = formInput;
+    if (!contributorName || !contributorEmail || !contributionType) {
+      setFormMessage({ type: 'error', text: 'Please fill name, email and contribution type.' });
+      return;
+    }
+
+    setIsSubmittingForm(true);
+    try {
+      const contributionsRef = collection(db, 'contributions');
+      await addDoc(contributionsRef, {
+        contributorName: contributorName,
+        contributorEmail: contributorEmail,
+        contributionType: contributionType,
+        taskId: taskId || null,
+        contributionStatus: contributionStatus,
+        timestamp: serverTimestamp(),
+      });
+
+      setFormMessage({ type: 'success', text: 'Thank you — your contribution was recorded.' });
+      setFormInput({ contributorName: '', contributorEmail: '', contributionType: 'Code', taskId: '', contributionStatus: 'Not Merged' });
+    } catch (err) {
+      console.error('Error saving contribution:', err);
+      setFormMessage({ type: 'error', text: 'Failed to submit. Please try again later.' });
+    } finally {
+      setIsSubmittingForm(false);
+    }
+  };
+
   const getTrophy = (rank) => {
     switch (rank) {
       case 1:
@@ -142,6 +191,37 @@ const ContributionMeter = () => {
           
           <div className="contribution-list-container">
             <h2>Latest Contributions</h2>
+            <div className="contribution-form-container">
+              <h3>Submit a Contribution</h3>
+              <form className="contribution-form" onSubmit={handleFormSubmit}>
+                <div className="form-row">
+                  <input type="text" name="contributorName" placeholder="Your name" value={formInput.contributorName} onChange={handleInputChange} required />
+                  <input type="email" name="contributorEmail" placeholder="Email" value={formInput.contributorEmail} onChange={handleInputChange} required />
+                </div>
+                <div className="form-row">
+                  <select name="contributionType" value={formInput.contributionType} onChange={handleInputChange}>
+                    <option>Code</option>
+                    <option>Documentation</option>
+                    <option>Design</option>
+                    <option>Localization</option>
+                    <option>Other</option>
+                  </select>
+                  <input type="text" name="taskId" placeholder="Task ID (optional)" value={formInput.taskId} onChange={handleInputChange} />
+                </div>
+                <div className="form-row">
+                  <select name="contributionStatus" value={formInput.contributionStatus} onChange={handleInputChange}>
+                    <option>Not Merged</option>
+                    <option>Merged</option>
+                  </select>
+                </div>
+                <div className="form-actions">
+                  <button type="submit" className="submit-contribution-btn" disabled={isSubmittingForm}>{isSubmittingForm ? 'Submitting...' : 'Submit Contribution'}</button>
+                </div>
+                {formMessage && (
+                  <p className={`form-message ${formMessage.type === 'success' ? 'success' : 'error'}`}>{formMessage.text}</p>
+                )}
+              </form>
+            </div>
             {contributionsList.length > 0 ? (
               <ul>
                 {contributionsList.map((contrib, index) => (
