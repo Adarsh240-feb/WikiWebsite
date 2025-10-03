@@ -135,11 +135,41 @@ body {
     color: #fff;
     font-size: 2rem;
     transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    text-decoration: none; /* remove underline */
+    outline: none;
+    border: none;
 }
 
 .social-links a:hover {
     color: #6c63ff;
     transform: scale(1.1);
+}
+
+/* Ensure inline SVGs (scholar icon) match the font icon sizing and color */
+.social-links a svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+    fill: currentColor;
+}
+
+/* Ensure no pseudo-elements or markers show under icons */
+.social-links a::before,
+.social-links a::after {
+    content: none !important;
+}
+
+/* Avoid baseline/descender gaps that sometimes show as dots */
+.social-links a i,
+.social-links a svg {
+    line-height: 1;
+    vertical-align: middle;
 }
 
 /* Mobile-specific styles for core team cards - only increase card size, keep image same */

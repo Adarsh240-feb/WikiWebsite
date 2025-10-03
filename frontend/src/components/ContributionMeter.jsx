@@ -146,7 +146,7 @@ const ContributionMeter = () => {
             <div className="contribution-form-container">
               <h3>Submit a Contribution</h3>
               <p>If you want to record a contribution, please use the official submission form:</p>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhllqy5J27BOytcHiELSH9amZVHED_qxgyYb7mSyCem1mpRg/viewform?pli=1" target="_blank" rel="noopener noreferrer" className="submit-contribution-link">Open Contribution Form</a>
+              <a href="https://docs.google.com/forms/d/1vZUXnNTBXbzTQ_gXbvbuIPlbsdMBIsorBfteWqVBu7g/edit" target="_blank" rel="noopener noreferrer" className="submit-contribution-link">Open Contribution Form</a>
             </div>
             {contributionsList.length > 0 ? (
               <ul>

@@ -26,6 +26,7 @@ const facultyAdvisor = {
   description: "Dr. Amit Kumar Tiwari serves as the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of distinguished academic experience and a Ph.D. in Computer Science, he has been instrumental in establishing the department's research excellence and academic culture. His leadership has fostered innovation and technological advancement within the institution.",
   image: AmitSir,
   linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/",
+  scholar: "https://scholar.google.com/citations?hl=en&user=Wn3Ac80AAAAJ",
 };
 
 const founder = {
@@ -146,7 +147,15 @@ function Team() {
               <div className="social-links">
                 <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
-                </a>
+                </a>             
+                {facultyAdvisor.scholar && (
+                  <a href={facultyAdvisor.scholar} aria-label={`${facultyAdvisor.name}'s Google Scholar profile`} target="_blank" rel="noopener noreferrer" className="scholar-link">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M12 2L4 5L12 8L20 5L12 2Z" fill="currentColor" />
+                      <path d="M4 10L12 13L20 10V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V10Z" fill="currentColor" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           </section>
