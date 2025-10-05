@@ -14,7 +14,8 @@ import Hridyesh from "../Images/Hridyesh.jpg";
 import Sarthak1 from "../Images/Sarthak1.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
-import AmitSir from "../Images/AmitSir.png";
+import AmitSir from "../Images/AmitSir.jpg";
+import Arohi from "../Images/Arohi.jpg";
 import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
@@ -95,6 +96,7 @@ const volunteers = [
   { name: "Neelima Srivastava", affiliation: "Event Coordination & Management", image: Neelima, linkedin: "https://www.linkedin.com/in/neelima-srivastav-b71636370", github: "https://github.com/th-neelimaa" },
   { name: "Suhani Shukla", affiliation: "Visual Design & Branding", image: Suhani, linkedin: "http://www.linkedin.com/in/suhani-shukla-945193285", github: "https://github.com/SUHANI005" },
   { name: "Priyanshika Upadhyay", affiliation: "Event Coordination & Management", image: Priyanshika, linkedin: "https://www.linkedin.com/in/priyanshika-upadhyay-a87a26332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Priyanshika1111" },
+  { name: "Arohi Singh", affiliation: "Technical Support", image: Arohi, linkedin: "https://www.linkedin.com/in/arohi-singh-549974289/", github: "https://github.com/Arohisngh" },
 ];
 
 const navLinks = [];
