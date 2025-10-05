@@ -17,7 +17,12 @@ import Priyanshika from "../Images/Priyanshika.jpg";
 import AmitSir from "../Images/AmitSir.jpg";
 
 
+
+
 import Arohi from "../Images/Arohi.jpg";
+
+
+
 
 
 import WikiS from "../Images/WikiS.png";
