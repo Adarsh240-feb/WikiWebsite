@@ -373,6 +373,128 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Hover / focus polish for the profile sections (faculty / mentor / founder)
+   - lifts the whole image card
+   - gently zooms the image
+   - reveals a subtle color overlay and highlights social links
+   - supports keyboard focus via :focus-within */
+.founder-card-container,
+.mentor-card-container,
+.faculty-card-container {
+    position: relative;
+    transition: transform 0.35s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s ease;
+}
+
+.founder-image-card,
+.mentor-image-card,
+.faculty-image-card {
+    position: relative;
+    transition: transform 0.5s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s ease;
+    will-change: transform;
+}
+
+.founder-image-card::after,
+.mentor-image-card::after,
+.faculty-image-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(108,99,255,0.08), rgba(3,26,39,0.06));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.founder-card-container:hover,
+.mentor-card-container:hover,
+.faculty-card-container:hover,
+.founder-card-container:focus-within,
+.mentor-card-container:focus-within,
+.faculty-card-container:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(3,26,39,0.12);
+}
+
+.founder-card-container:hover .founder-image-card,
+.mentor-card-container:hover .mentor-image-card,
+.faculty-card-container:hover .faculty-image-card,
+.founder-card-container:focus-within .founder-image-card,
+.mentor-card-container:focus-within .mentor-image-card,
+.faculty-card-container:focus-within .faculty-image-card {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(2,26,39,0.24);
+}
+
+.founder-card-container:hover .founder-image-card::after,
+.mentor-card-container:hover .mentor-image-card::after,
+.faculty-card-container:hover .faculty-image-card::after,
+.founder-card-container:focus-within .founder-image-card::after,
+.mentor-card-container:focus-within .mentor-image-card::after,
+.faculty-card-container:focus-within .faculty-image-card::after {
+    opacity: 1;
+}
+
+/* zoom image inside container */
+.founder-image,
+.mentor-image,
+.faculty-image {
+    transition: transform 0.6s cubic-bezier(.2,.9,.2,1);
+    will-change: transform;
+}
+
+.founder-card-container:hover .founder-image,
+.mentor-card-container:hover .mentor-image,
+.faculty-card-container:hover .faculty-image,
+.founder-card-container:focus-within .founder-image,
+.mentor-card-container:focus-within .mentor-image,
+.faculty-card-container:focus-within .faculty-image {
+    transform: scale(1.06) translateY(-4px);
+}
+
+/* bring social icons forward and brighten them on hover */
+.founder-card-container .social-links a,
+.mentor-card-container .social-links a,
+.faculty-card-container .social-links a {
+    opacity: 0.92;
+    transform: translateY(6px);
+    transition: transform 0.32s ease, opacity 0.32s ease;
+}
+
+.founder-card-container:hover .social-links a,
+.mentor-card-container:hover .social-links a,
+.faculty-card-container:hover .social-links a,
+.founder-card-container:focus-within .social-links a,
+.mentor-card-container:focus-within .social-links a,
+.faculty-card-container:focus-within .social-links a {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* subtle decorative ring that appears on hover for depth */
+.founder-card-container::before,
+.mentor-card-container::before,
+.faculty-card-container::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 16px;
+    background: radial-gradient(closest-side, rgba(108,99,255,0.08), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 0;
+}
+
+.founder-card-container:hover::before,
+.mentor-card-container:hover::before,
+.faculty-card-container:hover::before,
+.founder-card-container:focus-within::before,
+.mentor-card-container:focus-within::before,
+.faculty-card-container:focus-within::before {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+
 .founder-description,
 .mentor-description,
 .faculty-description {
