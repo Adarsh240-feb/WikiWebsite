@@ -26,12 +26,22 @@ const faqs = [
       "After creating your Wikimedia developer account, navigate to the Gerrit settings page to complete your Gerrit registration. You'll need to configure your SSH key for secure authentication and repository access. This setup is crucial for contributing code to Wikimedia projects and participating in the code review process.",
     reference: WikiDeveloperBook,
   },
-  {
-    question: "What is the proper workflow for submitting code changes to Gerrit?",
-    answer:
-      "The standard workflow involves: 1) Ensuring your local repository is synchronized with the latest changes, 2) Staging your modifications using `git add`, 3) Committing changes with a descriptive message using `git commit -m 'Your message'`, and 4) Pushing changes for review using `git push origin HEAD:refs/for/master`. This process ensures proper code review and integration.",
-    reference: WikiDeveloperBook,
-  },
+    {
+        question: "What is the proper workflow for submitting code changes to Gerrit?",
+        answer: (
+            <>
+                <p>The standard workflow involves:</p>
+                <ul className="faq-points">
+                    <li>Ensure your local repository is synchronized with the latest changes.</li>
+                    <li>Stage your modifications using <code>git add</code>.</li>
+                    <li>Commit changes with a descriptive message using <code>git commit -m 'Your message'</code>.</li>
+                    <li>Push changes for review using <code>git push origin HEAD:refs/for/master</code>.</li>
+                </ul>
+                <p>This process ensures proper code review and integration.</p>
+            </>
+        ),
+        reference: WikiDeveloperBook,
+    },
   {
     question: "How do I verify my SSH key configuration for Gerrit?",
     answer:
