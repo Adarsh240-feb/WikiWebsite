@@ -44,12 +44,20 @@ const faqs = [
     },
   {
     question: "How do I verify my SSH key configuration for Gerrit?",
-    answer:
-      "Test your SSH key configuration by executing `ssh -p 29418 your_gerrit_username@gerrit.wikimedia.org` in your terminal or Git Bash. A successful connection response confirms that your SSH key is properly configured and you can interact with Gerrit repositories. This verification step is essential before attempting to push code changes.",
-  },
-  {
-    question: "What programming languages and technologies are used in Wikimedia development?",
-    answer:
+    answer: (
+
+        <>
+            <ul className="faq-points">
+                
+                    Test your SSH key configuration by executing <code>ssh -p 29418 your_shell_username@gerrit.wikimedia.org</code> in your terminal or Git Bash. A successful connection response confirms that your SSH key is properly configured and you can interact with Gerrit repositories. This verification step is essential before attempting to push code changes.
+                
+            </ul>
+        </>
+    ),
+  },
+  {
+    question: "What programming languages and technologies are used in Wikimedia development?",
+    answer:
       "Wikimedia projects primarily use PHP for MediaWiki core, JavaScript for frontend interactions, Python for various tools and utilities, and SQL for database operations. Familiarity with these technologies, along with Git version control and the Wikimedia development workflow, will help you contribute effectively to the ecosystem.",
   },
   {
