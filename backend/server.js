@@ -264,38 +264,20 @@ if (fs.existsSync(frontendDist)) {
   // - API paths return 404
   // - Requests that look like assets (contain a file extension) return 404
   // - Requests that accept 'text/html' are redirected to the frontend
+  // If frontend isn't deployed with the backend, avoid redirecting or
+  // returning HTML for non-API requests. API should return JSON errors; a
+  // blank or HTML response for asset requests causes MIME errors in the
+  // browser. Returning JSON 404 makes the behavior explicit and safe.
   app.get(/.*/, (req, res) => {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API route not found' });
     }
-    // If someone hits the API root '/', redirect to the frontend host so
-    // the SPA is served from its proper domain instead of the API host.
-    if (req.path === '/' || req.path === '') {
-      const rootRedirect = (FRONTEND_URL || '').replace(/\/$/, '') + '/';
-      console.warn('Redirecting root request to frontend host:', rootRedirect);
-      return res.redirect(302, rootRedirect);
-    }
-
-    // If the request path contains a dot followed by 1-6 chars (e.g. .css, .js, .png)
-    // consider it an asset and redirect to the frontend host so assets are
-    // fetched from the correct origin.
-    const hasFileExt = /\.[a-zA-Z0-9]{1,6}$/.test(req.path);
-    if (hasFileExt) {
-      const assetUrl = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
-      console.warn('Redirecting asset request to frontend host:', assetUrl);
-      return res.redirect(302, assetUrl);
-    }
-
-    // For navigation-style requests, redirect to the frontend host.
-    const accept = (req.get('Accept') || '');
-    if (accept.includes('text/html') || accept.includes('*/*')) {
-      console.warn('Frontend build not found locally. Redirecting navigation to:', FRONTEND_URL);
-      const redirectTo = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
-      return res.redirect(302, redirectTo);
-    }
-
-    // Other request types: return JSON 404 so clients don't get HTML.
-    return res.status(404).json({ error: 'Not found' });
+    // For any non-API request when frontend isn't present, return a JSON
+    // 404 rather than redirecting or serving HTML. Deploy the frontend at
+    // the frontend host (FRONTEND_URL) or copy built assets to the backend
+    // if you want the API host to serve the SPA.
+    console.warn('Non-API request received but frontend not deployed here:', req.path);
+    return res.status(404).json({ error: 'Not found', message: 'Frontend not hosted on this API server' });
   });
 }
 
