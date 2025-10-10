@@ -210,15 +210,42 @@ if (fs.existsSync(frontendDist)) {
     });
   });
 } else {
-  // If frontend isn't built locally, redirect non-API requests to the deployed frontend
+  // If frontend isn't built locally, be careful about redirects. We should
+  // only redirect navigation requests (requests that accept HTML) to the
+  // deployed frontend. Returning HTML for asset requests (css/js/png) will
+  // cause the browser to treat them as the wrong MIME type and fail. So:
+  // - API paths return 404
+  // - Requests that look like assets (contain a file extension) return 404
+  // - Requests that accept 'text/html' are redirected to the frontend
   app.get(/.*/, (req, res) => {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API route not found' });
     }
-    console.warn('Frontend build not found locally. Redirecting to:', FRONTEND_URL);
-    // Preserve the path when redirecting so deep links still work
-    const redirectTo = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
-    return res.redirect(302, redirectTo);
+
+    // If the request path contains a dot followed by 1-6 chars (e.g. .css, .js, .png)
+    // consider it an asset and do not redirect to the frontend HTML (return 404)
+    const hasFileExt = /\.[a-zA-Z0-9]{1,6}$/.test(req.path);
+    if (hasFileExt) {
+      // If an asset is requested but the backend isn't serving the frontend
+      // files, redirect the browser to the frontend host so the asset is
+      // fetched from the correct origin. This fixes MIME errors where the
+      // API host returned HTML for asset requests.
+      const assetUrl = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
+      console.warn('Redirecting asset request to frontend host:', assetUrl);
+      return res.redirect(302, assetUrl);
+    }
+
+    // Check Accept header — only redirect if the client accepts HTML (a navigation)
+    const accept = (req.get('Accept') || '');
+    if (accept.includes('text/html') || accept.includes('*/*')) {
+      console.warn('Frontend build not found locally. Redirecting navigation to:', FRONTEND_URL);
+      const redirectTo = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
+      return res.redirect(302, redirectTo);
+    }
+
+    // For other request types (e.g., XHR expecting JSON), return 404 so clients
+    // don't receive HTML content with incorrect MIME
+    return res.status(404).json({ error: 'Not found' });
   });
 }
 
