@@ -44,6 +44,11 @@ app.use(cors({
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
+// Record start time so we can ignore stray early signals that would kill
+// the process immediately after startup (helps in some dev environments
+// where parent processes briefly send SIGTERM/SIGINT). If a signal comes
+// during the first second, we'll log and ignore it.
+const serverStartTime = Date.now();
 
 // ===== NEW: MongoDB connection logic with helpful logs =====
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
@@ -287,6 +292,15 @@ const server = app.listen(PORT, () => {
 
 // Graceful shutdown - close MongoDB client if connected
 async function shutdown() {
+  const ageMs = Date.now() - serverStartTime;
+  // If shutdown is requested immediately after startup, treat it as a
+  // stray signal and ignore (log it). This prevents the server from
+  // exiting right after starting in some environments.
+  if (ageMs < 1000) {
+    console.warn(`Received shutdown request ${ageMs}ms after start — ignoring stray early signal.`);
+    return;
+  }
+
   console.log('Shutting down server...');
   server.close(async () => {
     try {
@@ -301,5 +315,26 @@ async function shutdown() {
     }
   });
 }
-process.on('SIGINT', shutdown);
-process.on('SIGTERM', shutdown);
+// Attach signal handlers but log the incoming signal and stack for
+// diagnostics. Keep the graceful shutdown behavior for deliberate
+// termination (after the startup guard above).
+// Attach signal handlers after a short delay so that stray signals sent
+// immediately during process startup don't cause an unexpected shutdown.
+setTimeout(() => {
+  process.on('SIGINT', () => {
+    console.warn('SIGINT received — calling shutdown');
+    shutdown();
+  });
+  process.on('SIGTERM', () => {
+    console.warn('SIGTERM received — calling shutdown');
+    shutdown();
+  });
+
+  // Log uncaught errors and rejections so we can see root causes in logs
+  process.on('uncaughtException', (err) => {
+    console.error('uncaughtException:', err && err.stack ? err.stack : err);
+  });
+  process.on('unhandledRejection', (reason) => {
+    console.error('unhandledRejection:', reason && reason.stack ? reason.stack : reason);
+  });
+}, 1500);
