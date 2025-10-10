@@ -22,33 +22,51 @@ app.use((req, res, next) => {
 
 // Configure CORS to allow the production frontend and local dev origin.
 // You can override the allowed frontend origin by setting FRONTEND_URL in backend/.env
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://wikiclubtechuit.org';
-app.use(cors({
+const FRONTEND_URL = (process.env.FRONTEND_URL || 'https://wikiclubtechuit.org').replace(/\/$/, '');
+
+// Build a small, forgiving origin checker that accepts the configured
+// frontend origin, localhost dev servers, and vercel subdomains.
+const corsOptions = {
   origin: (origin, callback) => {
     // allow requests with no origin (like server-to-server or curl)
-    if (!origin) return callback(null, true);
-    // allow the configured frontend, localhost dev server, and any vercel subdomain
-    if (
-      origin === FRONTEND_URL ||
-      origin.startsWith('http://localhost') ||
-      origin.endsWith('.vercel.app')
-    ) {
+    if (!origin) {
+      console.debug('CORS: no origin (server or non-browser request) — allowing');
       return callback(null, true);
     }
-    // otherwise reject
-    console.warn('Blocked CORS request from origin:', origin);
-    return callback(new Error('Not allowed by CORS'));
+
+    const normalized = origin.replace(/\/$/, '');
+    const allowedLocal = normalized.startsWith('http://localhost');
+    const allowedVercel = normalized.endsWith('.vercel.app');
+    const allowedFrontend = normalized === FRONTEND_URL || normalized === (`https://www.${FRONTEND_URL.replace(/^https?:\/\//, '')}`);
+
+    if (allowedLocal || allowedVercel || allowedFrontend) {
+      console.debug('CORS: allowing origin', origin);
+      return callback(null, true);
+    }
+
+    console.warn('CORS: blocking origin', origin);
+    // Deny by returning false rather than throwing an error — this keeps
+    // the middleware from producing responses without CORS headers.
+    return callback(null, false);
   },
   credentials: true,
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+};
+
+app.use(cors(corsOptions));
+// Ensure preflight OPTIONS requests are handled with the same CORS policy.
+// Use a RegExp route to avoid path-to-regexp parsing issues with a literal '*'.
+app.options(/.*/, cors(corsOptions));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 // Record start time so we can ignore stray early signals that would kill
 // the process immediately after startup (helps in some dev environments
 // where parent processes briefly send SIGTERM/SIGINT). If a signal comes
-// during the first second, we'll log and ignore it.
+// during the first few seconds, we'll log and ignore it.
 const serverStartTime = Date.now();
+const STARTUP_SIGNAL_IGNORE_MS = 3000; // increased from 1000ms for more tolerance
 
 // ===== NEW: MongoDB connection logic with helpful logs =====
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
@@ -323,9 +341,15 @@ async function shutdown() {
   const ageMs = Date.now() - serverStartTime;
   // If shutdown is requested immediately after startup, treat it as a
   // stray signal and ignore (log it). This prevents the server from
-  // exiting right after starting in some environments.
-  if (ageMs < 1000) {
+  // exiting right after starting in some environments. Use a slightly larger
+  // window to avoid false positives on slow starts.
+  if (ageMs < STARTUP_SIGNAL_IGNORE_MS) {
     console.warn(`Received shutdown request ${ageMs}ms after start — ignoring stray early signal.`);
+    console.warn(`PID=${process.pid} PPID=${process.ppid} — ignoring early signal`);
+    // Capture a small stack to help see the call site in logs
+    try { throw new Error('Startup guard stack trace'); } catch (e) {
+      console.warn(e.stack.split('\n').slice(0,4).join('\n'));
+    }
     return;
   }
 
@@ -350,12 +374,18 @@ async function shutdown() {
 // immediately during process startup don't cause an unexpected shutdown.
 setTimeout(() => {
   process.on('SIGINT', () => {
-    console.warn('SIGINT received — calling shutdown');
-    shutdown();
+    const now = Date.now();
+    const ageMs = now - serverStartTime;
+    console.warn(`SIGINT received at ${new Date(now).toISOString()} (age ${ageMs}ms) PID=${process.pid} PPID=${process.ppid}`);
+    try { throw new Error('Signal received stack'); } catch (e) { console.warn(e.stack.split('\n').slice(0,6).join('\n')); }
+    shutdown('SIGINT');
   });
   process.on('SIGTERM', () => {
-    console.warn('SIGTERM received — calling shutdown');
-    shutdown();
+    const now = Date.now();
+    const ageMs = now - serverStartTime;
+    console.warn(`SIGTERM received at ${new Date(now).toISOString()} (age ${ageMs}ms) PID=${process.pid} PPID=${process.ppid}`);
+    try { throw new Error('Signal received stack'); } catch (e) { console.warn(e.stack.split('\n').slice(0,6).join('\n')); }
+    shutdown('SIGTERM');
   });
 
   // Log uncaught errors and rejections so we can see root causes in logs
