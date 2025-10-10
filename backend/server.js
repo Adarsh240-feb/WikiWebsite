@@ -247,18 +247,9 @@ app.use((err, req, res, next) => {
 // Serve frontend static files when built (guarded)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// When deployed on Vercel using the build script, the frontend dist is copied
-// into backend/frontend_dist. When running locally, the true frontend/dist
-// path is used.
-const frontendDist = process.env.SERVE_FRONTEND === 'true'
-  ? path.join(__dirname, 'frontend_dist')
-  : path.join(__dirname, '..', 'frontend', 'dist');
+const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
 
-// Only serve the built frontend from the API host if explicitly enabled
-// via SERVE_FRONTEND=true in the environment. Many deployments host the
-// frontend separately (e.g. on Vercel) and the API should only return
-// JSON in that case to avoid asset 500s.
-if (process.env.SERVE_FRONTEND === 'true' && fs.existsSync(frontendDist)) {
+if (fs.existsSync(frontendDist)) {
   app.use(express.static(frontendDist));
 
   // Use a RegExp route (/.*/) instead of string '*' or '/*' to avoid path-to-regexp parsing errors
@@ -275,19 +266,25 @@ if (process.env.SERVE_FRONTEND === 'true' && fs.existsSync(frontendDist)) {
     });
   });
 } else {
-  // When not serving the frontend from this host, provide a clear JSON
-  // reply at the root so clicking the backend link won't return HTML or
-  // attempt to load assets (which may not exist) and produce 500s.
-  app.get('/', (req, res) => {
-    return res.json({ ok: true, message: 'API is running. Frontend is hosted separately.', frontend: process.env.FRONTEND_URL || null });
-  });
-
-  // Any other non-API requests should return JSON 404 to avoid MIME errors
-  // in the browser when the frontend is hosted elsewhere.
+  // If frontend isn't built locally, be careful about redirects. We should
+  // only redirect navigation requests (requests that accept HTML) to the
+  // deployed frontend. Returning HTML for asset requests (css/js/png) will
+  // cause the browser to treat them as the wrong MIME type and fail. So:
+  // - API paths return 404
+  // - Requests that look like assets (contain a file extension) return 404
+  // - Requests that accept 'text/html' are redirected to the frontend
+  // If frontend isn't deployed with the backend, avoid redirecting or
+  // returning HTML for non-API requests. API should return JSON errors; a
+  // blank or HTML response for asset requests causes MIME errors in the
+  // browser. Returning JSON 404 makes the behavior explicit and safe.
   app.get(/.*/, (req, res) => {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API route not found' });
     }
+    // For any non-API request when frontend isn't present, return a JSON
+    // 404 rather than redirecting or serving HTML. Deploy the frontend at
+    // the frontend host (FRONTEND_URL) or copy built assets to the backend
+    // if you want the API host to serve the SPA.
     console.warn('Non-API request received but frontend not deployed here:', req.path);
     return res.status(404).json({ error: 'Not found', message: 'Frontend not hosted on this API server' });
   });
