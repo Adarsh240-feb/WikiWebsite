@@ -167,10 +167,20 @@ app.post('/api/queries', async (req, res) => {
   console.debug('/api/queries headers:', req.headers);
   console.debug('/api/queries rawBody:', String(req.rawBody).slice(0, 1000));
 
-  const { name, email, question } = req.body || {};
+  // Prefer parsed body; fallback to attempting to parse rawBody if parsing failed upstream
+  let { name, email, question } = req.body || {};
 
-  // Debug: log parsed payload (trim in prod)
-  console.debug('/api/queries payload parsed:', { name, email, question });
+  if ((!name || !email || !question) && req.rawBody) {
+    try {
+      const parsed = JSON.parse(String(req.rawBody));
+      name = name || parsed.name;
+      email = email || parsed.email;
+      question = question || parsed.question;
+      console.debug('/api/queries payload parsed from rawBody:', { name, email, question });
+    } catch (parseErr) {
+      console.debug('Could not parse rawBody as JSON:', parseErr && parseErr.message ? parseErr.message : parseErr);
+    }
+  }
 
   // Basic validation
   if (!name || !email || !question) {
@@ -258,21 +268,25 @@ if (fs.existsSync(frontendDist)) {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API route not found' });
     }
+    // If someone hits the API root '/', redirect to the frontend host so
+    // the SPA is served from its proper domain instead of the API host.
+    if (req.path === '/' || req.path === '') {
+      const rootRedirect = (FRONTEND_URL || '').replace(/\/$/, '') + '/';
+      console.warn('Redirecting root request to frontend host:', rootRedirect);
+      return res.redirect(302, rootRedirect);
+    }
 
     // If the request path contains a dot followed by 1-6 chars (e.g. .css, .js, .png)
-    // consider it an asset and do not redirect to the frontend HTML (return 404)
+    // consider it an asset and redirect to the frontend host so assets are
+    // fetched from the correct origin.
     const hasFileExt = /\.[a-zA-Z0-9]{1,6}$/.test(req.path);
     if (hasFileExt) {
-      // If an asset is requested but the backend isn't serving the frontend
-      // files, redirect the browser to the frontend host so the asset is
-      // fetched from the correct origin. This fixes MIME errors where the
-      // API host returned HTML for asset requests.
       const assetUrl = (FRONTEND_URL || '').replace(/\/$/, '') + req.path;
       console.warn('Redirecting asset request to frontend host:', assetUrl);
       return res.redirect(302, assetUrl);
     }
 
-    // Check Accept header — only redirect if the client accepts HTML (a navigation)
+    // For navigation-style requests, redirect to the frontend host.
     const accept = (req.get('Accept') || '');
     if (accept.includes('text/html') || accept.includes('*/*')) {
       console.warn('Frontend build not found locally. Redirecting navigation to:', FRONTEND_URL);
@@ -280,8 +294,7 @@ if (fs.existsSync(frontendDist)) {
       return res.redirect(302, redirectTo);
     }
 
-    // For other request types (e.g., XHR expecting JSON), return 404 so clients
-    // don't receive HTML content with incorrect MIME
+    // Other request types: return JSON 404 so clients don't get HTML.
     return res.status(404).json({ error: 'Not found' });
   });
 }
