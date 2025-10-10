@@ -257,8 +257,12 @@ if (fs.existsSync(frontendDist)) {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API route not found' });
     }
+    // send index.html for SPA navigation requests; don't send raw Error
     res.sendFile(path.join(frontendDist, 'index.html'), (err) => {
-      if (err) res.status(500).send(err);
+      if (err) {
+        console.error('Error sending index.html:', err && err.message ? err.message : err);
+        return res.status(500).json({ error: 'Failed to serve frontend index' });
+      }
     });
   });
 } else {
@@ -285,6 +289,30 @@ if (fs.existsSync(frontendDist)) {
     return res.status(404).json({ error: 'Not found', message: 'Frontend not hosted on this API server' });
   });
 }
+
+// Defensive: explicit asset route that returns a clean 404 and logs details
+// This helps avoid uncaught sendFile errors turning into 500 responses for
+// missing asset requests (some hosts have different fs semantics).
+app.get(/^\/assets\/.*$/, (req, res) => {
+  const assetPath = path.join(frontendDist, req.path.replace(/^\//, ''));
+  try {
+    if (!fs.existsSync(assetPath)) {
+      console.warn(`Asset not found: ${assetPath}`);
+      return res.status(404).end();
+    }
+    return res.sendFile(assetPath, (err) => {
+      if (err) {
+        console.error('Error serving asset', assetPath, err && err.message ? err.message : err);
+        // Return 404 for common fs errors, otherwise 500
+        if (err.code === 'ENOENT') return res.status(404).end();
+        return res.status(500).end();
+      }
+    });
+  } catch (e) {
+    console.error('Unexpected error serving asset', assetPath, e && e.stack ? e.stack : e);
+    return res.status(500).end();
+  }
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);
