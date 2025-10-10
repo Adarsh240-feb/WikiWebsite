@@ -1,7 +1,7 @@
 {
 	"name": "WikiClubTechUIT",
 	"short_name": "WikiClub",
-	"start_url": "https://wikiclubtechuit.vercel.app/",
+		"start_url": "https://wikiclubtechuit.org/",
 	"display": "standalone",
 	"background_color": "#ffffff",
 	"theme_color": "#0ea5a4",

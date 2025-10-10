@@ -11,9 +11,9 @@ export default defineConfig({
     // This is the crucial part for connecting client and server
     proxy: {
       '/api': {
-        // During development we can proxy API calls to the deployed backend
-        // so CORS isn't a problem. Use your Vercel backend URL below.
-        target: 'https://wikiwebsite-backend.vercel.app',
+  // During development we can proxy API calls to the deployed backend
+  // so CORS isn't a problem. Use your backend API URL below.
+  target: 'https://api.wikiclubtechuit.org',
         changeOrigin: true,
         secure: true,
       },
