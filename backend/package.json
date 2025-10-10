@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
+    ,"vercel-build": "cd ../frontend && npm ci --prefer-offline --no-audit --progress=false && npm run build",
+    "postvercel-build": "node ./scripts/copy-dist.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
