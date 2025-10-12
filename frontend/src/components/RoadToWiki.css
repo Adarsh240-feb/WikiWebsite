@@ -490,6 +490,23 @@ body, html {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+/* Maximize-like hover effect: subtle scale, brighter background and lifted shadow */
+.applyButton:hover {
+    transform: scale(1.04) translateY(-4px);
+    background-color: #f7fafc; /* slightly brighter */
+    border-color: #046599;
+    color: #046599;
+    box-shadow: 0 10px 30px rgba(4,101,153,0.12);
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, background-color 220ms ease;
+}
+.applyButton:active {
+    transform: scale(0.995) translateY(-1px);
+}
+.applyButton:focus {
+    outline: 3px solid rgba(4,101,153,0.18);
+    outline-offset: 3px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .imageWrapper {
