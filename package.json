@@ -4,5 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "build": "cd frontend && npm ci && npm run build"
+  },
+  "dependencies": {
+    "firebase": "^12.4.0"
   }
 }

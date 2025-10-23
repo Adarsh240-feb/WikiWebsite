@@ -93,7 +93,9 @@ body {
 
 /* --- Improved Latest Contributions List Items --- */
 .contribution-list-item {
-  display: flex;
+  /* Changed to flex-wrap to handle the new Gerrit Link on smaller screens */
+  display: flex; 
+  flex-wrap: wrap; 
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -114,12 +116,21 @@ body {
   color: var(--wiki-dark-gray);
 }
 
+/* Base style for task details */
 .list-item-details {
   font-size: 0.9rem;
   color: #666;
 }
 
-/* Link to the Phabricator task */
+/* 👇 NEW STYLE: For the Gerrit Task Link */
+.list-item-gerrit {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 10px; /* Separator from the Task ID */
+    flex-shrink: 0; /* Prevents wrapping before other elements on wider screens */
+}
+
+/* Link to the Phabricator task and Gerrit link */
 .contribution-list-item a {
   color: var(--wiki-blue);
   text-decoration: none;
@@ -199,7 +210,7 @@ body {
   justify-content: center;
 }
 
-/* --- Styles for the Expanded Row and Sliding Effect --- */
+/* --- Styles for the Expanded Row and Sliding Effect (Not currently used in React but kept for completeness) --- */
 .expanded-row td {
   padding: 0;
   border-top: 1px solid var(--wiki-light-gray);
@@ -252,6 +263,16 @@ body {
 
   .list-item-header {
     font-size: 1rem;
+    width: 100%; /* Ensures header spans full width on mobile */
+  }
+
+  .list-item-details, 
+  .list-item-gerrit {
+    font-size: 0.9rem;
+    margin-left: 0; /* Remove margin from Gerrit link on mobile */
+    padding-left: 0;
+    /* Ensure details and gerrit link stack below the header */
+    width: 100%; 
   }
   
   /* Leaderboard table */
@@ -275,22 +296,19 @@ body {
     box-sizing: border-box;
   }
 
-  /*
-   * FIX: This is the updated code for the mobile view.
-   * We've changed the flex direction to 'column' to stack the label and data vertically.
-   * This prevents the text from overlapping and makes it readable on smaller screens.
-   */
+  /* FIX: Mobile table cells now use the full width and stack label/content */
   .leaderboard-table td {
     text-align: left;
-    padding: 0;
+    padding: 10px 0; /* Added small vertical padding for separation */
     position: relative;
     border-bottom: none;
     font-size: 1rem;
     display: flex;
     flex-direction: column; /* Stacks label and content vertically */
-    gap: 5px; /* Adds space between stacked elements */
+    gap: 2px; 
   }
   
+  /* FIX: Correctly maps data-label for all columns, including College */
   .leaderboard-table td::before {
     content: attr(data-label);
     font-weight: 600;
@@ -301,12 +319,13 @@ body {
     font-size: 0.9rem;
   }
 
-  /* Specific adjustments for the 'rank' column */
+  /* Specific adjustments for the 'rank' column (kept mostly the same) */
   .leaderboard-table td:first-child {
     flex-direction: row; /* Keeps rank and emoji side-by-side */
     justify-content: flex-start;
     gap: 8px;
     font-size: 1.2rem;
+    padding-top: 0;
   }
   
   .leaderboard-table td:first-child::before {
