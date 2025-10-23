@@ -40,16 +40,13 @@ const ContributionMeter = () => {
         const data = doc.data();
         const contributorEmail = data.contributorEmail;
         const contributorName = data.contributorName;
-        // New: Retrieve collegeName from Firestore data
-        const collegeName = data.collegeName; 
         const status = data.contributionStatus;
         
         // Use email as the single unique key
-        // If this is the first time we see this email, store the name, college, and timestamp
+        // If this is the first time we see this email, store the name and timestamp
         if (!contributionsMap[contributorEmail]) {
           contributionsMap[contributorEmail] = {
             name: contributorName, // Store the name from the very first entry
-            college: collegeName,  // New: Store the college name
             total: 0,
             merged: 0,
             notMerged: 0,
@@ -57,7 +54,7 @@ const ContributionMeter = () => {
           };
         }
         
-        // Only update the counts, the name and college remain the same as the first entry
+        // Only update the counts, the name remains the same as the first entry
         contributionsMap[contributorEmail].total++;
         if (status === 'Merged') {
           contributionsMap[contributorEmail].merged++;
@@ -122,7 +119,6 @@ const ContributionMeter = () => {
                   <tr>
                     <th>Rank</th>
                     <th>Contributor</th>
-                    <th>College</th> {/* New: Added College Header */}
                     <th>Contributions</th>
                   </tr>
                 </thead>
@@ -131,7 +127,6 @@ const ContributionMeter = () => {
                     <tr key={contributor.email} className="leaderboard-row">
                       <td data-label="Rank">{getTrophy(index + 1)} {index + 1}</td>
                       <td data-label="Contributor">{contributor.name}</td>
-                      <td data-label="College">{contributor.college || 'N/A'}</td> {/* New: Display College Name */}
                       <td data-label="Contributions">
                         <strong>Total:</strong> {contributor.total} | 
                         <strong> Merged:</strong> {contributor.merged} | 
@@ -158,7 +153,7 @@ const ContributionMeter = () => {
                 {contributionsList.map((contrib, index) => (
                   <li key={index} className="contribution-list-item">
                     <span className="list-item-header">
-                      <strong>{contrib.contributorName}</strong> ({contrib.college || 'N/A'}) ({contrib.contributionType}) {/* Updated: Added College Name here */}
+                      <strong>{contrib.contributorName}</strong> ({contrib.contributionType}) 
                     </span>
                     <span className="list-item-details">
                       fixed task: 
