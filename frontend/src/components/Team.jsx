@@ -3,7 +3,6 @@ import "./Team.css";
 import Sidebar from "./Sidebar";
 import Reeti from "../Images/Reeti.jpg";
 import Neelima from "../Images/Neelima.png";
-import Atharva from "../Images/Atharva.jpg";
 import Somya from "../Images/Somya.jpg";
 import Arpita from "../Images/Arpita.jpg";
 import Manvi from "../Images/Manvi.jpg";
@@ -14,7 +13,7 @@ import Hridyesh from "../Images/Hridyesh.jpg";
 import Sarthak1 from "../Images/Sarthak1.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
-import AmitSir from "../Images/AmitSir.png";
+import AmitSir from "../Images/AmitSir.jpg";
 import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
