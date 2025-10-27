@@ -14,8 +14,7 @@ import Hridyesh from "../Images/Hridyesh.jpg";
 import Sarthak1 from "../Images/Sarthak1.jpg";
 import Suhani from "../Images/Suhani.jpg";
 import Priyanshika from "../Images/Priyanshika.jpg";
-import AmitSir from "../Images/AmitSir.jpg";
-import Arohi from "../Images/Arohi.jpg";
+import AmitSir from "../Images/AmitSir.png";
 import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,6 @@ const facultyAdvisor = {
   description: "Dr. Amit Kumar Tiwari serves as the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of distinguished academic experience and a Ph.D. in Computer Science, he has been instrumental in establishing the department's research excellence and academic culture. His leadership has fostered innovation and technological advancement within the institution.",
   image: AmitSir,
   linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/",
-  scholar: "https://scholar.google.com/citations?hl=en&user=Wn3Ac80AAAAJ",
 };
 
 const founder = {
@@ -90,13 +88,11 @@ const teamMembers = [
 ];
 
 const volunteers = [
-  { name: "Atharva Gupta", affiliation: "Content Strategy & Creation", image: Atharva, linkedin: "https://www.linkedin.com/in/atharva-gupta-tech?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Atharva005pro" },
   { name: "Somya Yadav", affiliation: "Social Media Management", image: Somya, linkedin: "https://www.linkedin.com/in/somya-yadav-0b2948360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/somsomya" },
   { name: "Shiksha", affiliation: "Visual Design & Branding", image: Shiksha, linkedin: "https://in.linkedin.com/in/shiksha-10504b358", github: "https://github.com/shiksha-28" },
   { name: "Neelima Srivastava", affiliation: "Event Coordination & Management", image: Neelima, linkedin: "https://www.linkedin.com/in/neelima-srivastav-b71636370", github: "https://github.com/th-neelimaa" },
-  { name: "Suhani Shukla", affiliation: "Visual Design & Branding", image: Suhani, linkedin: "http://www.linkedin.com/in/suhani-shukla-945193285", github: "https://github.com/SUHANI005" },
+  { name: "Suhani Shukla", affiliation: "Event Coordination & Management", image: Suhani, linkedin: "http://www.linkedin.com/in/suhani-shukla-945193285", github: "https://github.com/SUHANI005" },
   { name: "Priyanshika Upadhyay", affiliation: "Event Coordination & Management", image: Priyanshika, linkedin: "https://www.linkedin.com/in/priyanshika-upadhyay-a87a26332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Priyanshika1111" },
-  { name: "Arohi Singh", affiliation: "Report Writing & Outreach Lead", image: Arohi, linkedin: "https://www.linkedin.com/in/arohi-singh-549974289/", github: "https://github.com/Arohisngh" },
 ];
 
 const navLinks = [];
@@ -144,20 +140,12 @@ function Team() {
             </div>
             <div className="faculty-image-card">
               <div className="faculty-image-container">
-                <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" loading="lazy" decoding="async" />
+                <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
               </div>
               <div className="social-links">
                 <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
-                </a>             
-                {facultyAdvisor.scholar && (
-                  <a href={facultyAdvisor.scholar} aria-label={`${facultyAdvisor.name}'s Google Scholar profile`} target="_blank" rel="noopener noreferrer" className="scholar-link">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path d="M12 2L4 5L12 8L20 5L12 2Z" fill="currentColor" />
-                      <path d="M4 10L12 13L20 10V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V10Z" fill="currentColor" />
-                    </svg>
-                  </a>
-                )}
+                </a>
               </div>
             </div>
           </section>
@@ -170,7 +158,7 @@ function Team() {
             </div>
             <div className="founder-image-card">
               <div className="founder-image-container">
-                <img src={founder.image} alt={founder.name} className="founder-image" loading="lazy" decoding="async" />
+                <img src={founder.image} alt={founder.name} className="founder-image" />
               </div>
               <div className="social-links">
                 <a href={founder.linkedin} aria-label={`${founder.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -189,7 +177,7 @@ function Team() {
           <section className="mentor-card-container">
             <div className="mentor-image-card">
               <div className="mentor-image-container">
-                <img src={mentor.image} alt={mentor.name} className="mentor-image" loading="lazy" decoding="async" />
+                <img src={mentor.image} alt={mentor.name} className="mentor-image" />
               </div>
               <div className="social-links">
                 <a href={mentor.linkedin} aria-label={`${mentor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -213,7 +201,7 @@ function Team() {
             {teamMembers.map((member, index) => (
               <div className="team-card" key={index}>
                 <div className="tcard-image-container">
-                  <img src={member.image} alt={member.name} className="card-image" loading="lazy" decoding="async" />
+                  <img src={member.image} alt={member.name} className="card-image" />
                 </div>
                 <h2 className="member-name">{member.name}</h2>
                 <h3 className="member-title">{member.title}</h3>
@@ -237,7 +225,7 @@ function Team() {
             {volunteers.map((volunteer, index) => (
               <div className="volunteer-card" key={index} onClick={() => openModal(volunteer)}>
                 <div className="volunteer-image-container">
-                  <img src={volunteer.image} alt={volunteer.name} className="volunteer-image" loading="lazy" decoding="async" />
+                  <img src={volunteer.image} alt={volunteer.name} className="volunteer-image" />
                 </div>
                 <h3 className="volunteer-name">{volunteer.name}</h3>
                 <p className="volunteer-affiliation">{volunteer.affiliation}</p>
@@ -252,8 +240,8 @@ function Team() {
           <div className="Tmodal-content" onClick={(e) => e.stopPropagation()}>
             <button className="Tmodal-close-button" onClick={closeModal}>&times;</button>
             <div className="Tmodal-body">
-                <div className="Tmodal-image-container">
-                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" loading="lazy" decoding="async" />
+              <div className="Tmodal-image-container">
+                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" />
               </div>
               <div className="Tmodal-details">
                 <h2 className="Tmodal-name">{selectedVolunteer.name}</h2>
@@ -283,8 +271,6 @@ function Team() {
             src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
-            loading="lazy"
-            decoding="async"
           />
           <div className="wiki-logo">
           </div>
