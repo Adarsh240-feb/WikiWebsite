@@ -163,10 +163,25 @@ const ContributionMeter = () => {
                       <strong>{contrib.contributorName}</strong> ({contrib.collegeName || 'N/A'}) ({contrib.contributionType}) 
                     </span>
                     <span className="list-item-details">
-                      fixed task: 
-                      <a href={`https://phabricator.wikimedia.org/${contrib.taskId}`} target="_blank" rel="noopener noreferrer">
-                        {contrib.taskId}
-                      </a>
+                      fixed task:
+                      {contrib.taskId ? (
+                        (() => {
+                          const rawId = String(contrib.taskId || '');
+                          const tid = rawId.trim();
+                          if (!tid) return <span> N/A</span>;
+                          const taskUrl = `https://phabricator.wikimedia.org/${encodeURIComponent(tid)}`;
+                          return (
+                            <>
+                              {' '}
+                              <a href={taskUrl} target="_blank" rel="noopener noreferrer">
+                                {tid}
+                              </a>
+                            </>
+                          );
+                        })()
+                      ) : (
+                        <span> N/A</span>
+                      )}
                     </span>
 
                   </li>
