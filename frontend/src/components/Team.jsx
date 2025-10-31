@@ -26,6 +26,7 @@ const facultyAdvisor = {
   description: "Dr. Amit Kumar Tiwari serves as the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of distinguished academic experience and a Ph.D. in Computer Science, he has been instrumental in establishing the department's research excellence and academic culture. His leadership has fostered innovation and technological advancement within the institution.",
   image: AmitSir,
   linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/",
+  scholar: "https://scholar.google.com/citations?hl=en&user=Wn3Ac80AAAAJ",
 };
 
 const founder = {
@@ -147,6 +148,11 @@ function Team() {
                 <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
+                {facultyAdvisor.scholar && (
+                  <a href={facultyAdvisor.scholar} aria-label={`${facultyAdvisor.name}'s Google Scholar profile`} target="_blank" rel="noopener noreferrer">
+                    <i className="fa-solid fa-graduation-cap" style={{marginLeft: '8px'}}></i>
+                  </a>
+                )}
               </div>
             </div>
           </section>
