@@ -144,7 +144,10 @@ body {
 /* --- Leaderboard-specific Styles --- */
 .leaderboard-table-container {
   width: 100%;
-  overflow: hidden;
+  /* Allow vertical scrolling when the leaderboard grows beyond ~5 rows */
+  max-height: 420px; /* approx. 5 rows (adjust if your row height differs) */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .leaderboard-table {
@@ -158,6 +161,13 @@ body {
 .leaderboard-table thead {
   background-color: var(--wiki-blue);
   color: var(--wiki-white);
+}
+
+/* Keep the header visible while scrolling the rows */
+.leaderboard-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 
 .leaderboard-table th,

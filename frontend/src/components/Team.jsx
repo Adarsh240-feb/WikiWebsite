@@ -65,7 +65,7 @@ const teamMembers = [
   {
     name: "Adarsh Kesharwani",
     title: "Core Team (Technical)",
-    description: "Full-stack web developer with a passion for open-source development. Proficient in React, Node.js, MongoDB, and modern version control systems, contributing to technical excellence and innovation within the community.",
+    description: "A Full-stack web developer with a passion for open-source contribution. Proficient in React, Node.js, MongoDB, and modern version control systems, contributing to technical excellence and innovation within the community.",
     image: Adarsh,
     linkedin: "https://www.linkedin.com/in/adarsh-kesharwani-bba666315/",
     github: "https://github.com/Adarsh240-feb",
