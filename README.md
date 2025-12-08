@@ -35,3 +35,27 @@ WikiClubTechUIT is built with a powerful, modern stack, combining front-end spee
 
 Frontend: https://wikiclubtechuit.org/
 Backend: https://api.wikiclubtechuit.org/
+
+## Local development
+
+1. Backend
+
+```powershell
+cd backend
+npm install
+# copy `.env.example` to `.env` and update values (MONGODB_URI, MONGODB_DBNAME)
+npm run dev
+```
+
+2. Frontend
+
+```powershell
+cd frontend
+npm install
+# copy `frontend/.env.example` to `.env.local` and adjust VITE_API_URL if needed
+npm run dev
+```
+
+Notes:
+- The frontend includes a theme toggle (top-left) to switch dark/light.
+- The Vite dev server proxies `/api` to `http://localhost:5000` by default.

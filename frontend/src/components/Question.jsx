@@ -83,7 +83,7 @@ function FAQ() {
 
   return (
     <>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
+            <button className="sidebar-toggle interactive" onClick={toggleSidebar}>
         ☰
       </button>
       <div className="pageContainer">
@@ -103,7 +103,7 @@ function FAQ() {
                   onMouseEnter={() => setHoveredIndex(idx)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <button className="faq-question" type="button">
+                                <button className="faq-question interactive" type="button" aria-expanded={hoveredIndex === idx}>
                     {faq.question}
                     <span className="faq-arrow">{hoveredIndex === idx ? "−" : "+"}</span>
                   </button>
@@ -112,7 +112,7 @@ function FAQ() {
                     {faq.reference && (
                       <p className="faq-reference">
                         Reference:{" "}
-                        <a href={faq.reference} target="_blank" rel="noopener noreferrer">
+<a className="interactive" href={faq.reference} target="_blank" rel="noopener noreferrer">
                           <b>{getReferenceLabel(faq.reference)}</b>
                         </a>
                       </p>
@@ -120,7 +120,7 @@ function FAQ() {
                     {faq.repo && (
                       <p className="faq-reference">
                         <RepoIcon />
-                        <a href={faq.repo} target="_blank" rel="noopener noreferrer">
+<a className="interactive" href={faq.repo} target="_blank" rel="noopener noreferrer">
                           Repository
                         </a>
                       </p>
@@ -147,11 +147,11 @@ function FAQ() {
           </div>
         </div>
         <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/About" className="footer-link1 interactive">About Us</Link>
+          <Link to="/RoadToWiki" className="footer-link2 interactive">Road To Wiki Program</Link>
+          <Link to="/ContributionMeter" className="footer-link3 interactive">Contribution Board</Link>
+          <Link to="/Team" className="footer-link2 interactive">Team</Link>
+          <Link to="/Question" className="footer-link3 interactive">FAQ</Link>
         </div>
       </footer>
     </>

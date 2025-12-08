@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { API_BASE } from '../config'; // added import
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const QueryForm = () => {
   const [formData, setFormData] = useState({
@@ -22,25 +24,41 @@ const QueryForm = () => {
     setIsSubmitting(true);
     setMessage('Submitting your query...');
 
+    // Basic client-side validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.question.trim()) {
+      setIsSubmitting(false);
+      const msg = 'Please fill all required fields.';
+      setMessage(msg);
+      toast.error(msg);
+      return;
+    }
+    // simple email check
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(formData.email)) {
+      setIsSubmitting(false);
+      const msg = 'Please enter a valid email address.';
+      setMessage(msg);
+      toast.error(msg);
+      return;
+    }
+
     try {
       // API call to the backend server (use API_BASE)
       const url = (API_BASE || '').replace(/\/$/, '') + '/api/queries';
       const res = await axios.post(url, formData);
 
-      console.log('Query submitted successfully:', res.data);
       setMessage('✅ Your query has been submitted successfully! We will get back to you through E-mail.');
+      toast.success('Your query has been submitted — thank you!');
 
       // Reset the form fields on success
       setFormData({ name: '', email: '', question: '' });
     } catch (error) {
       console.error('Submission error:', error.response ? error.response.data : error.message);
-
-      // Get error message from the backend or use a general message
-      const errorMessage = error.response && error.response.data.message
+      const errorMessage = error.response && error.response.data && error.response.data.message
         ? error.response.data.message
         : '❌ Failed to submit query. Please try again.';
-
       setMessage(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }

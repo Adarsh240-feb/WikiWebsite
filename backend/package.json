@@ -12,6 +12,9 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
+    "mongoose": "^7.5.0",
+    "express-rate-limit": "^6.8.0",
+    "express-validator": "^7.0.1",
     "wikiwebsite": "file:.."
   },
   "devDependencies": {

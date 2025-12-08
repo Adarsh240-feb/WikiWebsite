@@ -68,7 +68,7 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
           link.external ? (
             <a
               href={link.path}
-              className="nav-item external-link"
+              className="nav-item external-link interactive"
               key={idx}
               target="_blank"
               rel="noopener noreferrer"
@@ -79,7 +79,7 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
           ) : (
             <Link
               to={link.path}
-              className="nav-item"
+              className="nav-item interactive"
               key={idx}
               onClick={(e) => handleNavClick(link.path, e)}
             >
@@ -90,15 +90,16 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
       </nav>
       <div className="sidebar-separator" />
       <div className="sidebar-social-media-icons">
-        <a href="https://www.instagram.com/wikiclubtech.uit/" target="_blank" rel="noopener noreferrer">
+        <a className="interactive" href="https://www.instagram.com/wikiclubtech.uit/" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/company/wikitech-uit/" target="_blank" rel="noopener noreferrer">
+        <a className="interactive" href="https://www.linkedin.com/company/wikitech-uit/" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-linkedin"></i>
         </a>
         <a
           href="#" // Default href, actual action handled by onClick
           aria-label="Email WikiClub Tech"
+          className="interactive"
           onClick={handleEmailClick}
         >
           <i className="fas fa-envelope"></i>

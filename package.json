@@ -3,9 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "cd frontend && npm ci && npm run build"
+    "build": "cd frontend && npm ci && npm run build",
+    "dev:backend": "cd backend && npm install && npm run dev",
+    "dev:frontend": "cd frontend && npm install && npm run dev",
+    "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\""
   },
   "dependencies": {
     "firebase": "^12.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
 }
