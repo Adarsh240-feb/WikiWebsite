@@ -44,12 +44,12 @@ function HomePage() {
               <img
                 src={WikiMainLogo}
                 alt="WikiClub Tech Logo"
-                className="hero-logo-large desktop-logo" // Add a new class for the desktop logo
+                className="hero-logo-large desktop-logo"
               />
               <img
                 src={WikiMainLogoM}
                 alt="WikiClub Tech Phone Logo"
-                className="hero-logo-large phone-logo" // Add a new class for the phone logo
+                className="hero-logo-large phone-logo"
               />
               <div></div>
             </div>
