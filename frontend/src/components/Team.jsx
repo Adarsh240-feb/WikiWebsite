@@ -18,7 +18,7 @@ import AmitSir from "../Images/AmitSir.jpg";
 import WikiS from "../Images/WikiS.png";
 import { Link } from "react-router-dom";
 
-// Import the new WavyText component
+
 import WavyText from './WavyText';
 
 const facultyAdvisor = {
