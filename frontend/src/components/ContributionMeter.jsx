@@ -89,6 +89,51 @@ const ContributionMeter = () => {
     return () => unsubscribe();
   }, []);
 
+  // Animate progress fills when rows become visible
+  useEffect(() => {
+    const containerSelector = '.contribution-meter-container';
+    const rows = Array.from(document.querySelectorAll(`${containerSelector} .revealable`));
+    if (!rows.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('revealed');
+
+        const fill = el.querySelector('.contrib-fill');
+        const counter = el.querySelector('.counter');
+        const target = Number(fill?.dataset?.target || 0);
+
+        if (fill) {
+          fill.style.transition = 'width 1000ms cubic-bezier(.2,.9,.2,1)';
+          // trigger layout then set width
+          requestAnimationFrame(() => {
+            fill.style.width = target + '%';
+          });
+        }
+
+        if (counter) {
+          const duration = 1000;
+          const startTime = performance.now();
+          const step = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.round(progress * target);
+            counter.textContent = current + '%';
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.25 });
+
+    rows.forEach(r => observer.observe(r));
+    return () => observer.disconnect();
+  }, [leaderboardData]);
+
 
   const getTrophy = (rank) => {
     switch (rank) {
@@ -105,7 +150,7 @@ const ContributionMeter = () => {
 
   return (
     <>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
+      <button className="sidebar-toggle interactive" onClick={toggleSidebar}>
         ☰
       </button>
       <div className="container">
@@ -129,18 +174,32 @@ const ContributionMeter = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {leaderboardData.map((contributor, index) => (
-                    <tr key={contributor.email} className="leaderboard-row">
-                      <td data-label="Rank">{getTrophy(index + 1)} {index + 1}</td>
-                      <td data-label="Contributor">{contributor.name}</td>
-                      <td data-label="College">{contributor.college || 'N/A'}</td>
-                      <td data-label="Contributions">
-                        <strong>Total:</strong> {contributor.total} | 
-                        <strong> Merged:</strong> {contributor.merged} | 
-                        <strong> Not Merged:</strong> {contributor.notMerged}
-                      </td>
-                    </tr>
-                  ))}
+                        {leaderboardData.map((contributor, index) => {
+                          const merged = Number(contributor.merged || 0);
+                          const total = Number(contributor.total || 0) || 1;
+                          const percent = Math.round((merged / total) * 100);
+                          return (
+                            <tr key={contributor.email} className="leaderboard-row revealable">
+                              <td data-label="Rank">{getTrophy(index + 1)} {index + 1}</td>
+                              <td data-label="Contributor">{contributor.name}</td>
+                              <td data-label="College">{contributor.college || 'N/A'}</td>
+                              <td data-label="Contributions">
+                                <div style={{display:'flex',gap:'0.5rem',alignItems:'center',flexDirection:'column'}}>
+                                  <div style={{width:'100%'}}>
+                                    <div className="contrib-bar" aria-hidden>
+                                      <div className="contrib-fill" style={{width: `0%`}} data-target={percent}></div>
+                                    </div>
+                                  </div>
+                                  <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}>
+                                    <small className="muted">Merged: {merged}</small>
+                                    <small className="muted">Total: {total}</small>
+                                    <small className="counter">{percent}%</small>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
                 </tbody>
               </table>
             ) : (
@@ -153,7 +212,7 @@ const ContributionMeter = () => {
             <div className="contribution-form-container">
               <h3>Submit a Contribution</h3>
               <p>If you want to record a contribution, please use the official submission form:</p>
-              <a href="https://docs.google.com/forms/d/16lUH40i3TMquCMBHplGhkFGtAWRcEFZgDo05FDpSo0s/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer" className="submit-contribution-link">Open Contribution Form</a>
+              <a className="submit-contribution-link interactive" href="https://docs.google.com/forms/d/16lUH40i3TMquCMBHplGhkFGtAWRcEFZgDo05FDpSo0s/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer">Open Contribution Form</a>
             </div>
             {contributionsList.length > 0 ? (
               <ul>
@@ -170,10 +229,10 @@ const ContributionMeter = () => {
                           const tid = rawId.trim();
                           if (!tid) return <span> N/A</span>;
                           const taskUrl = `https://phabricator.wikimedia.org/${encodeURIComponent(tid)}`;
-                          return (
+                              return (
                             <>
                               {' '}
-                              <a href={taskUrl} target="_blank" rel="noopener noreferrer">
+                              <a className="interactive" href={taskUrl} target="_blank" rel="noopener noreferrer">
                                 {tid}
                               </a>
                             </>
@@ -202,11 +261,11 @@ const ContributionMeter = () => {
           />
         </div>
         <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/About" className="footer-link1 interactive">About Us</Link>
+          <Link to="/RoadToWiki" className="footer-link2 interactive">Road To Wiki Program</Link>
+          <Link to="/ContributionMeter" className="footer-link3 interactive">Contribution Board</Link>
+          <Link to="/Team" className="footer-link2 interactive">Team</Link>
+          <Link to="/Question" className="footer-link3 interactive">FAQ</Link>
         </div>
       </footer>
     </>

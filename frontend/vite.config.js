@@ -11,11 +11,10 @@ export default defineConfig({
     // This is the crucial part for connecting client and server
     proxy: {
       '/api': {
-  // During development we can proxy API calls to the deployed backend
-  // so CORS isn't a problem. Use your backend API URL below.
-  target: 'https://api.wikiclubtechuit.org',
+        // During local development proxy API calls to the local backend
+        target: 'http://localhost:5000',
         changeOrigin: true,
-        secure: true,
+        secure: false,
       },
     },
   },

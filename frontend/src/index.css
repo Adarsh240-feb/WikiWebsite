@@ -1,0 +1,369 @@
+/* Global design tokens and dark mode variables */
+:root {
+	--bg: #ffffff;
+	--text: #0f172a; /* slate-900 */
+	--muted: #64748b; /* slate-500 */
+	--accent: #7c3aed; /* purple-600 */
+	--accent-600: #6d28d9;
+	--card: #f8fafc;
+	--border: #e2e8f0;
+	--success: #16a34a;
+	--error: #ef4444;
+	--graph-1: #7c3aed; /* primary */
+	--graph-2: #06b6d4; /* cyan */
+	--graph-3: #f59e0b; /* amber */
+	--glass: rgba(255,255,255,0.6);
+	--transition: 180ms ease-in-out;
+}
+
+/* Dark mode variables — toggle by adding `dark-mode` class to <html> */
+.dark-mode {
+	/* Deep black-blue background for full dark immersion */
+	--bg: #04040a; /* near-black */
+	--text: #eaf7ff; /* very light cyan for legibility */
+	--muted: #9fb4c9; /* soft muted cyan */
+
+	/* Neon accent palette */
+	--accent: #7c3aed; /* neon purple */
+	--accent-600: #b76bff; /* brighter purple for hover */
+	--accent-neon-cyan: #00fff6; /* neon cyan */
+	--accent-neon-amber: #ffbf33; /* neon amber */
+
+	--card: rgba(255,255,255,0.02); /* translucent card */
+	--border: rgba(124,58,237,0.18);
+	--success: #22ff88;
+	--error: #ff6b6b;
+	--graph-1: #b76bff;
+	--graph-2: #00fff6;
+	--graph-3: #ffbf33;
+	--glass: rgba(8,10,14,0.6);
+
+	/* glow strengths */
+	--glow-1: 0 0 8px rgba(183,107,255,0.8), 0 0 28px rgba(124,58,237,0.25);
+	--glow-2: 0 0 8px rgba(0,255,246,0.8), 0 0 28px rgba(0,255,246,0.12);
+	--glow-3: 0 0 6px rgba(255,191,51,0.85), 0 0 22px rgba(255,191,51,0.12);
+}
+
+/* Strong global dark-mode overrides for full-page immersion */
+.dark-mode body,
+.dark-mode #root,
+.dark-mode .container,
+.dark-mode .pageContainer,
+.dark-mode main,
+.dark-mode .main-content,
+.dark-mode .Team-content,
+.dark-mode .content-wrapper,
+.dark-mode .pageContainer,
+.dark-mode .page-container,
+.dark-mode .footer-wiki,
+.dark-mode .sidebar,
+.dark-mode .hero-section {
+	background: var(--bg) !important;
+	color: var(--text) !important;
+}
+
+/* Force footer, nav and sidebar to dark backgrounds */
+.dark-mode .footer-wiki,
+.dark-mode .nav-links,
+.dark-mode .sidebar {
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+	border-color: var(--border);
+}
+
+/* Make cards, sections and panels clearly darker */
+.dark-mode .card,
+.dark-mode .faculty-image-card,
+.dark-mode .founder-image-card,
+.dark-mode .mentor-image-card,
+.dark-mode .team-card,
+.dark-mode .volunteer-card,
+.dark-mode .applyBox,
+.dark-mode .applyBoxContent,
+.dark-mode .contribution-form-container,
+.dark-mode .contribution-list-container {
+	background: #06060a; /* stronger near-black */
+	border: 1px solid rgba(255,255,255,0.03);
+	box-shadow: 0 10px 30px rgba(2,6,23,0.7);
+}
+
+/* Stronger text contrast for headings and paragraphs */
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+	color: var(--text);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+.dark-mode p, .dark-mode li, .dark-mode span, .dark-mode td, .dark-mode th {
+	color: var(--text);
+}
+
+/* Tables in dark mode */
+.dark-mode table, .dark-mode .leaderboard-table {
+	background: transparent;
+	color: var(--text);
+	border-collapse: collapse;
+}
+.dark-mode .leaderboard-table th, .dark-mode .leaderboard-table td {
+	border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Hero/background images: darken overlays to maintain contrast */
+.dark-mode .background-image,
+.dark-mode .hero-image img,
+.dark-mode .programImage,
+.dark-mode .hero-logo-large,
+.dark-mode .founder-image,
+.dark-mode .faculty-image,
+.dark-mode .mentor-image,
+.dark-mode .card-image,
+.dark-mode .volunteer-image {
+	filter: brightness(0.6) contrast(1.05) saturate(0.95);
+}
+.dark-mode .overlay { background: rgba(0,0,0,0.6); }
+
+/* Forms and inputs, ensure fields are dark and text is visible */
+.dark-mode input, .dark-mode textarea, .dark-mode select {
+	background: #05050a !important;
+	border: 1px solid rgba(255,255,255,0.04) !important;
+	color: var(--text) !important;
+}
+
+/* Ensure links and interactive elements stand out */
+.dark-mode a, .dark-mode .interactive {
+	color: var(--accent-neon-cyan);
+}
+.dark-mode a:hover, .dark-mode .interactive:hover {
+	color: var(--accent-600);
+	text-shadow: 0 0 12px rgba(183,107,255,0.95);
+}
+
+/* Reduce page glare for full-page dark effect */
+.dark-mode .glass, .dark-mode .hero-image .overlay { background: rgba(2,4,6,0.6); }
+
+/* Base layout */
+html, body, #root {
+	height: 100%;
+}
+body {
+	background: var(--bg);
+	color: var(--text);
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: background var(--transition), color var(--transition);
+}
+
+/* Links */
+a {
+	color: var(--accent);
+	text-decoration: none;
+	transition: color var(--transition), transform var(--transition);
+}
+a:hover, a:focus {
+	color: var(--accent-600);
+	transform: translateY(-1px);
+}
+
+/* Dark-mode specific interactive styles */
+.dark-mode a, .dark-mode a:visited { color: var(--accent); }
+.dark-mode a:hover, .dark-mode a:focus { color: var(--accent-600); text-shadow: 0 0 10px rgba(183,107,255,0.9); }
+
+.dark-mode button {
+	background: linear-gradient(90deg, var(--accent), var(--accent-600));
+	color: #031018; /* dark text on neon pill for contrast */
+	box-shadow: var(--glow-1);
+}
+.dark-mode button:hover, .dark-mode button:focus {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 28px rgba(124,58,237,0.28), 0 0 48px rgba(183,107,255,0.08);
+}
+
+.dark-mode input, .dark-mode textarea, .dark-mode select {
+	background: rgba(255,255,255,0.02);
+	border: 1px solid var(--border);
+	color: var(--text);
+}
+.dark-mode input:focus, .dark-mode textarea:focus, .dark-mode select:focus {
+	border-color: var(--accent-neon-cyan);
+	box-shadow: var(--glow-2);
+}
+
+.dark-mode .card {
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	border: 1px solid var(--border);
+	box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+}
+
+.dark-mode .query-message.success { color: var(--success); text-shadow: 0 0 8px rgba(34,255,136,0.6); }
+.dark-mode .query-message.error { color: var(--error); text-shadow: 0 0 8px rgba(255,107,107,0.6); }
+
+/* Interactive glow helper */
+.dark-mode .interactive:hover, .dark-mode .interactive:focus-visible {
+	box-shadow: var(--glow-1);
+}
+
+/* Theme toggle high-visibility tweak in dark mode */
+.dark-mode .theme-toggle { background: linear-gradient(90deg, var(--accent-neon-cyan), var(--accent)); color: #001018; box-shadow: var(--glow-2); }
+
+/* Ensure text remains crisp and legible */
+.dark-mode body, .dark-mode p, .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+	color: var(--text);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+/* Graphs: ensure chart defaults pick up neon colors when using CSS vars */
+.dark-mode .graph-1 { color: var(--graph-1); }
+.dark-mode .graph-2 { color: var(--graph-2); }
+.dark-mode .graph-3 { color: var(--graph-3); }
+
+/* Buttons */
+button {
+	background: var(--accent);
+	color: white;
+	border: 1px solid transparent;
+	padding: 0.5rem 0.85rem;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+button:hover, button:focus {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+	background: var(--accent-600);
+}
+
+/* Inputs, textareas, selects */
+input, textarea, select {
+	background: var(--card);
+	border: 1px solid var(--border);
+	color: var(--text);
+	padding: 0.5rem 0.6rem;
+	border-radius: 6px;
+	transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+input:focus, textarea:focus, select:focus {
+	outline: none;
+	border-color: var(--accent-600);
+	box-shadow: 0 8px 24px rgba(99, 102, 241, 0.08);
+	transform: translateY(-1px);
+}
+
+/* Visible focus styles for keyboard users */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+	outline: 3px solid rgba(124,58,237,0.14);
+	outline-offset: 3px;
+	border-color: var(--accent-600);
+}
+
+/* Checkboxes and radios: make hover/active visible */
+input[type="checkbox"], input[type="radio"] {
+	width: 1.05rem;
+	height: 1.05rem;
+	accent-color: var(--accent);
+	transition: transform var(--transition), box-shadow var(--transition);
+}
+input[type="checkbox"]:hover, input[type="radio"]:hover {
+	transform: translateY(-2px);
+}
+
+/* Cards */
+.card {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 1rem;
+	transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(2,6,23,0.08); }
+
+/* Reveal animation for cards & rows */
+.revealable { opacity: 0; transform: translateY(18px); transition: opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1); }
+.revealable.revealed { opacity: 1; transform: translateY(0); }
+
+/* Neon hover for RoadToWiki cards */
+.cards-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; }
+.card { transition: transform 300ms var(--transition), box-shadow 300ms var(--transition); }
+.card:hover { box-shadow: var(--glow-1); transform: translateY(-8px) scale(1.02); }
+.card .card-title { color: var(--accent); text-shadow: 0 0 8px rgba(183,107,255,0.9); }
+
+/* Contribution progress bars */
+.contrib-bar { height: 12px; background: rgba(255,255,255,0.03); border-radius: 999px; overflow:hidden; }
+.contrib-fill { height:100%; width:0%; border-radius:999px; background: linear-gradient(90deg,var(--graph-1),var(--graph-2)); box-shadow: none; transition: width 900ms cubic-bezier(.2,.9,.2,1); }
+.leaderboard-row.revealed .contrib-fill { box-shadow: var(--glow-1); }
+
+/* Small counters animation */
+.counter { font-variant-numeric: tabular-nums; }
+
+/* Query form specific helpers */
+.query-container { max-width: 720px; margin: 1.25rem auto; padding: 1rem; }
+.query-form .form-group { margin-bottom: 0.75rem; display:flex; flex-direction:column; gap:0.35rem; }
+.query-input { width:100%; }
+.query-submit-btn { display:inline-flex; align-items:center; gap:0.5rem; }
+.query-message { margin-top:0.75rem; }
+.query-message.success { color: var(--success); }
+.query-message.error { color: var(--error); }
+
+/* Small utilities */
+.muted { color: var(--muted); }
+.accent { color: var(--accent); }
+
+/* Graph colors helpers (for canvases or inline SVGs) */
+.graph-1 { color: var(--graph-1); }
+.graph-2 { color: var(--graph-2); }
+.graph-3 { color: var(--graph-3); }
+
+/* Smooth transitions for interactive controls globally */
+* { box-sizing: border-box; }
+
+/* Generic interactive helper for elements that need explicit hover/focus styles */
+.interactive, .sidebar-toggle, .submit-contribution-link, .faq-question, .Tmodal-close-button {
+	transition: transform var(--transition), box-shadow var(--transition), color var(--transition);
+	cursor: pointer;
+}
+.interactive:hover, .sidebar-toggle:hover, .submit-contribution-link:hover, .faq-question:hover, .Tmodal-close-button:hover {
+	transform: translateY(-2px);
+}
+.interactive:focus-visible, .sidebar-toggle:focus-visible, .submit-contribution-link:focus-visible, .faq-question:focus-visible, .Tmodal-close-button:focus-visible {
+	outline: 3px solid rgba(124,58,237,0.14);
+	outline-offset: 3px;
+}
+
+/* Dark-mode image adjustments: use subtle brightness/contrast so images look balanced */
+.dark-mode img:not(.no-dark-filter) {
+	filter: brightness(0.95) contrast(1.02);
+}
+
+/* Ensure SVG fills that rely on currentColor pick up theme colors */
+svg { color: inherit; }
+
+/* Small helper classes to replace inline styles */
+.icon-spaced { margin-left: 8px; }
+.theme-toggle { margin: 0.5rem; }
+/* Prominent floating theme toggle */
+.theme-toggle {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	z-index: 1200;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.45rem 0.6rem;
+	background: var(--accent);
+	color: #fff;
+	border-radius: 999px;
+	border: 1px solid rgba(0,0,0,0.06);
+	box-shadow: 0 8px 24px rgba(2,6,23,0.16);
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.theme-toggle:hover, .theme-toggle:focus {
+	transform: translateY(-2px);
+	background: var(--accent-600);
+}
+.theme-toggle .theme-toggle-icon { font-size: 1.05rem; }
+.theme-toggle .theme-toggle-label { font-size: 0.85rem; }
+.theme-toggle:focus-visible { outline: 3px solid rgba(255,255,255,0.18); outline-offset: 3px; }
+
+/* Dark-mode variant to ensure contrast if using dark background already */
+.dark-mode .theme-toggle { background: var(--accent-600); color: #fff; }

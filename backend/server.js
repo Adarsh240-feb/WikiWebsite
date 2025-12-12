@@ -4,6 +4,125 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import rateLimit from 'express-rate-limit';
+import connectDB from './server/config/db.js';
+import queryRoutes from './server/routes/queryRoutes.js';
+
+dotenv.config();
+
+const app = express();
+
+// Capture raw request body for debugging
+app.use(express.json({ limit: '100kb', verify: (req, res, buf) => { try { req.rawBody = buf && buf.toString(); } catch (e) { req.rawBody = undefined; } } }));
+
+// Simple request logger
+app.use((req, res, next) => {
+  console.debug(`[req] ${req.method} ${req.path} origin=${req.get('origin') || '-'} content-length=${req.get('content-length') || 0}`);
+  next();
+});
+
+const FRONTEND_URL = (process.env.FRONTEND_URL || 'https://wikiclubtechuit.org').replace(/\/$/, '');
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const normalized = origin.replace(/\/$/, '');
+    const allowedLocal = normalized.startsWith('http://localhost');
+    const allowedVercel = normalized.endsWith('.vercel.app');
+    const allowedFrontend = normalized === FRONTEND_URL || normalized === (`https://www.${FRONTEND_URL.replace(/^https?:\/\//, '')}`);
+    if (allowedLocal || allowedVercel || allowedFrontend) return callback(null, true);
+    return callback(null, false);
+  },
+  credentials: true,
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
+};
+
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
+app.use(express.json());
+
+// Rate limiter for POST routes
+const postLimiter = rateLimit({ windowMs: 60 * 1000, max: 20, standardHeaders: true, legacyHeaders: false });
+
+// Connect using mongoose helper (server/config/db.js)
+connectDB().catch((err) => console.error('Initial DB connect failed:', err && err.message ? err.message : err));
+
+const PORT = process.env.PORT || 5000;
+
+// Health endpoint
+app.get('/api/health', (req, res) => {
+  const state = mongoose.connection.readyState; // 0 disconnected, 1 connected
+  res.json({ status: 'ok', ts: Date.now(), db: { state } });
+});
+
+app.post('/api/contact', (req, res) => {
+  const payload = req.body || {};
+  res.json({ received: true, payload });
+});
+
+// Mount queryRoutes with rate limiter
+app.use('/api/queries', postLimiter, queryRoutes);
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('Unhandled error middleware:', err && err.stack ? err.stack : err);
+  if (res.headersSent) return next(err);
+  res.status(err && err.status ? err.status : 500).json({ ok: false, message: 'Server error', error: String(err && err.message) });
+});
+
+// Serve frontend if built
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
+
+if (fs.existsSync(frontendDist)) {
+  app.use(express.static(frontendDist));
+  app.get(/.*/, (req, res) => {
+    if (req.path.startsWith('/api')) return res.status(404).json({ error: 'API route not found' });
+    res.sendFile(path.join(frontendDist, 'index.html'), (err) => {
+      if (err) return res.status(500).json({ error: 'Failed to serve frontend index' });
+    });
+  });
+} else {
+  app.get(/.*/, (req, res) => {
+    if (req.path.startsWith('/api')) return res.status(404).json({ error: 'API route not found' });
+    return res.status(404).json({ error: 'Not found', message: 'Frontend not hosted on this API server' });
+  });
+}
+
+const server = app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
+});
+
+// Graceful shutdown
+async function shutdown() {
+  console.log('Shutting down server...');
+  server.close(async () => {
+    try {
+      await mongoose.connection.close();
+      console.log('Mongoose connection closed.');
+    } catch (err) {
+      console.error('Error closing mongoose connection:', err);
+    } finally {
+      process.exit(0);
+    }
+  });
+}
+
+setTimeout(() => {
+  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', shutdown);
+  process.on('uncaughtException', (err) => console.error('uncaughtException:', err && err.stack ? err.stack : err));
+  process.on('unhandledRejection', (reason) => console.error('unhandledRejection:', reason));
+}, 1500);
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 import { MongoClient } from 'mongodb';
 
 dotenv.config();

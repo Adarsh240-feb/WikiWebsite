@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RoadToWiki.css";
 import "./HomePage.css";
 import GroupWiki from "../Images/GroupWiki.png";
@@ -39,7 +39,7 @@ const cardData = [
 const navLinks = [];
 
 const Card = ({ title, image, description, titleColorClass }) => (
-  <div className="card">
+  <div className="card revealable" tabIndex={0}>
     <img src={image} alt={title} className="card-image" loading="lazy" decoding="async" />
     <div className="card-content">
       <h3 className={`card-title ${titleColorClass}`}>{title}</h3>
@@ -51,6 +51,19 @@ const Card = ({ title, image, description, titleColorClass }) => (
 function RoadToWiki() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.revealable').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -58,7 +71,7 @@ function RoadToWiki() {
   return (
     <div>
       <div className="pageContainer">
-        <button className="sidebar-toggle" onClick={toggleSidebar}>
+        <button className="sidebar-toggle interactive" onClick={toggleSidebar}>
           ☰
         </button>
         <Sidebar sidebarOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
@@ -126,7 +139,7 @@ function RoadToWiki() {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdhllqy5J27BOytcHiELSH9amZVHED_qxgyYb7mSyCem1mpRg/viewform?pli=1" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="applyButton"
+                  className="applyButton interactive"
                 >
                   Apply Now!
                 </a>
@@ -238,11 +251,11 @@ function RoadToWiki() {
           </div>
         </div>
         <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/About" className="footer-link1 interactive">About Us</Link>
+          <Link to="/RoadToWiki" className="footer-link2 interactive">Road To Wiki Program</Link>
+          <Link to="/ContributionMeter" className="footer-link3 interactive">Contribution Board</Link>
+          <Link to="/Team" className="footer-link2 interactive">Team</Link>
+          <Link to="/Question" className="footer-link3 interactive">FAQ</Link>
         </div>
       </footer>
     </div>

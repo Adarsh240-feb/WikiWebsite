@@ -3,6 +3,7 @@ import HomePage from "./components/HomePage";
 import RoadToWiki from "./components/RoadToWiki";
 import Team from "./components/Team";
 import About from "./components/About";
+import ThemeToggle from "./components/ThemeToggle";
 // import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import Question from "./components/Question";
@@ -10,6 +11,7 @@ import ContributionMeter from "./components/ContributionMeter";
 function App() {
   return (
     <HashRouter>
+      <ThemeToggle />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />

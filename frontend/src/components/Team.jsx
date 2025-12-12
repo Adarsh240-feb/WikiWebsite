@@ -117,7 +117,7 @@ function Team() {
 
   return (
     <>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
+      <button className="sidebar-toggle interactive" onClick={toggleSidebar}>
         ☰
       </button>
       <div className="container">
@@ -145,12 +145,12 @@ function Team() {
                 <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
               </div>
               <div className="social-links">
-                <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
+                <a className="interactive" href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
                 {facultyAdvisor.scholar && (
-                  <a href={facultyAdvisor.scholar} aria-label={`${facultyAdvisor.name}'s Google Scholar profile`} target="_blank" rel="noopener noreferrer">
-                    <i className="fa-solid fa-graduation-cap" style={{marginLeft: '8px'}}></i>
+                  <a className="interactive" href={facultyAdvisor.scholar} aria-label={`${facultyAdvisor.name}'s Google Scholar profile`} target="_blank" rel="noopener noreferrer">
+                    <i className="fa-solid fa-graduation-cap icon-spaced"></i>
                   </a>
                 )}
               </div>
@@ -168,10 +168,10 @@ function Team() {
                 <img src={founder.image} alt={founder.name} className="founder-image" />
               </div>
               <div className="social-links">
-                <a href={founder.linkedin} aria-label={`${founder.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
+                <a className="interactive" href={founder.linkedin} aria-label={`${founder.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
-                <a href={founder.github} aria-label={`${founder.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
+                <a className="interactive" href={founder.github} aria-label={`${founder.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -187,10 +187,10 @@ function Team() {
                 <img src={mentor.image} alt={mentor.name} className="mentor-image" />
               </div>
               <div className="social-links">
-                <a href={mentor.linkedin} aria-label={`${mentor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
+                <a className="interactive" href={mentor.linkedin} aria-label={`${mentor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
-                <a href={mentor.github} aria-label={`${mentor.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
+                <a className="interactive" href={mentor.github} aria-label={`${mentor.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -214,10 +214,10 @@ function Team() {
                 <h3 className="member-title">{member.title}</h3>
                 <p className="member-description">{member.description}</p>
                 <div className="social-links">
-                  <a href={member.linkedin} aria-label={`${member.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
+                  <a className="interactive" href={member.linkedin} aria-label={`${member.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                     <i className="fa-brands fa-linkedin"></i>
                   </a>
-                  <a href={member.github} aria-label={`${member.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
+                  <a className="interactive" href={member.github} aria-label={`${member.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
                     <i className="fa-brands fa-github"></i>
                   </a>
                 </div>
@@ -230,7 +230,7 @@ function Team() {
           <WavyText text="Volunteers" />
           <section className="volunteer-cards-container">
             {volunteers.map((volunteer, index) => (
-              <div className="volunteer-card" key={index} onClick={() => openModal(volunteer)}>
+              <div className="volunteer-card interactive" key={index} onClick={() => openModal(volunteer)} tabIndex={0} onKeyDown={(e) => { if(e.key === 'Enter' || e.key === ' ') openModal(volunteer); }}>
                 <div className="volunteer-image-container">
                   <img src={volunteer.image} alt={volunteer.name} className="volunteer-image" />
                 </div>
@@ -245,7 +245,7 @@ function Team() {
       {selectedVolunteer && (
         <div className="Tmodal-overlay" onClick={closeModal}>
           <div className="Tmodal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="Tmodal-close-button" onClick={closeModal}>&times;</button>
+            <button className="Tmodal-close-button interactive" onClick={closeModal} aria-label="Close">&times;</button>
             <div className="Tmodal-body">
               <div className="Tmodal-image-container">
                 <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" />
@@ -255,12 +255,12 @@ function Team() {
                 <p className="Tmodal-affiliation">{selectedVolunteer.affiliation}</p>
                 <div className="Tsocial-links Tmodal-social-links">
                   {selectedVolunteer.linkedin && (
-                    <a href={selectedVolunteer.linkedin} aria-label={`${selectedVolunteer.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
+                    <a className="interactive" href={selectedVolunteer.linkedin} aria-label={`${selectedVolunteer.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
                       <i className="fa-brands fa-linkedin"></i>
                     </a>
                   )}
                   {selectedVolunteer.github && (
-                    <a href={selectedVolunteer.github} aria-label={`${selectedVolunteer.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
+                    <a className="interactive" href={selectedVolunteer.github} aria-label={`${selectedVolunteer.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
                       <i className="fa-brands fa-github"></i>
                     </a>
                   )}
@@ -283,11 +283,11 @@ function Team() {
           </div>
         </div>
         <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/About" className="footer-link1 interactive">About Us</Link>
+          <Link to="/RoadToWiki" className="footer-link2 interactive">Road To Wiki Program</Link>
+          <Link to="/ContributionMeter" className="footer-link3 interactive">Contribution Board</Link>
+          <Link to="/Team" className="footer-link2 interactive">Team</Link>
+          <Link to="/Question" className="footer-link3 interactive">FAQ</Link>
         </div>
       </footer>
     </>

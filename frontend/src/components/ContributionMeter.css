@@ -1,15 +1,7 @@
 /* src/components/ContributionMeter/ContributionMeter.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* Define a color palette based on Wikimedia/Wikipedia colors for consistency */
-:root {
-  --wiki-blue: #046599;
-  --wiki-light-blue: #0881b9;
-  --wiki-dark-gray: #333;
-  --wiki-neutral-gray: #f9f9f9;
-  --wiki-light-gray: #e2e8f0;
-  --wiki-white: #ffffff;
-}
+/* Use global design tokens defined in `src/index.css` so dark-mode and accent colors apply consistently */
 
 /* Base styles for a clean, professional look */
 body {
@@ -23,14 +15,14 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: var(--wiki-neutral-gray);
+  background-color: var(--card);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.12);
   margin: 2rem;
 }
 
 .contribution-meter-container h2 {
-  color: var(--wiki-dark-gray);
+  color: var(--text);
   margin-bottom: 1.5rem;
   font-size: 2.5rem;
   font-weight: 700;
@@ -41,9 +33,9 @@ body {
 .contribution-list-container {
   padding: 2rem;
   margin: 2rem;
-  background-color: var(--wiki-white);
+  background-color: var(--card);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.12);
 }
 
 .contribution-list-container h2 {
@@ -55,14 +47,14 @@ body {
 .contribution-form-container {
   margin: 1.5rem 0;
   padding: 1rem;
-  background: linear-gradient(180deg, var(--wiki-white), #fbfdff);
+  background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.01));
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 .contribution-form-container h3 { margin: 0 0 0.5rem 0; }
 .submit-contribution-link {
   display: inline-block;
-  background: var(--wiki-blue);
+  background: var(--accent);
   color: #fff;
   padding: 10px 14px;
   border-radius: 6px;
@@ -100,7 +92,7 @@ body {
   align-items: center;
   padding: 1rem;
   margin-bottom: 10px;
-  background-color: var(--wiki-neutral-gray);
+  background-color: var(--card);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -113,26 +105,26 @@ body {
 
 .list-item-header {
   font-weight: 600;
-  color: var(--wiki-dark-gray);
+  color: var(--text);
 }
 
 /* Base style for task details */
 .list-item-details {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
 }
 
 /* 👇 NEW STYLE: For the Gerrit Task Link */
 .list-item-gerrit {
-    font-size: 0.9rem;
-    color: #666;
-    margin-left: 10px; /* Separator from the Task ID */
-    flex-shrink: 0; /* Prevents wrapping before other elements on wider screens */
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-left: 10px; /* Separator from the Task ID */
+  flex-shrink: 0; /* Prevents wrapping before other elements on wider screens */
 }
 
 /* Link to the Phabricator task and Gerrit link */
 .contribution-list-item a {
-  color: var(--wiki-blue);
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
 }
@@ -159,8 +151,8 @@ body {
 }
 
 .leaderboard-table thead {
-  background-color: var(--wiki-blue);
-  color: var(--wiki-white);
+  background-color: var(--accent);
+  color: var(--wiki-white, #fff);
 }
 
 /* Keep the header visible while scrolling the rows */
@@ -184,11 +176,11 @@ body {
 }
 
 .leaderboard-table tbody tr {
-  background-color: var(--wiki-white);
+  background-color: var(--card);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   cursor: pointer;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .leaderboard-table tbody tr:hover {
@@ -198,17 +190,17 @@ body {
 
 /* Style for top ranks with trophy highlights */
 .leaderboard-table tbody tr:nth-child(1) {
-  background-color: #fff4cc; /* softer gold */
+  background-color: rgba(255,244,204,0.06); /* subtle highlight */
   font-weight: 700;
-  color: var(--wiki-dark-gray);
+  color: var(--text);
 }
 
 .leaderboard-table tbody tr:nth-child(2) {
-  background-color: #eef2f7; /* softer silver */
+  background-color: rgba(238,242,247,0.04);
 }
 
 .leaderboard-table tbody tr:nth-child(3) {
-  background-color: #f7e7de; /* softer bronze */
+  background-color: rgba(247,231,222,0.04);
 }
 
 /* Make emojis and rank centered */

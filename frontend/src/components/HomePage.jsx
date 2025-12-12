@@ -27,7 +27,7 @@ function HomePage() {
 
   return (
     <>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
+      <button className="sidebar-toggle interactive" onClick={toggleSidebar}>
         ☰
       </button>
       <div className="container">
@@ -77,7 +77,7 @@ function HomePage() {
               href="https://wikimediafoundation.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="clickable-image-link"
+              className="clickable-image-link interactive"
             >
               <img
                 src={WikiI}
@@ -99,11 +99,11 @@ function HomePage() {
           </div>
         </div>
         <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/About" className="footer-link1 interactive">About Us</Link>
+          <Link to="/RoadToWiki" className="footer-link2 interactive">Road To Wiki Program</Link>
+          <Link to="/ContributionMeter" className="footer-link3 interactive">Contribution Board</Link>
+          <Link to="/Team" className="footer-link2 interactive">Team</Link>
+          <Link to="/Question" className="footer-link3 interactive">FAQ</Link>
         </div>
       </footer>
     </>

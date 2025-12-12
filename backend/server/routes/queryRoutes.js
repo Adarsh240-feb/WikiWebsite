@@ -1,42 +1,35 @@
 // server/routes/queryRoutes.js
 import express from 'express';
+import { body, validationResult } from 'express-validator';
 // Note the .js extension is required for local imports in ES Modules
 import Query from '../models/Query.js'; 
 
 const router = express.Router(); 
 
+// Validation middleware for the query form
+const validateQuery = [
+  body('name').trim().notEmpty().withMessage('Name is required'),
+  body('email').trim().isEmail().withMessage('Valid email is required'),
+  body('question').trim().notEmpty().withMessage('Question is required'),
+];
+
 // @route POST /api/queries
 // @desc Create a new visitor query and save to MongoDB
-router.post('/', async (req, res) => {
-  // Extract data sent from the frontend form
-  const { name, email, question } = req.body;
-
-  // 1. Validation Check: Ensure all required fields are present
-  if (!name || !email || !question) {
-    // Send a 400 Bad Request error if data is missing
-    return res.status(400).json({ message: '❌ Please provide all fields (Name, Email, Question).' });
+router.post('/', validateQuery, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ ok: false, errors: errors.array() });
   }
 
-  try {
-    // 2. Data Saving: Create a new document in the MongoDB 'queries' collection
-    const newQuery = await Query.create({
-      name,
-      email,
-      question,
-    });
+  const { name, email, question } = req.body;
 
-    // 3. Success Response: Send a 201 Created status back to the frontend
-    res.status(201).json({ 
-        // This message will be displayed as the green success message on the frontend
-        message: '✅ Your query has been submitted successfully! We will get back to you through E-mail.', 
-        data: newQuery 
-    });
+  try {
+    const newQuery = await Query.create({ name, email, question });
+    return res.status(201).json({ ok: true, message: '✅ Your query has been submitted successfully!', data: newQuery });
   } catch (err) {
-    // 4. Error Handling: Log the error and send a 500 status
-    console.error("Database save error:", err);
-    res.status(500).json({ message: '❌ Server error: Could not save query.' });
+    console.error('Database save error:', err);
+    return res.status(500).json({ ok: false, message: '❌ Server error: Could not save query.' });
   }
 });
 
-// Export the router so server.js can use it
 export default router;
