@@ -60,7 +60,13 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
     <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
       <div className="logo-section">
         <div className="logo-placeholder">
-          <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
+          <a
+            href="https://www.wikiclubtechuit.org/"
+            aria-label="Go to WikiClub Tech home page"
+            onClick={closeSidebar}
+          >
+            <img src={WikiL} alt="WikiClub Tech Logo" className="logo-image" />
+          </a>
         </div>
       </div>
       <nav className="nav-links">
