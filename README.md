@@ -1,4 +1,4 @@
-# 🌍 WikiClubTechUIT
+# WikiClubTechUIT
 
 **WikiClubTechUIT** is a community-driven platform built using the **MERN stack** and **Vite**, dedicated to collecting, organizing, and sharing technical knowledge. Our goal is to create a comprehensive and accessible wiki resource, powered by the collective efforts of our contributors.
 
@@ -33,5 +33,4 @@ WikiClubTechUIT is built with a powerful, modern stack, combining front-end spee
 
 ## Live demo
 
-Frontend: https://wikiclubtechuit.org/
-Backend: https://api.wikiclubtechuit.org/
+Website: https://wikiclubtechuit.org/
