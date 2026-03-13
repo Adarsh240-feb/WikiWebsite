@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import "./Team.css";
 import Sidebar from "./Sidebar";
-import Reeti from "../Images/Reeti.jpg";
-import Neelima from "../Images/Neelima.png";
-import Arohi from "../Images/Arohi.jpg";
-import Somya from "../Images/Somya.jpg";
-import Arpita from "../Images/Arpita.jpg";
-import Manvi from "../Images/Manvi.jpg";
-import Shivaansh from "../Images/Shivaansh.png";
-import Shiksha from "../Images/Shiksha.jpg";
-import Adarsh from "../Images/Adarsh.jpg";
-import Hridyesh from "../Images/Hridyesh.jpg";
-import Sarthak1 from "../Images/Sarthak1.jpg";
-import Suhani from "../Images/Suhani.jpg";
-import Priyanshika from "../Images/Priyanshika.jpg";
-import AmitSir from "../Images/AmitSir.jpg";
-import WikiS from "../Images/WikiS.png";
+import Reeti from "../Images/optimized/Reeti.webp";
+import Neelima from "../Images/optimized/Neelima.webp";
+import Arohi from "../Images/optimized/Arohi.webp";
+import Somya from "../Images/optimized/Somya.webp";
+import Arpita from "../Images/optimized/Arpita.webp";
+import Manvi from "../Images/optimized/Manvi.webp";
+import Shivaansh from "../Images/optimized/Shivaansh.webp";
+import Shiksha from "../Images/optimized/Shiksha.webp";
+import Adarsh from "../Images/optimized/Adarsh.webp";
+import Hridyesh from "../Images/optimized/Hridyesh.webp";
+import Sarthak1 from "../Images/optimized/Sarthak1.webp";
+import Suhani from "../Images/optimized/Suhani.webp";
+import Priyanshika from "../Images/optimized/Priyanshika.webp";
+import AmitSir from "../Images/optimized/AmitSir.webp";
+import WikiS from "../Images/optimized/WikiS.webp";
 import { Link } from "react-router-dom";
+import OptimizedImage from "./OptimizedImage";
 
 
 import WavyText from './WavyText';
@@ -142,7 +143,7 @@ function Team() {
             </div>
             <div className="faculty-image-card">
               <div className="faculty-image-container">
-                <img src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
+                <OptimizedImage src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
               </div>
               <div className="social-links">
                 <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -165,7 +166,7 @@ function Team() {
             </div>
             <div className="founder-image-card">
               <div className="founder-image-container">
-                <img src={founder.image} alt={founder.name} className="founder-image" />
+                <OptimizedImage src={founder.image} alt={founder.name} className="founder-image" />
               </div>
               <div className="social-links">
                 <a href={founder.linkedin} aria-label={`${founder.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -184,7 +185,7 @@ function Team() {
           <section className="mentor-card-container">
             <div className="mentor-image-card">
               <div className="mentor-image-container">
-                <img src={mentor.image} alt={mentor.name} className="mentor-image" />
+                <OptimizedImage src={mentor.image} alt={mentor.name} className="mentor-image" />
               </div>
               <div className="social-links">
                 <a href={mentor.linkedin} aria-label={`${mentor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
@@ -208,7 +209,7 @@ function Team() {
             {teamMembers.map((member, index) => (
               <div className="team-card" key={index}>
                 <div className="tcard-image-container">
-                  <img src={member.image} alt={member.name} className="card-image" />
+                  <OptimizedImage src={member.image} alt={member.name} className="card-image" />
                 </div>
                 <h2 className="member-name">{member.name}</h2>
                 <h3 className="member-title">{member.title}</h3>
@@ -232,7 +233,7 @@ function Team() {
             {volunteers.map((volunteer, index) => (
               <div className="volunteer-card" key={index} onClick={() => openModal(volunteer)}>
                 <div className="volunteer-image-container">
-                  <img src={volunteer.image} alt={volunteer.name} className="volunteer-image" />
+                  <OptimizedImage src={volunteer.image} alt={volunteer.name} className="volunteer-image" />
                 </div>
                 <h3 className="volunteer-name">{volunteer.name}</h3>
                 <p className="volunteer-affiliation">{volunteer.affiliation}</p>
@@ -248,7 +249,7 @@ function Team() {
             <button className="Tmodal-close-button" onClick={closeModal}>&times;</button>
             <div className="Tmodal-body">
               <div className="Tmodal-image-container">
-                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" />
+                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" loading="lazy" decoding="async" />
               </div>
               <div className="Tmodal-details">
                 <h2 className="Tmodal-name">{selectedVolunteer.name}</h2>
@@ -278,6 +279,10 @@ function Team() {
             src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
+            loading="lazy"
+            decoding="async"
+            width="50"
+            height="50"
           />
           <div className="wiki-logo">
           </div>

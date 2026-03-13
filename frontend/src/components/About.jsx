@@ -2,11 +2,12 @@ import React from "react";
 import { useState } from "react"; // Make sure useState is imported
 import "./About.css";
 import "./HomePage.css";
-import WikiD from "../Images/WikiD.jpg";
-import WikiH from "../Images/WikiH.jpg";
+import WikiD from "../Images/optimized/WikiD.webp";
+import WikiH from "../Images/optimized/WikiH.webp";
 import Sidebar from "./Sidebar";
-import WikiS from "../Images/WikiS.png";
+import WikiS from "../Images/optimized/WikiS.webp";
 import { Link } from "react-router-dom";
+import OptimizedImage from "./OptimizedImage";
 
 function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -45,7 +46,7 @@ function About() {
                 </ul>
               </div>
               <div className="image-content">
-                <img src={WikiD} alt="WikiClub Tech Description" className="about-image" />
+                <OptimizedImage src={WikiD} alt="WikiClub Tech Description" className="about-image" />
               </div>
             </div>
           </section>
@@ -56,7 +57,7 @@ function About() {
             </div>
             <div className="content-with-image">
               <div className="image-content">
-                <img src={WikiH} alt="WikiClub Tech Highlight" className="about-image" />
+                <OptimizedImage src={WikiH} alt="WikiClub Tech Highlight" className="about-image" />
               </div>
               <div className="text-content">
                 <ul className="program-details-list">
@@ -87,6 +88,10 @@ function About() {
             src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
+            loading="lazy"
+            decoding="async"
+            width="50"
+            height="50"
           />
           <div className="wiki-logo">
           </div>

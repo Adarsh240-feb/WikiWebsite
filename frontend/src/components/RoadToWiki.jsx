@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./RoadToWiki.css";
 import "./HomePage.css";
-import GroupWiki from "../Images/GroupWiki.png";
-import WikiP from "../Images/WikiP.png";
-import Card3 from "../Images/Card3.png";
-import Card2 from "../Images/Card2.jpg";
-import Card1 from "../Images/Card1.png";
+import GroupWiki from "../Images/optimized/GroupWiki.webp";
+import WikiP from "../Images/optimized/WikiP.webp";
+import Card3 from "../Images/optimized/Card3.webp";
+import Card2 from "../Images/optimized/Card2.webp";
+import Card1 from "../Images/optimized/Card1.webp";
 import Sidebar from "./Sidebar";
-import WikiS from "../Images/WikiS.png";
+import WikiS from "../Images/optimized/WikiS.webp";
 import { Link } from "react-router-dom";
+import OptimizedImage from "./OptimizedImage";
 
 const cardData = [
   {
@@ -40,7 +41,7 @@ const navLinks = [];
 
 const Card = ({ title, image, description, titleColorClass }) => (
   <div className="card">
-    <img src={image} alt={title} className="card-image" loading="lazy" decoding="async" />
+    <OptimizedImage src={image} alt={title} className="card-image" />
     <div className="card-content">
       <h3 className={`card-title ${titleColorClass}`}>{title}</h3>
       <p className="card-description">{description}</p>
@@ -87,7 +88,7 @@ function RoadToWiki() {
               </ul>
             </div>
             <div className="imageWrapper">
-              <img
+              <OptimizedImage
                 src={GroupWiki}
                 alt="Road to Wiki Program"
                 className="programImage"
@@ -119,7 +120,7 @@ function RoadToWiki() {
             </div>
             <div className="applyFormWrapper">
               <div className="applyBox">
-                <img src={WikiP} alt="WikiClub Tech Logo" className="applyImage" loading="lazy" decoding="async" />
+                <OptimizedImage src={WikiP} alt="WikiClub Tech Logo" className="applyImage" />
                 <div className="applyBoxContent">
                 </div>
                 <a 
@@ -233,6 +234,8 @@ function RoadToWiki() {
             className="footer-logo"
             loading="lazy"
             decoding="async"
+            width="50"
+            height="50"
           />
           <div className="wiki-logo">
           </div>

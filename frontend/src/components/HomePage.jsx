@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
-import WikiMainLogo from "../Images/WikiMainLogo.png";
-import WikiI from "../Images/WikiI.png";
-import WikiL from "../Images/WikiL.png";
-import WikiS from "../Images/WikiS.png";
+import WikiMainLogo from "../Images/optimized/WikiMainLogo.webp";
+import WikiI from "../Images/optimized/WikiI.webp";
+import WikiL from "../Images/optimized/WikiL.webp";
+import WikiS from "../Images/optimized/WikiS.webp";
 import Sidebar from "./Sidebar"; 
-import WikiMainLogoM from "../Images/WikiMainLogoM.png"; 
+import WikiMainLogoM from "../Images/optimized/WikiMainLogoM.webp"; 
+import OptimizedImage from "./OptimizedImage";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -45,11 +46,17 @@ function HomePage() {
                 src={WikiMainLogo}
                 alt="WikiClub Tech Logo"
                 className="hero-logo-large desktop-logo"
+                width="800"
+                height="200"
+                fetchpriority="high"
               />
               <img
                 src={WikiMainLogoM}
                 alt="WikiClub Tech Phone Logo"
                 className="hero-logo-large phone-logo"
+                width="400"
+                height="400"
+                fetchpriority="high"
               />
               <div></div>
             </div>
@@ -79,7 +86,7 @@ function HomePage() {
               rel="noopener noreferrer"
               className="clickable-image-link"
             >
-              <img
+              <OptimizedImage
                 src={WikiI}
                 alt="Call to action"
                 className="w-full h-auto rounded-lg shadow-lg"
@@ -94,6 +101,10 @@ function HomePage() {
             src={WikiS}
             alt="WikiClub Tech Logo"
             className="footer-logo"
+            loading="lazy"
+            decoding="async"
+            width="50"
+            height="50"
           />
           <div className="wiki-logo">
           </div>
