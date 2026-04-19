@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
   { name: "WikiClub Tech [IN]", path: "https://www.wikiclubtech.org/", external: true },
   { name: "Contribution Board", path: "/ContributionMeter" },
+  { name: "Marathon Board", path: "/MarathonBoard" },
   { name: "Team", path: "/Team" },
   { name: "FAQ", path: "/Question" }
 ];

@@ -14,6 +14,8 @@ const navLinks = [
   { name: "About Us", path: "/About" },
   { name: "Road To Wiki Program", path: "/RoadToWiki" },
   { name: "Contact", path: "/Contact" },
+  { name: "Contribution Board", path: "/ContributionMeter" },
+  { name: "Marathon Board", path: "/MarathonBoard" },
   { name: "Team", path: "/Team" },
   { name: "FAQ", path: "/Question" },
 ];
@@ -113,8 +115,9 @@ function HomePage() {
           <Link to="/About" className="footer-link1">About Us</Link>
           <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
           <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
+          <Link to="/MarathonBoard" className="footer-link2">Marathon Board</Link>
+          <Link to="/Team" className="footer-link3">Team</Link>
+          <Link to="/Question" className="footer-link2">FAQ</Link>
         </div>
       </footer>
     </>
