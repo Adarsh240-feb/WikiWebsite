@@ -492,32 +492,8 @@ const RadialCountdown = () => {
   const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
 
   useEffect(() => {
-    const getTargetDate = () => {
-      const now = new Date();
-      const target = new Date();
-      const currentDay = now.getDay();
-      const daysToSunday = currentDay === 0 ? 0 : 7 - currentDay;
-      target.setDate(now.getDate() + daysToSunday);
-      target.setHours(23, 59, 59, 999);
-      return target;
-    };
-    const targetDate = getTargetDate().getTime();
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      if (distance < 0) {
-        clearInterval(interval);
-        setTimeLeft({ d: 0, h: 0, m: 0, s: 0 });
-      } else {
-        setTimeLeft({
-          d: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          h: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          m: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          s: Math.floor((distance % (1000 * 60)) / 1000)
-        });
-      }
-    }, 1000);
-    return () => clearInterval(interval);
+    // The 1-week marathon is officially over. Timer is shut down completely.
+    setTimeLeft({ d: 0, h: 0, m: 0, s: 0 });
   }, []);
 
   const calcOffset = (value, max, radius) => {
