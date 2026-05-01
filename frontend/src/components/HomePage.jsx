@@ -105,8 +105,6 @@ function HomePage() {
             className="footer-logo"
             loading="lazy"
             decoding="async"
-            width="50"
-            height="50"
           />
           <div className="wiki-logo">
           </div>
