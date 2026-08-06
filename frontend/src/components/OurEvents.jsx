@@ -50,7 +50,7 @@ const pastEvents = [
     id: 3,
     title: "Wiki x GDG-OC Collaborative Session",
     date: "2024-11-27",
-    location: "UIT Auditorium",
+    location: "UIT Seminar Hall",
     type: "Collaborative Session",
     typeColor: "#046599",
     description:
@@ -74,7 +74,7 @@ const pastEvents = [
     id: 5,
     title: "Road to Wiki Session",
     date: "2024-10-13",
-    location: "UIT Seminar Hall",
+    location: "Virtual",
     type: "Session",
     typeColor: "#d97706",
     description:
@@ -86,7 +86,7 @@ const pastEvents = [
     id: 6,
     title: "Wikimedia Ecosystem Setup",
     date: "2024-09-28",
-    location: "UIT Lab 3",
+    location: "Virtual",
     type: "Workshop",
     typeColor: "#319967",
     description:
