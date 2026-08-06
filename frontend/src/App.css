@@ -1,4 +1,4 @@
-/* Global normalization to avoid extra space below footer */
+/* Global normalization */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,32 +10,6 @@ html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-}
-
-/* Remove unintended bottom gap before the footer by trimming the last child's margin */
-.main-content > *:last-child,
-.mainContentContainer > *:last-child,
-.Team-content > *:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* Ensure no extra spacing is added above or below the footer */
-.footer-wiki {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* Remove any extra spacing from the body after footer */
-body::after,
-html::after {
-  display: none !important;
-}
-
-/* Ensure container takes full height without extra space */
-.container {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
 }
 
 /* Basic reset and container */
@@ -214,125 +188,7 @@ body {
   }
 }
 
-.footer-wiki {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #b9b9b9;
-  color: #ffffff;
-  padding: 2px 20px;
-  margin-left: 0;
-  margin-bottom: 0 !important;
-  padding-bottom: 2px !important;
-}
 
-@media (min-width: 1024px) {
-  .footer-wiki {
-    margin-left: 250px;
-    width: calc(100% - 250px);
-    padding: 10px 30px;
-  }
-}
-
-@media (max-width: 1023px) {
-  .footer-wiki {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-    padding: 15px 20px;
-  }
-}
-
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.wiki-logo {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-right {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-/* Center footer links on mobile/tablet */
-@media (max-width: 1023px) {
-  .footer-right {
-    justify-content: center;
-    flex-wrap: wrap;
-    row-gap: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-right {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-/* --- UPDATED FOOTER LINK STYLES --- */
-.footer-link1, .footer-link2, .footer-link3 {
-  color: black;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  transition: text-shadow 0.3s ease, color 0.3s ease;
-  /* Fix for mobile touch events */
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-  touch-action: manipulation;
-  user-select: none;
-  /* Ensure proper clickable area */
-  display: inline-block;
-  padding: 8px 4px;
-  margin: -8px -4px;
-}
-
-.footer-link1:hover, .footer-link2:hover, .footer-link3:hover {
-  text-shadow: 
-    0 0 5px white,
-    0 0 10px white,
-    0 0 15px white,
-    0 0 20px white;
-  color: white; 
-}
-
-/* Mobile-specific fixes for Team and FAQ links */
-@media (max-width: 1023px) {
-  .footer-link2, .footer-link3 {
-    padding: 12px 8px !important;
-    margin: 4px !important;
-    min-height: 44px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2) !important;
-    touch-action: manipulation !important;
-    position: relative !important;
-    z-index: 15 !important;
-  }
-}
-/* --- END OF UPDATED STYLES --- */
-
-.footer-logo {
-  max-width: 240px; /* Increased from 200px */
-  height: 15vh; /* Increased from 13vh */
-  object-fit: contain;
-}
-
-@media (min-width: 1024px) {
-  .footer-logo {
-    margin-left: 50px;
-    max-width: 280px; /* Increased from 250px */
-    height: 16vh; /* Added explicit height for desktop */
-  }
-}
 
 /* Hamburger menu button */
 .sidebar-toggle {

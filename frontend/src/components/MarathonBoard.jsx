@@ -6,7 +6,7 @@ import './HomePage.css';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import WikiL from '../Images/WikiL.png';
-import WikiS from '../Images/WikiS.png';
+
 
 /* ─────────────────────────────────────────────
    SVG ICONS & 3D ELEMENTS
@@ -536,7 +536,6 @@ const RadialCountdown = () => {
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
   { name: "Contact", path: "/Contact" },
   { name: "Team", path: "/Team" },
   { name: "FAQ", path: "/Question" },
@@ -763,16 +762,6 @@ const MarathonBoard = () => {
         </main>
       </div>
 
-      <footer className="footer-wiki">
-        <div className="footer-left"><img src={WikiS} alt="WikiClub Tech Logo" className="footer-logo" /></div>
-        <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/MarathonBoard" className="footer-link2">Marathon Board</Link>
-          <Link to="/Team" className="footer-link3">Team</Link>
-        </div>
-      </footer>
     </>
   );
 };

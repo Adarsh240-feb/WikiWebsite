@@ -1,6 +1,8 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import RoadToWiki from "./components/RoadToWiki";
+
+import Achievements from "./components/Achievements";
+import OurEvents from "./components/OurEvents";
 import Team from "./components/Team";
 import About from "./components/About";
 // import Contact from "./components/Contact";
@@ -14,7 +16,9 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/RoadToWiki" element={<RoadToWiki />} />
+
+        <Route path="/Achievements" element={<Achievements />} />
+        <Route path="/OurEvents" element={<OurEvents />} />
         <Route path="/Team" element={<Team />} />
         <Route path="/About" element={<About />} />
         {/* <Route path="/Contact" element={<Contact />} /> */}
@@ -26,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;

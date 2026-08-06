@@ -2,11 +2,13 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import WikiL from "../Images/WikiL.png";
+import metawikiSvg from "../Images/metawiki.svg";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
+  { name: "Achievements", path: "/Achievements" },
+  { name: "Our Events", path: "/OurEvents" },
   { name: "WikiClub Tech [IN]", path: "https://www.wikiclubtech.org/", external: true },
   { name: "Contribution Board", path: "/ContributionMeter" },
   { name: "Marathon Board", path: "/MarathonBoard" },
@@ -97,18 +99,31 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
       </nav>
       <div className="sidebar-separator" />
       <div className="sidebar-social-media-icons">
-        <a href="https://www.instagram.com/wikiclubtech.uit/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/wikiclubtech.uit/" target="_blank" rel="noopener noreferrer" aria-label="WikiClub Tech Instagram">
           <i className="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/company/wikitech-uit/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/company/wikitech-uit/" target="_blank" rel="noopener noreferrer" aria-label="WikiClub Tech LinkedIn">
           <i className="fab fa-linkedin"></i>
         </a>
         <a
-          href="#" // Default href, actual action handled by onClick
+          href="#"
           aria-label="Email WikiClub Tech"
           onClick={handleEmailClick}
         >
           <i className="fas fa-envelope"></i>
+        </a>
+        <a
+          href="https://meta.wikimedia.org/wiki/WikiClub_Tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WikiClub Tech on Meta Wikimedia"
+          className="meta-wiki-link"
+        >
+          <img
+            src={metawikiSvg}
+            alt="Meta-Wiki"
+            className="meta-wiki-icon"
+          />
         </a>
       </div>
     </aside>

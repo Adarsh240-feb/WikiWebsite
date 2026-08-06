@@ -1,25 +1,23 @@
 import React, { useState } from "react";
 import "./Team.css";
 import Sidebar from "./Sidebar";
-import Reeti from "../Images/optimized/Reeti.webp";
-import Neelima from "../Images/optimized/Neelima.webp";
-import Arohi from "../Images/optimized/Arohi.webp";
-import Somya from "../Images/optimized/Somya.webp";
-import Arpita from "../Images/optimized/Arpita.webp";
-import Manvi from "../Images/optimized/Manvi.webp";
-import Shivaansh from "../Images/optimized/Shivaansh.webp";
-import Shiksha from "../Images/optimized/Shiksha.webp";
-import Adarsh from "../Images/optimized/Adarsh.webp";
-import Hridyesh from "../Images/optimized/Hridyesh.webp";
-import Sarthak1 from "../Images/optimized/Sarthak1.webp";
-import Suhani from "../Images/optimized/Suhani.webp";
-import Priyanshika from "../Images/optimized/Priyanshika.webp";
-import AmitSir from "../Images/optimized/AmitSir.webp";
-import WikiS from "../Images/optimized/WikiS.webp";
+import Reeti from "../Images/Reeti.png";
+import Neelima from "../Images/Neelima.png";
+import Arohi from "../Images/Arohi.jpg";
+import Somya from "../Images/Somya.jpg";
+import Arpita from "../Images/Arpita.jpg";
+import Manvi from "../Images/Manvi.jpg";
+import Shivaansh from "../Images/Shivaansh.png";
+import Shiksha from "../Images/Shiksha.jpg";
+import Adarsh from "../Images/Adarsh.jpg";
+import Hridyesh from "../Images/Hridyesh.jpg";
+import Sarthak1 from "../Images/Sarthak1.jpg";
+import Suhani from "../Images/Suhani.jpg";
+import Priyanshika from "../Images/Priyanshika.jpg";
+import AmitSir from "../Images/AmitSir.jpg";
+import WikiS from "../Images/WikiS.jpg";
 import { Link } from "react-router-dom";
 import OptimizedImage from "./OptimizedImage";
-
-
 import WavyText from './WavyText';
 
 const facultyAdvisor = {
@@ -272,29 +270,6 @@ function Team() {
         </div>
       )}
 
-      {/* The footer is moved outside the conditional block to be always visible */}
-      <footer className="footer-wiki">
-        <div className="footer-left">
-          <img
-            src={WikiS}
-            alt="WikiClub Tech Logo"
-            className="footer-logo"
-            loading="lazy"
-            decoding="async"
-            width="50"
-            height="50"
-          />
-          <div className="wiki-logo">
-          </div>
-        </div>
-        <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/Team" className="footer-link2">Team</Link>
-          <Link to="/Question" className="footer-link3">FAQ</Link>
-        </div>
-      </footer>
     </>
   );
 }

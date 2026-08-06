@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
-import WikiMainLogo from "../Images/optimized/WikiMainLogo.webp";
-import WikiI from "../Images/optimized/WikiI.webp";
-import WikiL from "../Images/optimized/WikiL.webp";
-import WikiS from "../Images/optimized/WikiS.webp";
+import WikiMainLogo from "../Images/WikiMainLogo.png";
+import WikiI from "../Images/WikiI.png";
+import WikiL from "../Images/WikiL.png";
 import Sidebar from "./Sidebar"; 
-import WikiMainLogoM from "../Images/optimized/WikiMainLogoM.webp"; 
+import WikiMainLogoM from "../Images/WikiMainLogoM.png"; 
 import OptimizedImage from "./OptimizedImage";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/About" },
-  { name: "Road To Wiki Program", path: "/RoadToWiki" },
-  { name: "Contact", path: "/Contact" },
+  { name: "Achievements", path: "/Achievements" },
+  { name: "Our Events", path: "/OurEvents" },
   { name: "Contribution Board", path: "/ContributionMeter" },
   { name: "Marathon Board", path: "/MarathonBoard" },
   { name: "Team", path: "/Team" },
@@ -97,27 +96,6 @@ function HomePage() {
           </section>
         </main>
       </div>
-      <footer className="footer-wiki">
-        <div className="footer-left">
-          <img
-            src={WikiS}
-            alt="WikiClub Tech Logo"
-            className="footer-logo"
-            loading="lazy"
-            decoding="async"
-          />
-          <div className="wiki-logo">
-          </div>
-        </div>
-        <div className="footer-right">
-          <Link to="/About" className="footer-link1">About Us</Link>
-          <Link to="/RoadToWiki" className="footer-link2">Road To Wiki Program</Link>
-          <Link to="/ContributionMeter" className="footer-link3">Contribution Board</Link>
-          <Link to="/MarathonBoard" className="footer-link2">Marathon Board</Link>
-          <Link to="/Team" className="footer-link3">Team</Link>
-          <Link to="/Question" className="footer-link2">FAQ</Link>
-        </div>
-      </footer>
     </>
   );
 }

@@ -27,7 +27,6 @@ const QueryForm = () => {
       const url = (API_BASE || '').replace(/\/$/, '') + '/api/queries';
       const res = await axios.post(url, formData);
 
-      console.log('Query submitted successfully:', res.data);
       setMessage('✅ Your query has been submitted successfully! We will get back to you through E-mail.');
 
       // Reset the form fields on success
