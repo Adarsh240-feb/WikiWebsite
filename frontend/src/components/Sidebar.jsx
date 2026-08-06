@@ -113,7 +113,7 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
           <i className="fas fa-envelope"></i>
         </a>
         <a
-          href="https://meta.wikimedia.org/wiki/WikiClub_Tech"
+          href="https://meta.wikimedia.org/wiki/WikiClub_Tech/WikiClub_Tech_UIT"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WikiClub Tech on Meta Wikimedia"
