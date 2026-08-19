@@ -83,9 +83,9 @@ function FAQ() {
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
       </button>
-      <div className="pageContainer">
+      <div className="container">
         <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
-        <main className="mainContentContainer">
+        <main className="main-content">
           <div className="faq-container">
             <h2 className="faq-title">
               <span className="faq-word-1">Frequently</span>{" "}
