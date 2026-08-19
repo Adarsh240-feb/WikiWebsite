@@ -11,9 +11,25 @@ import Event3Img2 from "../Images/events/event3/Event3 - 2.jpg";
 import Event4Img from "../Images/events/event4/Event4.jpg";
 import Event5Img from "../Images/events/event5/Event5.jpg";
 import Event6Img from "../Images/events/event6/Event6.jpg";
+import Event7Img from "../Images/events/event7/OpenSourceDay.jpeg";
 import OptimizedImage from "./OptimizedImage";
 
-const upcomingEvents = [];
+const upcomingEvents = [
+  {
+    id: 7,
+    title: "Open Source Day",
+    date: "2026-08-21",
+    location: "UIT Induction Hall",
+    type: "Collaborative Session",
+    typeColor: "#046599",
+    description:
+      "We're celebrating Open Source Day—a day dedicated to collaboration, community-driven innovation, and open access to knowledge organized in collaboration with Google Developer Groups (GDG) Prayagraj. Join us for engaging sessions, live demos, and interesting trivia around the world of open source.",
+    tags: ["Open Source", "GDG", "Wikimedia", "Community"],
+    images: [Event7Img],
+    link: "https://luma.com/itystgpm",
+    ctaText: "Register on Luma →",
+  },
+];
 
 const pastEvents = [
   {
@@ -214,14 +230,100 @@ function OurEvents() {
                 </div>
               </div>
             ) : (
-              <div className="ev-cards-grid">
-                {upcomingEvents.map((event) => (
-                  <EventCard
-                    key={event.id}
-                    event={event}
-                    isUpcoming
-                    onImageClick={(idx) => openGallery(event.images, idx, event.title)}
-                  />
+              <div className="ev-timeline">
+                {upcomingEvents.map((event, index) => (
+                  <div className="ev-timeline-item" key={event.id}>
+                    <div className="ev-timeline-dot" style={{ background: event.typeColor }} />
+                    {index < upcomingEvents.length - 1 && <div className="ev-timeline-line" />}
+                    
+                    {/* Horizontal Card Layout (Text on Left, Poster on Right) */}
+                    <div className="ev-timeline-card ev-card-horizontal">
+                      
+                      {/* Left Side: Event Details */}
+                      <div className="ev-card-left">
+                        <div className="ev-timeline-meta">
+                          <span>📅 {event.date}</span>
+                          <span>📍 {event.location}</span>
+                        </div>
+                        <h3 className="ev-timeline-title">{event.title}</h3>
+                        <span
+                          className="ev-type-pill"
+                          style={{ background: event.typeColor }}
+                        >
+                          {event.type}
+                        </span>
+                        <div className="ev-timeline-desc">{event.description}</div>
+
+                        {event.link && (
+                          <div style={{ marginBottom: "14px" }}>
+                            <a
+                              href={event.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "6px",
+                                padding: "8px 18px",
+                                borderRadius: "8px",
+                                background: "#046599",
+                                color: "#fff",
+                                fontWeight: "600",
+                                fontSize: "0.88rem",
+                                textDecoration: "none"
+                              }}
+                            >
+                              {event.ctaText || "Register on Luma →"}
+                            </a>
+                          </div>
+                        )}
+
+                        <div className="ev-timeline-tags">
+                          {event.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className="ev-tag"
+                              style={{ borderColor: event.typeColor, color: event.typeColor }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right Side: Event Cover Poster */}
+                      <div className="ev-card-right">
+                        <div className="ev-posters-grid">
+                          {event.images && event.images.length > 0 ? (
+                            <div
+                              className="ev-poster-wrap"
+                              onClick={() => openGallery(event.images, 0, event.title)}
+                            >
+                              <OptimizedImage
+                                src={event.images[0]}
+                                alt={`${event.title} Cover Poster`}
+                                className="ev-poster-img"
+                              />
+                              <div className="ev-poster-zoom-hint">
+                                <span>🔍 View All ({event.images.length})</span>
+                              </div>
+                              {event.images.length > 1 && (
+                                <div className="ev-gallery-badge">
+                                  📸 {event.images.length} Photos
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="ev-poster-placeholder">
+                              <span className="ev-ph-icon">🖼️</span>
+                              <span className="ev-ph-text">Poster Slot</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
                 ))}
               </div>
             )}
@@ -421,65 +523,6 @@ function OurEvents() {
         </div>
       )}
     </>
-  );
-}
-
-function EventCard({ event, isUpcoming, onImageClick }) {
-  return (
-    <div className={`ev-card ev-card-horizontal ${isUpcoming ? "ev-card--upcoming" : ""}`}>
-      <div className="ev-card-left">
-        <div className="ev-card-meta">
-          <span>📅 {event.date}</span>
-          <span>📍 {event.location}</span>
-        </div>
-        <h3 className="ev-card-title">{event.title}</h3>
-        <div className="ev-card-type" style={{ background: event.typeColor }}>
-          {event.type}
-        </div>
-        <div className="ev-card-desc">{event.description}</div>
-        <div className="ev-card-tags">
-          {event.tags.map((tag, i) => (
-            <span
-              key={i}
-              className="ev-tag"
-              style={{ color: event.typeColor, borderColor: event.typeColor }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="ev-card-right">
-        <div className="ev-posters-grid">
-          {event.images && event.images.length > 0 ? (
-            <div
-              className="ev-poster-wrap"
-              onClick={() => onImageClick && onImageClick(0)}
-            >
-              <OptimizedImage
-                src={event.images[0]}
-                alt={`${event.title} Cover Poster`}
-                className="ev-poster-img"
-              />
-              <div className="ev-poster-zoom-hint">
-                <span>🔍 View All ({event.images.length})</span>
-              </div>
-              {event.images.length > 1 && (
-                <div className="ev-gallery-badge">
-                  📸 {event.images.length} Photos
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="ev-poster-placeholder">
-              <span className="ev-ph-icon">🖼️</span>
-              <span className="ev-ph-text">Poster Slot</span>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
   );
 }
 

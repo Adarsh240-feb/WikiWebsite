@@ -58,6 +58,7 @@ const IMAGE_SIZE_MAP = {
   'Event4.jpg': ['small', 'medium'],
   'Event5.jpg': ['small', 'medium'],
   'Event6.jpg': ['small', 'medium'],
+  'OpenSourceDay.jpeg': ['small', 'medium'],
   
   // About/description images (displayed at ~400-800px)
   'WikiD.jpg': ['small', 'medium'],
