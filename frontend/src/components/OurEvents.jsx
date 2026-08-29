@@ -14,7 +14,9 @@ import Event6Img from "../Images/events/event6/Event6.jpg";
 import Event7Img from "../Images/events/event7/OpenSourceDay.jpeg";
 import OptimizedImage from "./OptimizedImage";
 
-const upcomingEvents = [
+const upcomingEvents = [];
+
+const pastEvents = [
   {
     id: 7,
     title: "Open Source Day",
@@ -26,12 +28,7 @@ const upcomingEvents = [
       "We're celebrating Open Source Day—a day dedicated to collaboration, community-driven innovation, and open access to knowledge organized in collaboration with Google Developer Groups (GDG) Prayagraj. Join us for engaging sessions, live demos, and interesting trivia around the world of open source.",
     tags: ["Open Source", "GDG", "Wikimedia", "Community"],
     images: [Event7Img],
-    link: "https://luma.com/itystgpm",
-    ctaText: "Register on Luma →",
   },
-];
-
-const pastEvents = [
   {
     id: 1,
     title: "Contribution Marathon",
