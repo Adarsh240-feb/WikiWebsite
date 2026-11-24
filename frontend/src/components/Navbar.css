@@ -1,0 +1,346 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--border-soft);
+  transition: box-shadow 0.25s ease;
+}
+
+.nav--scrolled {
+  box-shadow: 0 8px 24px -18px rgba(0, 58, 86, 0.55);
+}
+
+.nav__accent {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--wm-blue) 0 33.34%,
+    var(--wm-green) 33.34% 66.67%,
+    var(--wm-red) 66.67% 100%
+  );
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: var(--nav-h);
+}
+
+.nav__brand {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.nav__logo {
+  width: auto;
+  max-width: 240px;
+  height: 46px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.nav__link:hover {
+  color: var(--brand-green);
+  background: var(--tint-green);
+}
+
+.nav__link.is-active {
+  color: var(--brand-green);
+  font-weight: 600;
+}
+
+.nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--brand-green);
+}
+
+/* Dropdown */
+.nav__drop {
+  position: relative;
+}
+
+.nav__drop::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
+
+.nav__drop-toggle svg {
+  transition: transform 0.2s ease;
+  opacity: 0.7;
+}
+
+.nav__drop-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  min-width: 240px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.nav__drop:hover .nav__drop-panel,
+.nav__drop:focus-within .nav__drop-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.nav__drop:hover .nav__drop-toggle svg,
+.nav__drop:focus-within .nav__drop-toggle svg {
+  transform: rotate(180deg);
+}
+
+.nav__drop-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.nav__drop-link:hover,
+.nav__drop-link.is-active {
+  background: var(--tint-green);
+  color: var(--brand-green);
+}
+
+.nav__drop-link--external {
+  border-top: 1px solid var(--border-soft);
+  margin-top: 4px;
+  padding-top: 12px;
+  color: var(--brand-deep-green);
+}
+
+.nav__drop-link--external:hover {
+  background: var(--tint-green);
+  color: var(--brand-green);
+}
+
+/* Right actions */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: 4px;
+}
+
+.nav__ext {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav__ext:hover {
+  color: var(--brand-green);
+}
+
+.nav__cta {
+  box-shadow: 0 6px 16px -8px rgba(35, 139, 98, 0.7);
+}
+
+/* Burger */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.nav__burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.nav--open .nav__burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav--open .nav__burger span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav--open .nav__burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile panel */
+.nav__mobile {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .nav__ext {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .nav__links,
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__inner {
+    height: 64px;
+  }
+
+  .nav__logo {
+    width: auto;
+    max-width: 190px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .nav__actions {
+    margin-left: auto;
+  }
+
+  .nav__burger {
+    display: flex;
+  }
+
+  .nav__mobile {
+    display: block;
+    position: fixed;
+    top: 67px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid var(--border-soft);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    animation: navSlide 0.2s ease;
+  }
+
+  .nav__mobile[hidden] {
+    display: none;
+  }
+
+  .nav__mobile-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 12px;
+    padding-bottom: 40px;
+  }
+
+  .nav__mobile .nav__link {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--border-soft);
+    border-radius: 0;
+    font-size: 1rem;
+  }
+
+  .nav__mobile .nav__link.is-active::after {
+    display: none;
+  }
+
+  .nav__mobile .nav__link.is-active {
+    color: var(--wm-blue);
+  }
+
+  .nav__mobile-label {
+    margin: 18px 0 4px;
+    padding: 0 4px;
+    color: var(--muted-2);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .nav__mobile-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav__logo {
+    width: auto;
+    max-width: 165px;
+    height: 36px;
+    object-fit: contain;
+  }
+}
+
+@keyframes navSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
