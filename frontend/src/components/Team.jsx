@@ -1,277 +1,532 @@
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import PageHero from "./PageHero";
+import Reveal from "./Reveal";
 import "./Team.css";
-import Sidebar from "./Sidebar";
-import Reeti from "../Images/Reeti.png";
-import Neelima from "../Images/Neelima.png";
-import Arohi from "../Images/Arohi.jpg";
-import Somya from "../Images/Somya.jpg";
-import Arpita from "../Images/Arpita.jpg";
-import Manvi from "../Images/Manvi.jpg";
-import Shivaansh from "../Images/Shivaansh.png";
-import Shiksha from "../Images/Shiksha.jpg";
-import Adarsh from "../Images/Adarsh.jpg";
+
 import Hridyesh from "../Images/Hridyesh.jpg";
 import Sarthak1 from "../Images/Sarthak1.jpg";
-import Suhani from "../Images/Suhani.jpg";
-import Priyanshika from "../Images/Priyanshika.jpg";
-import AmitSir from "../Images/AmitSir.jpg";
-import WikiS from "../Images/WikiS.jpg";
-import { Link } from "react-router-dom";
-import OptimizedImage from "./OptimizedImage";
-import WavyText from './WavyText';
+import GroupWiki from "../Images/wiki/group-wiki.jpg";
+import AmitSir from "../Images/wiki/amit.jpg";
+import Reeti from "../Images/wiki/reeti.jpg";
+import Shivaansh from "../Images/Shivaansh.png";
+import Adarsh from "../Images/Adarsh.jpg";
+import Arpita from "../Images/Arpita.jpg";
+import Manvi from "../Images/Manvi.jpg";
+import gautam from "../Images/wiki/gautam.jpg";
+import praveen from "../Images/wiki/praveen-web.jpg";
+import rohit from "../Images/wiki/rohit.jpg";
+import rahul from "../Images/wiki/rahul.jpg";
 
-const facultyAdvisor = {
-  name: "Dr. Amit Kumar Tiwari",
-  description: "Dr. Amit Kumar Tiwari serves as the Head of the Computer Science and Engineering Department at United Institute of Technology (UIT), Prayagraj. With over 16 years of distinguished academic experience and a Ph.D. in Computer Science, he has been instrumental in establishing the department's research excellence and academic culture. His leadership has fostered innovation and technological advancement within the institution.",
-  image: AmitSir,
-  linkedin: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/",
-  scholar: "https://scholar.google.com/citations?hl=en&user=Wn3Ac80AAAAJ",
+const iconMap = {
+  meta: "fa-solid fa-globe",
+  linkedin: "fa-brands fa-linkedin-in",
+  github: "fa-brands fa-github",
+  email: "fa-solid fa-envelope",
+  phabricator: "fa-solid fa-bug",
+  gerrit: "fa-solid fa-code-branch",
+  gitlab: "fa-brands fa-gitlab",
+  scholar: "fa-solid fa-graduation-cap",
 };
 
-const founder = {
-  name: "Hridyesh Gupta",
-  description: "WikiClub Tech-UIT was established by Hridyesh Gupta as a culmination of his transformative journey within the Wikimedia ecosystem, evolving from an active contributor to a recognized community organizer. The club's founding represents a strategic initiative to create a comprehensive learning environment where students can develop expertise, collaborate effectively, and make meaningful contributions to open knowledge and open-source technologies. Under his visionary leadership, the organization has emerged as the premier hub for the WikiClub Tech India community across the North India region.",
-  image: Hridyesh,
-  linkedin: "https://www.linkedin.com/in/hridyesh-gupta/",
-  github: "http://github.com/hridyesh-gupta",
+const labelMap = {
+  meta: "Meta-Wiki User Page",
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  email: "Email",
+  phabricator: "Phabricator",
+  gerrit: "Gerrit",
+  gitlab: "GitLab",
+  scholar: "Google Scholar",
 };
 
-const mentor = {
-  name: "Sarthak Singh",
-  description: "Sarthak Singh is a distinguished App Development Expert specializing in Flutter and Dart technologies. With over 4 years of active engagement in technology communities, he has achieved remarkable success in 20+ global hackathons. During his research internship at MNNIT, he contributed to multiple research publications and assumed leadership positions across 10+ technology communities. He has delivered numerous technical sessions on Flutter and mobile app development, sharing expertise and empowering the developer community through knowledge transfer and mentorship.",
-  image: Sarthak1,
-  linkedin: "http://www.linkedin.com/in/sarthak-singh-/",
-  github: "https://github.com/SarthakSingh2003/",
-};
+const leaders = [
+  {
+    name: "Gautam Kumar Maurya",
+    role: "Chapter Envoy & Technical Lead",
+    image: gautam,
+    metaLink: "https://meta.wikimedia.org/wiki/User:Gkm563",
+    description:
+      "Provides overall leadership and strategic direction to WikiClub Tech – UIT. Drives upstream MediaWiki core and CI contributions, coordinates technical workshops, and represents the community across national and international forums.",
+    links: [
+      { type: "meta", href: "https://meta.wikimedia.org/wiki/User:Gkm563" },
+      { type: "email", href: "mailto:gkmwin563@gmail.com" },
+      { type: "github", href: "https://github.com/gkm563" },
+      { type: "linkedin", href: "https://www.linkedin.com/in/gkm563" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/Gkm563/" },
+      { type: "gerrit", href: "https://gerrit.wikimedia.org/r/q/owner:13319" },
+      { type: "gitlab", href: "https://gitlab.wikimedia.org/gkm563" },
+    ],
+  },
+  {
+    name: "Harsh Srivastava",
+    role: "Chapter Co-Envoy",
+    image: null,
+    description:
+      "Supports chapter leadership in internal operations, team coordination, logistics planning, and cross-functional execution of student development sprints and Wikimedia community meetups.",
+    links: [
+      { type: "email", href: "mailto:harshsrivastavaishere@gmail.com" },
+      { type: "github", href: "https://github.com/WikiClubTechUIT" },
+      { type: "linkedin", href: "https://www.linkedin.com/company/wikiclubtechuit" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/tag/wikiclub_tech_uit/" },
+      { type: "gerrit", href: "https://gerrit.wikimedia.org" },
+      { type: "gitlab", href: "https://gitlab.wikimedia.org" },
+    ],
+  },
+];
 
-const teamMembers = [
+const domainLeads = [
   {
-    name: "Reeti Singh",
-    title: "Envoy",
-    description: "Leads community engagement initiatives and guides members through their Wikimedia and open-source journey. Focuses on building a robust, project-driven community ecosystem that fosters collaboration and knowledge sharing.",
-    image: Reeti,
-    linkedin: "http://www.linkedin.com/in/reeti-singh-09748b291",
-    github: "http://github.com/Reeti14",
+    name: "Anchal Pandey",
+    role: "Technical Lead",
+    image: null,
+    description:
+      "Directs technical initiatives, supports code contributions to open projects, and oversees student developer bootcamps and hands-on clinics.",
+    links: [
+      { type: "email", href: "mailto:anchopandey9305@gmail.com" },
+      { type: "github", href: "https://github.com/Anchal-Pandey1" },
+      { type: "linkedin", href: "https://www.linkedin.com/in/anchal-pandey-25692b371/" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/Techancho/" },
+    ],
   },
   {
-    name: "Shivaansh Singh",
-    title: "Co-Envoy",
-    description: "Pre-final year B.Tech student specializing in Android development and open-source contributions. Actively engaged in technology communities, bringing technical expertise and leadership to community initiatives.",
-    image: Shivaansh,
-    linkedin: "http://www.linkedin.com/in/shivaansh-singh",
-    github: "https://github.com/ShivaanshSingh",
+    name: "Aradhaya Kesharwani",
+    role: "Design Lead",
+    image: null,
+    description:
+      "Leads the community's creative direction, visual branding, hackathon posters, digital banners, and participant certificate artwork.",
+    links: [
+      { type: "email", href: "mailto:aradhyakeshri2007@gmail.com" },
+      { type: "github", href: "https://github.com/Aradhaya01" },
+      { type: "linkedin", href: "https://www.linkedin.com/in/aradhaya-kesharwani-83b779371/" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/Aradhyarrrr" },
+    ],
   },
   {
-    name: "Adarsh Kesharwani",
-    title: "Core Team (Technical)",
-    description: "A Full-stack web developer with a passion for open-source contribution. Proficient in React, Node.js, MongoDB, and modern version control systems, contributing to technical excellence and innovation within the community.",
-    image: Adarsh,
-    linkedin: "https://www.linkedin.com/in/adarsh-kesharwani-bba666315/",
-    github: "https://github.com/Adarsh240-feb",
+    name: "Aagman Pal",
+    role: "Event Management Lead",
+    image: null,
+    description:
+      "Coordinates event logistics, auditorium setups, attendee registrations, speaker hospitality, and inter-college collaboration pathways.",
+    links: [
+      { type: "email", href: "mailto:aagmanpal@gmail.com" },
+      { type: "github", href: "https://github.com/aagmanpal" },
+      { type: "linkedin", href: "https://www.linkedin.com/in/aagman-pal" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/aagmanpal/" },
+    ],
   },
   {
-    name: "Manvi Kesarwani",
-    title: "Core Team (Social Media)",
-    description: "Social Media Lead responsible for content curation and community building across digital platforms. Drives strategic campaigns and enhances the organization's digital presence and engagement.",
-    image: Manvi,
-    linkedin: "https://www.linkedin.com/in/manvi-kesarwani-44a8b4306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    github: "https://github.com/Manvi-9791",
-  },
-  {
-    name: "Arpita Jain",
-    title: "Core Team (Management)",
-    description: "Pre-final year B.Tech student serving as Management Lead. Coordinates organizational activities, fosters strategic partnerships, and drives initiatives that support sustainable club growth and development.",
-    image: Arpita,
-    linkedin: "https://www.linkedin.com/in/arpita-jain-5a3a28306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=andr",
-    github: "https://github.com/Arpitajain2327",
-  },
+    name: "Pranvi",
+    role: "Social Media Lead",
+    image: null,
+    description:
+      "Manages the chapter's digital channels, public announcements, social coverage, and student outreach engagement across social platforms.",
+    links: [
+      { type: "email", href: "mailto:pranvikumar006@gmail.com" },
+      { type: "github", href: "https://github.com/WikiClubTechUIT" },
+    ],  },
 ];
 
 const volunteers = [
-  { name: "Somya Yadav", affiliation: "Social Media Management", image: Somya, linkedin: "https://www.linkedin.com/in/somya-yadav-0b2948360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/somsomya" },
-  { name: "Shiksha", affiliation: "Visual Design & Branding", image: Shiksha, linkedin: "https://in.linkedin.com/in/shiksha-10504b358", github: "https://github.com/shiksha-28" },
-  { name: "Neelima Srivastava", affiliation: "Event Coordination & Management", image: Neelima, linkedin: "https://www.linkedin.com/in/neelima-srivastav-b71636370", github: "https://github.com/th-neelimaa" },
-  { name: "Suhani Shukla", affiliation: "Event Coordination & Management", image: Suhani, linkedin: "http://www.linkedin.com/in/suhani-shukla-945193285", github: "https://github.com/SUHANI005" },
-  { name: "Priyanshika Upadhyay", affiliation: "Event Coordination & Management", image: Priyanshika, linkedin: "https://www.linkedin.com/in/priyanshika-upadhyay-a87a26332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Priyanshika1111" },
-  { name: "Arohi Singh", affiliation: "Report Writing & Technical Support", image: Arohi, linkedin: "https://www.linkedin.com/in/arohi-singh-549974289/", github: "https://github.com/Arohisngh" }
+  {
+    name: "Praveen Singh",
+    role: "Volunteer Contributor",
+    image: praveen,
+    metaLink: "https://meta.wikimedia.org/wiki/User:Praveen5638",
+    description:
+      "Contributing to chapter sessions, technical support and Wikimedia knowledge activities.",
+    links: [
+      { type: "meta", href: "https://meta.wikimedia.org/wiki/User:Praveen5638" },
+      { type: "email", href: "mailto:jdsvm.praveen.8757@gmail.com" },
+      { type: "github", href: "https://github.com/praveen5638" },
+      { type: "linkedin", href: "https://www.linkedin.com/in/praveen-singh-463231309" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/praveen5638" },
+    ],
+  },
+  {
+    name: "Rohit Pal",
+    role: "Volunteer Contributor",
+    image: rohit,
+    metaLink: "https://meta.wikimedia.org/wiki/User:Rohitpal08",
+    description:
+      "Active community volunteer supporting open-source event sprints and peer development clinics.",
+    links: [
+      { type: "meta", href: "https://meta.wikimedia.org/wiki/User:Rohitpal08" },
+      { type: "email", href: "https://meta.wikimedia.org/wiki/Special:EmailUser/Rohitpal08" },
+      { type: "github", href: "https://github.com/rohitpal00015-prog" },
+      { type: "linkedin", href: "https://linkedin.com/in/rohit-pal-98230131a" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/Rohitpal08/" },
+    ],
+  },
+  {
+    name: "Rahul Kushwaha",
+    role: "Volunteer Contributor",
+    image: rahul,
+    metaLink: "https://meta.wikimedia.org/wiki/User:Rahulera",
+    description:
+      "Assisting with Wikimedia Commons media uploads, hackathon logistics and campus outreach.",
+    links: [
+      { type: "meta", href: "https://meta.wikimedia.org/wiki/User:Rahulera" },
+      { type: "email", href: "mailto:r.a.kushwaha005@gmail.com" },
+      { type: "github", href: "https://github.com/Rahulera" },
+      { type: "phabricator", href: "https://phabricator.wikimedia.org/p/Rahulera/" },
+    ],
+  },
 ];
 
-const navLinks = [];
+const heritage = [
+  {
+    name: "Dr. Amit Kumar Tiwari",
+    role: "Faculty Advisor",
+    image: AmitSir,
+    description:
+      "Head of the Computer Science & Engineering department at UIT, Prayagraj. With 16+ years of academic experience and a Ph.D. in Computer Science, he has supported the club's research culture and technical growth since its founding.",
+    links: [
+      { type: "linkedin", href: "https://www.linkedin.com/in/dr-amit-kumar-tiwari-518654113/" },
+      { type: "scholar", href: "https://scholar.google.com/citations?hl=en&user=Wn3Ac80AAAAJ" },
+    ],
+  },
+  {
+    name: "Hridyesh Gupta",
+    role: "Founder",
+    image: Hridyesh,
+    description:
+      "Founded WikiClub Tech – UIT to bridge academic learning and the global open-source movement, creating technical mentorship pathways for students across the region.",
+    links: [
+      { type: "linkedin", href: "https://www.linkedin.com/in/hridyesh-gupta/" },
+      { type: "github", href: "http://github.com/hridyesh-gupta" },
+    ],
+  },
+  {
+    name: "Sarthak Singh",
+    role: "Mentor",
+    image: Sarthak1,
+    description:
+      "A Flutter and Dart specialist with 20+ hackathons and research experience, guiding the core team and contributors on technical best practice and community organising.",
+    links: [
+      { type: "linkedin", href: "http://www.linkedin.com/in/sarthak-singh-/" },
+      { type: "github", href: "https://github.com/SarthakSingh2003/" },
+    ],
+  },
+];
 
-function Team() {
-  const [selectedVolunteer, setSelectedVolunteer] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+const archive = [
+  { name: "Reeti Singh", role: "Founding Envoy", image: Reeti },
+  { name: "Shivaansh Singh", role: "Founding Co-Envoy", image: Shivaansh },
+  { name: "Adarsh Kesharwani", role: "Technical Lead", image: Adarsh },
+  { name: "Arpita Jain", role: "Management Lead", image: Arpita },
+  { name: "Manvi Kesarwani", role: "Social Media Lead", image: Manvi },
+];
 
-  const openModal = (volunteer) => {
-    setSelectedVolunteer(volunteer);
-  };
+const archiveVolunteers = [
+  "Somya Yadav · Social Media",
+  "Shiksha · Visual Design & Branding",
+  "Neelima Srivastava · Event Coordination",
+  "Suhani Shukla · Event Coordination",
+  "Priyanshika Upadhyay · Event Coordination",
+  "Arohi Singh · Report Writing & Technical Support",
+];
 
-  const closeModal = () => {
-    setSelectedVolunteer(null);
-  };
+const avatarPalette = [
+  ["#006699", "#003a56"],
+  ["#339966", "#26714c"],
+  ["#990000", "#730000"],
+  ["#0b6a8f", "#00496e"],
+];
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+function initials(name) {
+  return name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
 
+function SocialLinks({ links, name }) {
+  if (!links || links.length === 0) return null;
   return (
-    <>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
-        ☰
-      </button>
-      <div className="container">
-        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
-
-        <main className="Team-content">
-          <h1>
-            <span className="color-1">Meet</span>{" "}
-            <span className="color-2">Our</span>{" "}
-            <span className="color-3">Team</span>
-          </h1>
-          <p>
-            We are a dedicated team of passionate professionals and volunteers committed to advancing the Wikimedia and open knowledge ecosystem in Prayagraj and beyond. Our diverse team brings together expertise in technology, education, and community development to create meaningful impact in the open-source world.
-          </p>
-          <div className="separator-line"></div>
-
-          <WavyText text="Faculty Advisor" />
-          <section className="faculty-card-container">
-            <div className="faculty-description">
-              <h3 className="faculty-name">{facultyAdvisor.name}</h3>
-              <p>{facultyAdvisor.description}</p>
-            </div>
-            <div className="faculty-image-card">
-              <div className="faculty-image-container">
-                <OptimizedImage src={facultyAdvisor.image} alt={facultyAdvisor.name} className="founder-image" />
-              </div>
-              <div className="social-links">
-                <a href={facultyAdvisor.linkedin} aria-label={`${facultyAdvisor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
-                  <i className="fa-brands fa-linkedin"></i>
-                </a>
-                {facultyAdvisor.scholar && (
-                  <a href={facultyAdvisor.scholar} aria-label={`${facultyAdvisor.name}'s Google Scholar profile`} target="_blank" rel="noopener noreferrer">
-                    <i className="fa-solid fa-graduation-cap" style={{marginLeft: '8px'}}></i>
-                  </a>
-                )}
-              </div>
-            </div>
-          </section>
-
-          <WavyText text="Founder" />
-          <section className="founder-card-container">
-            <div className="founder-description">
-              <h3 className="founder-name">{founder.name}</h3>
-              <p>{founder.description}</p>
-            </div>
-            <div className="founder-image-card">
-              <div className="founder-image-container">
-                <OptimizedImage src={founder.image} alt={founder.name} className="founder-image" />
-              </div>
-              <div className="social-links">
-                <a href={founder.linkedin} aria-label={`${founder.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
-                  <i className="fa-brands fa-linkedin"></i>
-                </a>
-                <a href={founder.github} aria-label={`${founder.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
-                  <i className="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <div className="separator-line"></div>
-
-          <WavyText text="Mentor" />
-          <section className="mentor-card-container">
-            <div className="mentor-image-card">
-              <div className="mentor-image-container">
-                <OptimizedImage src={mentor.image} alt={mentor.name} className="mentor-image" />
-              </div>
-              <div className="social-links">
-                <a href={mentor.linkedin} aria-label={`${mentor.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
-                  <i className="fa-brands fa-linkedin"></i>
-                </a>
-                <a href={mentor.github} aria-label={`${mentor.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
-                  <i className="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </div>
-            <div className="mentor-description">
-              <h3 className="mentor-name">{mentor.name}</h3>
-              <p>{mentor.description}</p>
-            </div>
-          </section>
-
-          <div className="separator-line"></div>
-
-          <WavyText text="Core Team" />
-          <section className="team-cards-container">
-            {teamMembers.map((member, index) => (
-              <div className="team-card" key={index}>
-                <div className="tcard-image-container">
-                  <OptimizedImage src={member.image} alt={member.name} className="card-image" />
-                </div>
-                <h2 className="member-name">{member.name}</h2>
-                <h3 className="member-title">{member.title}</h3>
-                <p className="member-description">{member.description}</p>
-                <div className="social-links">
-                  <a href={member.linkedin} aria-label={`${member.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
-                    <i className="fa-brands fa-linkedin"></i>
-                  </a>
-                  <a href={member.github} aria-label={`${member.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
-                    <i className="fa-brands fa-github"></i>
-                  </a>
-                </div>
-              </div>
-            ))}
-          </section>
-
-          <div className="separator-line"></div>
-
-          <WavyText text="Volunteers" />
-          <section className="volunteer-cards-container">
-            {volunteers.map((volunteer, index) => (
-              <div className="volunteer-card" key={index} onClick={() => openModal(volunteer)}>
-                <div className="volunteer-image-container">
-                  <OptimizedImage src={volunteer.image} alt={volunteer.name} className="volunteer-image" />
-                </div>
-                <h3 className="volunteer-name">{volunteer.name}</h3>
-                <p className="volunteer-affiliation">{volunteer.affiliation}</p>
-              </div>
-            ))}
-          </section>
-        </main>
-      </div>
-
-      {selectedVolunteer && (
-        <div className="Tmodal-overlay" onClick={closeModal}>
-          <div className="Tmodal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="Tmodal-close-button" onClick={closeModal}>&times;</button>
-            <div className="Tmodal-body">
-              <div className="Tmodal-image-container">
-                <img src={selectedVolunteer.image} alt={selectedVolunteer.name} className="Tmodal-image" loading="lazy" decoding="async" />
-              </div>
-              <div className="Tmodal-details">
-                <h2 className="Tmodal-name">{selectedVolunteer.name}</h2>
-                <p className="Tmodal-affiliation">{selectedVolunteer.affiliation}</p>
-                <div className="Tsocial-links Tmodal-social-links">
-                  {selectedVolunteer.linkedin && (
-                    <a href={selectedVolunteer.linkedin} aria-label={`${selectedVolunteer.name}'s LinkedIn profile`} target="_blank" rel="noopener noreferrer">
-                      <i className="fa-brands fa-linkedin"></i>
-                    </a>
-                  )}
-                  {selectedVolunteer.github && (
-                    <a href={selectedVolunteer.github} aria-label={`${selectedVolunteer.name}'s GitHub profile`} target="_blank" rel="noopener noreferrer">
-                      <i className="fa-brands fa-github"></i>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-    </>
+    <div className="member-card__links">
+      {links.map((link) => (
+        <a
+          key={link.type + link.href}
+          href={link.href}
+          target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+          rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          aria-label={`${name} on ${labelMap[link.type]}`}
+          title={labelMap[link.type]}
+        >
+          <i className={iconMap[link.type]} aria-hidden="true" />
+        </a>
+      ))}
+    </div>
   );
 }
 
-export default Team;
+function Avatar({ name, image, index, className = "" }) {
+  if (image) {
+    return (
+      <img
+        className={className}
+        src={image}
+        alt={name}
+        loading="lazy"
+        style={{ objectPosition: "center 25%" }}
+      />
+    );
+  }
+
+  const [from, to] = avatarPalette[index % avatarPalette.length];
+  return (
+    <span
+      className={`member-avatar ${className}`}
+      style={{ "--av-from": from, "--av-to": to }}
+      aria-hidden="true"
+    >
+      {initials(name)}
+    </span>
+  );
+}
+
+function MemberCard({ person, index, compact = false }) {
+  return (
+    <Reveal
+      as="article"
+      className={`member-card${compact ? " member-card--compact" : ""}`}
+      variant="up"
+      delay={Math.min(index * 60, 360)}
+    >
+      <div className="member-card__media">
+        <Avatar name={person.name} image={person.image} index={index} className="member-card__photo" />
+      </div>
+      <div className="member-card__body">
+        <span className="member-card__role">{person.role}</span>
+        <h3>
+          {person.metaLink ? (
+            <a
+              href={person.metaLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="member-name-link"
+              title={`${person.name}'s Meta-Wiki user page`}
+            >
+              {person.name} <span className="meta-arrow" aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            person.name
+          )}
+        </h3>
+        <p>{person.description}</p>
+        <SocialLinks links={person.links} name={person.name} />
+      </div>
+    </Reveal>
+  );
+}
+
+export default function Team() {
+  return (
+    <div className="team-page">
+      <section className="team-page-hero">
+        <div className="wrap team-page-hero__inner">
+          <div className="team-page-hero__copy">
+            <span className="eyebrow eyebrow--light" style={{ textTransform: "uppercase" }}>
+              LEADERSHIP & CONTRIBUTORS
+            </span>
+            <h1>The People Behind the Progress.</h1>
+            <p className="team-page-hero__lede">
+              The students, mentors and faculty who drive open knowledge, technical contribution,
+              and community mentorship at United Institute of Technology, Prayagraj.
+            </p>
+          </div>
+
+          <div className="page-hero__aside">
+            <div className="page-hero__stat">
+              <strong>2026–27</strong>
+              <span>Current Chapter Roster</span>
+            </div>
+            <div className="page-hero__stat">
+              <strong>UIT</strong>
+              <span>Prayagraj, UP</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head section-head--split">
+            <div>
+              <p className="eyebrow">Chapter leadership</p>
+              <h2 className="section-title">Leading the chapter.</h2>
+            </div>
+            <span className="chip chip--green">Team 2026–27</span>
+          </div>
+
+          <div className="leader-grid">
+            {leaders.map((leader, index) => (
+              <Reveal
+                as="article"
+                className="leader-card"
+                key={leader.name}
+                variant="up"
+                delay={index * 90}
+              >
+                <div className="leader-card__media">
+                  <Avatar
+                    name={leader.name}
+                    image={leader.image}
+                    index={index}
+                    className="leader-card__photo"
+                  />
+                </div>
+                <div className="leader-card__body">
+                  <span className="leader-card__role">{leader.role}</span>
+                  <h3>
+                    {leader.metaLink ? (
+                      <a
+                        href={leader.metaLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="member-name-link"
+                        title={`${leader.name}'s Meta-Wiki user page`}
+                      >
+                        {leader.name} <span className="meta-arrow" aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      leader.name
+                    )}
+                  </h3>
+                  <p>{leader.description}</p>
+                  <SocialLinks links={leader.links} name={leader.name} />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--alt">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="eyebrow eyebrow--green">Domain leads</p>
+            <h2 className="section-title">Operations &amp; tracks.</h2>
+            <p className="section-lede">
+              Each track is led by a student who owns its programmes, workshops and outcomes.
+            </p>
+          </div>
+
+          <div className="team-grid">
+            {domainLeads.map((member, index) => (
+              <MemberCard person={member} index={index + 2} key={member.name} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="eyebrow eyebrow--red">Community champions</p>
+            <h2 className="section-title">Our active volunteers.</h2>
+            <p className="section-lede">
+              The student contributors supporting ground activities, media documentation and peer
+              guidance.
+            </p>
+          </div>
+
+          <div className="team-grid team-grid--three">
+            {volunteers.map((member, index) => (
+              <MemberCard person={member} index={index + 1} key={member.name} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--alt">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="eyebrow">Heritage &amp; foundations</p>
+            <h2 className="section-title">Who built the foundation.</h2>
+          </div>
+
+          <div className="team-grid team-grid--three">
+            {heritage.map((person, index) => (
+              <MemberCard person={person} index={index + 1} key={person.name} />
+            ))}
+          </div>
+
+          <details className="team-archive">
+            <summary>
+              <span>
+                <strong>Previous team · 2025 founding cohort</strong>
+                <span>Honouring the leaders who established the chapter</span>
+              </span>
+              <span className="team-archive__toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div className="team-archive__body">
+              <div className="team-grid team-grid--archive">
+                {archive.map((person, index) => (
+                  <figure className="archive-card" key={person.name}>
+                    <div className="archive-card__media">
+                      <Avatar
+                        name={person.name}
+                        image={person.image}
+                        index={index}
+                        className="archive-card__photo"
+                      />
+                    </div>
+                    <figcaption>
+                      <span>{person.role}</span>
+                      <strong>{person.name}</strong>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+
+              <div className="archive-volunteers">
+                <h3>Founding volunteers</h3>
+                <ul>
+                  {archiveVolunteers.map((volunteer) => (
+                    <li key={volunteer}>{volunteer}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <Reveal
+            className="team-cta photo-cta"
+            variant="zoom"
+            style={{ "--band-photo": `url("${GroupWiki}")` }}
+          >
+            <div>
+              <p className="eyebrow">Join the team</p>
+              <h2>Want to lead a track or volunteer?</h2>
+              <p>
+                New contributors are welcome every semester — technical, design, events, social
+                media or documentation. Start with a session and grow into a role.
+              </p>
+            </div>
+            <div className="btn-row">
+              <Link to="/get-involved" className="btn btn--primary">
+                Get involved <span className="btn__arrow" aria-hidden="true">→</span>
+              </Link>
+              <a
+                href="https://meta.wikimedia.org/wiki/WikiClub_Tech_%E2%80%93_UIT/Team"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--secondary"
+              >
+                Team on Meta-Wiki ↗
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </div>
+  );
+}

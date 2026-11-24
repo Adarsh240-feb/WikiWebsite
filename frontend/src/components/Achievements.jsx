@@ -1,350 +1,292 @@
-import React, { useState } from "react";
+import { useState, useMemo } from "react";
+import Lightbox from "./Lightbox";
+import Reveal from "./Reveal";
 import "./Achievements.css";
-import "./HomePage.css";
-import GroupWiki from "../Images/GroupWiki.png";
-import Card1 from "../Images/Card1.png";
-import Card2 from "../Images/Card2.jpg";
-import Card3 from "../Images/Card3.png";
+
+import GroupWiki from "../Images/wiki/group-wiki.jpg";
 import achievement1 from "../Images/achievements/achievement1/achievement1.png";
 import achievement1_2 from "../Images/achievements/achievement1/achievement1 - 2.jpeg";
 import achievement1_3 from "../Images/achievements/achievement1/achievement1 - 3.jpeg";
 import achievement2 from "../Images/achievements/achievement2/achievement2.jpeg";
-import Reeti from "../Images/Reeti.png";
-import Manvi from "../Images/Manvi.jpg";
-import Somya from "../Images/Somya.jpg";
-import Sidebar from "./Sidebar";
-import OptimizedImage from "./OptimizedImage";
+import Gautam from "../Images/wiki/gautam.jpg";
+import Rtw2Collage from "../Images/meta/rtw2-collage.jpg";
+import IndicCollage from "../Images/meta/indic-collage.jpg";
+import WciCollage from "../Images/meta/wci-collage.jpg";
+import Rtw1Collage from "../Images/meta/rtw1-collage.jpg";
 
 const achievements = [
   {
     id: 1,
-    category: "Hackathons",
-    badge: "💻",
-    badgeColor: "#319967",
-    title: "Indic Wiki Hackathon — Selected & Participated",
-    subtitle: "National Wikimedia Open-Source Hackathon",
+    category: "Road to Wiki Cohort",
+    title: "Road to Wiki Program — Cohort 2 Completion",
+    subtitle: "WikiClub Tech [IN] × Wikimedia Foundation · 2026",
+    tone: "green",
     description:
-      "Reeti Singh from WikiClub Tech UIT was selected for the Indic Wiki Hackathon. Participants worked on specialized open-source tools, MediaWiki extensions, and localized knowledge projects to empower Indian language Wikimedia communities.",
+      "Building on the inaugural edition, Cohort 2 guided student contributors through production MediaWiki core engineering, Gerrit peer review workflows and Wikimedia Commons tool development.",
     highlights: [
-      "Reeti Singh selected among top open-source contributors across India",
-      "Built tools and MediaWiki scripts for Indic languages",
-      "Collaborated with senior Wikimedia developers & mentors",
+      "Expanded campus participation across software development and technical documentation",
+      "Hands-on peer mentoring led by previous cohort alumni and technical leads",
+      "Production patches and tooling deployed for regional Wikimedia initiatives",
     ],
-    // Array of image sources. Can hold 1 or 2 posters/photos.
-    images: [achievement1, achievement1_2, achievement1_3],
-    tags: ["Indic Wiki", "Hackathon", "MediaWiki", "Open Source"],
+    images: [Rtw2Collage, GroupWiki],
+    tags: ["Wikimedia Foundation", "MediaWiki", "Gerrit", "Cohort Program"],
     year: "2026",
+    proofUrl: "https://meta.wikimedia.org/wiki/WikiClub_Tech_%E2%80%93_UIT/Achievements",
   },
   {
     id: 2,
-    category: "National Conference",
-    badge: "🎟️",
-    badgeColor: "#d97706",
-    title: "Wiki Conference India — Scholarships & Volunteers",
-    subtitle: "National Wikimedia Conference (WCI)",
+    category: "International Mentorship",
+    title: "EduWiki Hub Mentorship Program — Cohort 2 Selection",
+    subtitle: "Wikipedia & Education User Group · Global Fellowship",
+    tone: "blue",
     description:
-      "A major milestone for our club: Reeti Singh and Sarthak Singh were awarded prestigious full scholarships to attend Wiki Conference India, while Adarsh Kesharwani and Shivaansh Singh were selected as official event volunteers to help manage national conference tracks.",
+      "Chapter Envoy Gautam Kumar Maurya from United Institute of Technology (UIT), Prayagraj, was selected as an official Mentee in Cohort 2 of the international EduWiki Hub Mentorship Program, organised under the Wikipedia & Education User Group.",
     highlights: [
-      "Full Scholarships: Reeti Singh & Sarthak Singh",
-      "Official Event Volunteers: Adarsh Kesharwani & Shivaansh Singh",
-      "Represented WikiClub Tech UIT on a national platform",
-      "Engaged in technical sessions, workshops, and networking",
+      "Gautam Kumar Maurya featured in the official EduWiki Hub international mentee roster",
+      "Representing WikiClub Tech UIT and Uttar Pradesh on an international educational platform",
+      "Collaborating with global mentors on open knowledge integration in higher education",
+      "Officially felicitated and celebrated by UIT Prayagraj leadership",
     ],
-    images: [achievement2],
-    tags: ["WCI", "Scholarship", "Volunteers", "National Event"],
+    images: [Gautam],
+    tags: ["EduWiki Hub", "Mentorship", "Wikipedia & Education", "Global"],
     year: "2026",
+    proofUrl: "https://meta.wikimedia.org/wiki/Wikipedia_%26_Education_User_Group/EduWiki_Hub/Mentorship_program/Cohort_2",
   },
   {
     id: 3,
-    category: "OKI Internship",
-    badge: "🔬",
-    badgeColor: "#046599",
-    title: "Outreachy & OKI Internship Selections",
-    subtitle: "Paid Open Knowledge & Open Source Internships",
+    category: "National Hackathons",
+    title: "Indic Wiki Hackathon — Selected & Participated",
+    subtitle: "National Wikimedia open-source hackathon",
+    tone: "green",
     description:
-      "Manvi Kesarwani, Reeti Singh, and Somya Yadav from WikiClub Tech UIT were selected for prestigious open-source internship programs including OKI (Open Knowledge Internship) and Outreachy. Selected interns receive stipend support while contributing to globally impactful open knowledge projects.",
+      "Reeti Singh from WikiClub Tech UIT was selected for the Indic Wiki Hackathon, working on open-source tools, MediaWiki extensions and localised knowledge preservation to empower Indian-language Wikimedia projects.",
     highlights: [
-      "Selected Interns: Manvi Kesarwani, Reeti Singh & Somya Yadav",
-      "Selected for competitive paid open-source internships (OKI & Outreachy)",
-      "Stipend-supported full project cycle development",
-      "Contributions merged into core open-source repositories",
+      "Selected among top open-source contributors across India",
+      "Engineered automation scripts and MediaWiki tools for Indic languages",
+      "Direct collaboration and code review with veteran Wikimedia developers",
     ],
-    images: [Reeti, Manvi, Somya],
-    tags: ["OKI Internship", "Outreachy", "Open Knowledge", "Paid Mentorship"],
+    images: [IndicCollage, achievement1, achievement1_2, achievement1_3],
+    tags: ["Indic Wiki", "Hackathon", "MediaWiki", "Open Source"],
     year: "2026",
+    proofUrl: "https://meta.wikimedia.org/wiki/Indic_Wiki_Hackathon",
   },
   {
     id: 4,
-    category: "Road to Wiki Program",
-    badge: "🏛️",
-    badgeColor: "#991b1e",
-    title: "Road to Wiki Program — Cohort 1",
-    subtitle: "WikiClub Tech [IN] × Wikimedia Foundation",
+    category: "National Conferences",
+    title: "Wiki Conference India — Scholarships & Organiser Roles",
+    subtitle: "National Wikimedia conference (WCI)",
+    tone: "red",
     description:
-      "A comprehensive cohort-based educational program developed through collaboration between WikiClub Tech [IN] and the Wikimedia Foundation. Out of 260+ applicants from 7+ institutions, Sarthak Singh, Hridyesh Gupta (Founder of WikiClub Tech UIT), Shivaansh Singh, and Avarti Rastogi were selected for RTW Cohort 1, participating in intensive MediaWiki training and a 2-day graduation ceremony in Gurgaon.",
+      "A major milestone for the chapter: Reeti Singh and Sarthak Singh received full competitive scholarships, while Adarsh Kesharwani and Shivaansh Singh were selected as official conference organisers.",
     highlights: [
-      "Selected Members: Sarthak Singh, Hridyesh Gupta (Founder), Shivaansh Singh & Avarti Rastogi",
-      "Selected for RTW Cohort 1 out of 260+ applicants evaluated from 7+ institutions",
-      "Program kick-off: September 27, 2024",
-      "Graduation ceremony: Feb 27–28, Gurgaon (sponsored by Wikimedia Foundation)",
-      "Hands-on MediaWiki setup & expert-led technical masterclasses",
+      "Full scholarships awarded: Reeti Singh & Sarthak Singh",
+      "Official event organisers: Adarsh Kesharwani & Shivaansh Singh",
+      "Represented WikiClub Tech UIT on a premier national forum",
     ],
-    images: [GroupWiki],
-    tags: ["Wikimedia Foundation", "Open Source", "Cohort Program"],
+    images: [WciCollage, achievement2],
+    tags: ["WCI", "Scholarship", "Organisers", "National Event"],
+    year: "2026",
+    proofUrl: "https://meta.wikimedia.org/wiki/WikiConference_India_2023",
+  },
+  {
+    id: 5,
+    category: "Paid Internships",
+    title: "Outreachy & OKI Internship Selections",
+    subtitle: "Funded open knowledge & software engineering internships",
+    tone: "blue",
+    description:
+      "Student contributors from WikiClub Tech UIT successfully qualified for prestigious paid internship programs with Outreachy and Open Knowledge India, earning international recognition and stipends for open-source contributions.",
+    highlights: [
+      "Qualified for competitive global open-source internships",
+      "Worked on core Wikimedia software, documentation, and tooling",
+      "Verified proof of impact and institutional certificates",
+    ],
+    images: [Rtw1Collage, GroupWiki],
+    tags: ["Outreachy", "OKI", "Internships", "Paid"],
     year: "2025",
+    proofUrl: "https://meta.wikimedia.org/wiki/WikiClub_Tech_%E2%80%93_UIT/Achievements",
   },
 ];
 
-function Achievements() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [expandedCard, setExpandedCard] = useState(1);
-  const [galleryModal, setGalleryModal] = useState(null); // { images: [], currentIndex: 0, title: "" }
+const categories = [
+  "All",
+  "Road to Wiki Cohort",
+  "International Mentorship",
+  "National Hackathons",
+  "National Conferences",
+  "Paid Internships",
+];
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+export default function Achievements() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [expandedId, setExpandedId] = useState(1);
+  const [gallery, setGallery] = useState(null);
 
-  const openGallery = (images, initialIndex, title) => {
-    if (images && images.length > 0) {
-      setGalleryModal({ images, currentIndex: initialIndex, title });
-    }
+  const filteredAchievements = useMemo(() => {
+    if (activeCategory === "All") return achievements;
+    return achievements.filter((a) => a.category === activeCategory);
+  }, [activeCategory]);
+
+  const toggleExpand = (id) => {
+    setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  const closeGallery = () => setGalleryModal(null);
-
-  const showPrev = (e) => {
-    e?.stopPropagation();
-    setGalleryModal((prev) =>
-      prev
-        ? {
-            ...prev,
-            currentIndex:
-              prev.currentIndex === 0 ? prev.images.length - 1 : prev.currentIndex - 1,
-          }
-        : null
-    );
+  const openGallery = (images, index, title) => {
+    if (images && images.length > 0) setGallery({ images, index, title });
   };
-
-  const showNext = (e) => {
-    e?.stopPropagation();
-    setGalleryModal((prev) =>
-      prev
-        ? {
-            ...prev,
-            currentIndex:
-              prev.currentIndex === prev.images.length - 1 ? 0 : prev.currentIndex + 1,
-          }
-        : null
-    );
-  };
-
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!galleryModal) return;
-      if (e.key === "Escape") closeGallery();
-      if (e.key === "ArrowLeft") showPrev();
-      if (e.key === "ArrowRight") showNext();
-    };
-    if (galleryModal) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "auto";
-    };
-  }, [galleryModal]);
 
   return (
-    <>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>☰</button>
-      <div className="container">
-        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
-        <main className="main-content">
-
-          {/* Page Header */}
-          <div className="ach-page-header">
-            <div className="ach-page-header-text">
-              <h1 className="ach-page-title">
-                <span className="ach-accent-red">Our</span>{" "}
-                <span className="ach-accent-green">Achievements</span>
-              </h1>
-              <p className="ach-page-subtitle">
-                From hackathon selections to national scholarships and flagship programs — here's what our community has achieved together.
-              </p>
-            </div>
-            <div className="ach-page-trophy">🏆</div>
+    <div className="achievements-page">
+      {/* 1. Cinematic Deep Green Hero */}
+      <section className="ach-hero">
+        <div className="wrap ach-hero__inner">
+          <div className="ach-hero__copy">
+            <span className="eyebrow eyebrow--light" style={{ textTransform: "uppercase" }}>
+              VERIFIED IMPACT & OUTCOMES
+            </span>
+            <h1>Progress Worth Sharing.</h1>
+            <p className="ach-hero__lede">
+              Verified outcomes, national conference scholarships, hackathon victories,
+              and open-source cohort milestones achieved by the students of WikiClub Tech – UIT, Prayagraj.
+            </p>
           </div>
 
-          {/* Achievement Cards */}
-          <div className="ach-cards-list">
-            {achievements.map((ach) => (
-              <div
-                className={`ach-card ${expandedCard === ach.id ? "ach-card--open" : ""}`}
-                key={ach.id}
+          <div className="page-hero__aside">
+            <div className="page-hero__stat">
+              <strong>{achievements.length}</strong>
+              <span>Verified Milestones</span>
+            </div>
+            <div className="page-hero__stat">
+              <strong>100%</strong>
+              <span>Backed by Evidence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Main List & Category Filters */}
+      <section className="section">
+        <div className="wrap">
+          {/* Category Filters */}
+          <div className="ach-filters" role="group" aria-label="Filter achievements by category">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                className={`filter-btn${activeCategory === cat ? " is-active" : ""}`}
+                onClick={() => setActiveCategory(cat)}
               >
-                <div
-                  className="ach-card-header"
-                  style={{ borderLeftColor: ach.badgeColor }}
-                  onClick={() => setExpandedCard(expandedCard === ach.id ? null : ach.id)}
-                >
-                  <span
-                    className="ach-card-badge"
-                    style={{ background: ach.badgeColor + "18", color: ach.badgeColor }}
-                  >
-                    {ach.badge} {ach.category}
-                  </span>
-                  <div className="ach-card-header-text">
-                    <h2 className="ach-card-title">{ach.title}</h2>
-                    <p className="ach-card-sub">{ach.subtitle}</p>
-                  </div>
-                  <span className="ach-card-year" style={{ background: ach.badgeColor }}>
-                    {ach.year}
-                  </span>
-                  <button
-                    className="ach-card-toggle"
-                    style={{ color: ach.badgeColor }}
-                    aria-label={expandedCard === ach.id ? "Collapse" : "Expand"}
-                  >
-                    {expandedCard === ach.id ? "▲" : "▼"}
-                  </button>
-                </div>
-
-                {expandedCard === ach.id && (
-                  <div className="ach-card-body">
-                    {/* Media / Poster Cover Area */}
-                    <div className="ach-card-media-grid">
-                      {ach.images && ach.images.length > 0 ? (
-                        <div
-                          className="ach-card-img-wrap"
-                          onClick={() => openGallery(ach.images, 0, ach.title)}
-                        >
-                          <OptimizedImage
-                            src={ach.images[0]}
-                            alt={`${ach.title} Cover Photo`}
-                            className="ach-card-img"
-                          />
-                          <div className="ach-card-zoom-hint">
-                            <span>🔍 View All ({ach.images.length})</span>
-                          </div>
-                          {ach.images.length > 1 && (
-                            <div className="ach-gallery-badge">
-                              📸 {ach.images.length} Photos
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <div className="ach-card-img-placeholder">
-                          <span className="ach-placeholder-icon">📸</span>
-                          <span className="ach-placeholder-text">Photo / Poster Slot</span>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="ach-card-info">
-                      <p className="ach-card-desc">{ach.description}</p>
-                      <h4 className="ach-card-hl-title" style={{ color: ach.badgeColor }}>
-                        Key Highlights
-                      </h4>
-                      <ul className="ach-card-hl-list">
-                        {ach.highlights.map((h, i) => (
-                          <li key={i} className="ach-card-hl-item">
-                            <span style={{ color: ach.badgeColor }}>◆</span> {h}
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="ach-card-tags">
-                        {ach.tags.map((tag, i) => (
-                          <span
-                            key={i}
-                            className="ach-card-tag"
-                            style={{ borderColor: ach.badgeColor, color: ach.badgeColor }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+                {cat}
+              </button>
             ))}
           </div>
 
-        </main>
-      </div>
+          {/* Achievements Accordion List */}
+          <div className="ach-list">
+            {filteredAchievements.map((item, idx) => {
+              const isOpen = expandedId === item.id;
+              return (
+                <Reveal as="div" className={`ach-card${isOpen ? " is-open" : ""}`} key={item.id} delay={idx * 50}>
+                  <button
+                    type="button"
+                    className="ach-card__header"
+                    onClick={() => toggleExpand(item.id)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className={`ach-card__badge ach-card__badge--${item.tone}`}>
+                      {item.category}
+                    </span>
 
-      {/* Lightbox Gallery Modal */}
-      {galleryModal && (
-        <div className="ach-modal-overlay" onClick={closeGallery}>
-          {/* Top Right Close Button */}
-          <button
-            className="ach-modal-close-btn"
-            onClick={closeGallery}
-            title="Close (Esc)"
-          >
-            ✕
-          </button>
+                    <div className="ach-card__heading">
+                      <h2>{item.title}</h2>
+                      <span>{item.subtitle}</span>
+                    </div>
 
-          {/* Left & Right Viewport Navigation Arrows */}
-          {galleryModal.images.length > 1 && (
-            <>
-              <button
-                className="ach-modal-nav-btn ach-modal-nav-prev"
-                onClick={showPrev}
-                title="Previous Photo (Left Arrow)"
-              >
-                ‹
-              </button>
-              <button
-                className="ach-modal-nav-btn ach-modal-nav-next"
-                onClick={showNext}
-                title="Next Photo (Right Arrow)"
-              >
-                ›
-              </button>
-            </>
-          )}
+                    <span className="ach-card__year">{item.year}</span>
 
-          {/* Central Modal Content */}
-          <div className="ach-modal-content" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={galleryModal.images[galleryModal.currentIndex]}
-              alt={`${galleryModal.title} Photo ${galleryModal.currentIndex + 1}`}
-              className="ach-modal-img"
-            />
+                    <span className="ach-card__toggle-icon" aria-hidden="true">
+                      ▼
+                    </span>
+                  </button>
 
-            <div className="ach-modal-caption">
-              <span>{galleryModal.title}</span>
-              {galleryModal.images.length > 1 && (
-                <span className="ach-modal-counter">
-                  {galleryModal.currentIndex + 1} / {galleryModal.images.length}
-                </span>
-              )}
-            </div>
+                  {isOpen && (
+                    <div className="ach-card__body">
+                      <p className="ach-card__desc">{item.description}</p>
 
-            {/* Thumbnail Navigation Row */}
-            {galleryModal.images.length > 1 && (
-              <div className="ach-modal-thumbnails">
-                {galleryModal.images.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`Thumbnail ${i + 1}`}
-                    className={`ach-modal-thumb ${
-                      i === galleryModal.currentIndex ? "ach-modal-thumb--active" : ""
-                    }`}
-                    onClick={() =>
-                      setGalleryModal((prev) => (prev ? { ...prev, currentIndex: i } : null))
-                    }
-                  />
-                ))}
-              </div>
-            )}
+                      <ul className="ach-card__highlights">
+                        {item.highlights.map((h, i) => (
+                          <li key={i}>{h}</li>
+                        ))}
+                      </ul>
+
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", margin: "14px 0" }}>
+                        {item.tags.map((t) => (
+                          <span key={t} className="chip">
+                            #{t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Photo / Proof Thumbnails */}
+                      {item.images && item.images.length > 0 && (
+                        <div>
+                          <span style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--muted)", textTransform: "uppercase" }}>
+                            Verified Documentation & Collages:
+                          </span>
+                          <div className="ach-card__thumbnails">
+                            {item.images.map((img, imgIdx) => (
+                              <button
+                                key={imgIdx}
+                                type="button"
+                                className="ach-card__thumb"
+                                onClick={() => openGallery(item.images, imgIdx, item.title)}
+                                aria-label={`View documentation image ${imgIdx + 1}`}
+                              >
+                                <img src={img} alt="" loading="lazy" />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div style={{ marginTop: "22px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                        {item.proofUrl && (
+                          <a
+                            href={item.proofUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn--primary btn--sm"
+                          >
+                            View Source on Meta-Wiki ↗
+                          </a>
+                        )}
+                        <button
+                          type="button"
+                          className="btn btn--secondary btn--sm"
+                          onClick={() => openGallery(item.images, 0, item.title)}
+                        >
+                          Enlarge Documentation ({item.images.length})
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
+      </section>
+
+      {/* Lightbox for Proof & Collages */}
+      {gallery && (
+        <Lightbox
+          images={gallery.images}
+          index={gallery.index}
+          title={gallery.title}
+          onChange={(index) => setGallery((current) => ({ ...current, index }))}
+          onClose={() => setGallery(null)}
+        />
       )}
-    </>
+    </div>
   );
 }
-
-export default Achievements;
-
